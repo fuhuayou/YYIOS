@@ -17,6 +17,8 @@
 		8253D75A258313F000F784CE /* APPLE_SIGNIN_DEMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8253D759258313F000F784CE /* APPLE_SIGNIN_DEMOTests.m */; };
 		8253D765258313F000F784CE /* APPLE_SIGNIN_DEMOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8253D764258313F000F784CE /* APPLE_SIGNIN_DEMOUITests.m */; };
 		8253D7862583155800F784CE /* YYAppleSignInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8253D7852583155800F784CE /* YYAppleSignInManager.m */; };
+		8256E702258B3E3C000A0216 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8256E701258B3E3C000A0216 /* ExternalAccessory.framework */; };
+		825DBA062589126E00C86ED0 /* YYWifiMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 825DBA042589126E00C86ED0 /* YYWifiMgr.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		8253D7842583155800F784CE /* YYAppleSignInManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYAppleSignInManager.h; sourceTree = "<group>"; };
 		8253D7852583155800F784CE /* YYAppleSignInManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYAppleSignInManager.m; sourceTree = "<group>"; };
 		8253D78A258322B800F784CE /* APPLE_SIGNIN_DEMO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = APPLE_SIGNIN_DEMO.entitlements; sourceTree = "<group>"; };
+		8256E701258B3E3C000A0216 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		825DBA042589126E00C86ED0 /* YYWifiMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWifiMgr.m; sourceTree = "<group>"; };
+		825DBA052589126E00C86ED0 /* YYWifiMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWifiMgr.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8256E702258B3E3C000A0216 /* ExternalAccessory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +98,7 @@
 				8253D758258313F000F784CE /* APPLE_SIGNIN_DEMOTests */,
 				8253D763258313F000F784CE /* APPLE_SIGNIN_DEMOUITests */,
 				8253D73B258313EC00F784CE /* Products */,
+				8256E700258B3E3C000A0216 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +115,7 @@
 		8253D73C258313EC00F784CE /* APPLE_SIGNIN_DEMO */ = {
 			isa = PBXGroup;
 			children = (
+				825DBA032589126E00C86ED0 /* WIFI */,
 				8253D78A258322B800F784CE /* APPLE_SIGNIN_DEMO.entitlements */,
 				8253D7842583155800F784CE /* YYAppleSignInManager.h */,
 				8253D7852583155800F784CE /* YYAppleSignInManager.m */,
@@ -143,6 +151,23 @@
 			);
 			path = APPLE_SIGNIN_DEMOUITests;
 			sourceTree = "<group>";
+		};
+		8256E700258B3E3C000A0216 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8256E701258B3E3C000A0216 /* ExternalAccessory.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		825DBA032589126E00C86ED0 /* WIFI */ = {
+			isa = PBXGroup;
+			children = (
+				825DBA052589126E00C86ED0 /* YYWifiMgr.h */,
+				825DBA042589126E00C86ED0 /* YYWifiMgr.m */,
+			);
+			path = WIFI;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -276,6 +301,7 @@
 				8253D745258313EC00F784CE /* ViewController.m in Sources */,
 				8253D7862583155800F784CE /* YYAppleSignInManager.m in Sources */,
 				8253D73F258313EC00F784CE /* AppDelegate.m in Sources */,
+				825DBA062589126E00C86ED0 /* YYWifiMgr.m in Sources */,
 				8253D750258313EF00F784CE /* main.m in Sources */,
 				8253D742258313EC00F784CE /* SceneDelegate.m in Sources */,
 			);
@@ -450,6 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = APPLE_SIGNIN_DEMO/APPLE_SIGNIN_DEMO.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67M35E8KE4;
 				INFOPLIST_FILE = APPLE_SIGNIN_DEMO/Info.plist;
@@ -459,6 +486,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mykronoz.APPLE-SIGNIN-DEMO";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -469,6 +497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = APPLE_SIGNIN_DEMO/APPLE_SIGNIN_DEMO.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67M35E8KE4;
 				INFOPLIST_FILE = APPLE_SIGNIN_DEMO/Info.plist;
@@ -478,6 +507,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mykronoz.APPLE-SIGNIN-DEMO";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

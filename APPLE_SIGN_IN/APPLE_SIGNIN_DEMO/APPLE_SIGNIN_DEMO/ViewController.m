@@ -8,10 +8,11 @@
 #import "ViewController.h"
 #import <AuthenticationServices/AuthenticationServices.h>
 #import "YYAppleSignInManager.h"
+#import "YYWifiMgr.h"
 @interface ViewController ()
 
 @property (nonatomic, strong)YYAppleSignInManager *appleSignInManager;
-
+@property (nonatomic, strong)YYWifiMgr *wifi;
 @end
 
 @implementation ViewController
@@ -46,6 +47,9 @@
     } else {
         // Fallback on earlier versions
     }
+    
+    self.wifi = [[YYWifiMgr alloc] init];
+//    [self.wifi fetchSSIDInfo];
     
 }
 
