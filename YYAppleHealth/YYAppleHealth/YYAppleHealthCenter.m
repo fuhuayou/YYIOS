@@ -182,20 +182,23 @@
     /**
      BodyFatPercentage
      */
-    HKObjectType *type = [[self types:HKQuantityTypeIdentifierBodyFatPercentage] allObjects][0];
-    if ([self.healthStore authorizationStatusForType:type] != HKAuthorizationStatusSharingAuthorized) {
-        NSLog(@"========Not Authorized==========");
-        return;
-    }
-    QuantityModel *model = [[QuantityModel alloc] init];
-    model.value = 0.15;
-    model.startDate =[NSDate dateWithTimeIntervalSince1970: [[NSDate date] timeIntervalSince1970] - 3600];
-    model.endDate =[NSDate dateWithTimeIntervalSince1970: [[NSDate date] timeIntervalSince1970] - 3600];
-    NSArray *records = @[model];
-    HKUnit *unit = [HKUnit percentUnit];
-    NSArray *values = [self toHKQuantityModelArray:unit type:HKQuantityTypeIdentifierBodyFatPercentage data:records];
-    
     @try {
+        
+        HKObjectType *type = [[self types:HKQuantityTypeIdentifierBodyFatPercentage] allObjects][0];
+        if ([self.healthStore authorizationStatusForType:type] != HKAuthorizationStatusSharingAuthorized) {
+            NSLog(@"========Not Authorized==========");
+            return;
+        }
+        QuantityModel *model = [[QuantityModel alloc] init];
+        model.value = 0.17;
+        // 1609228914.7585201;// [[NSDate date] timeIntervalSince1970] - 3600; 使用相同的时间戳， Apple health 会同样上传成功，health 显示也正常， 知识 APPs 里面有多次上传的记录。；
+        NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] - 3600;
+        model.startDate =[NSDate dateWithTimeIntervalSince1970: interval];//
+        model.endDate =[NSDate dateWithTimeIntervalSince1970: interval];
+        NSArray *records = @[model];
+        HKUnit *unit = [HKUnit percentUnit];
+        NSArray *values = [self toHKQuantityModelArray:unit type:HKQuantityTypeIdentifierBodyFatPercentage data:records];
+        
         [self.healthStore saveObjects:values withCompletion:^(BOOL success, NSError * _Nullable error) {
             NSLog(@"===========success : %d, ======= error: %@",success,  error);
         }];

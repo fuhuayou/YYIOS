@@ -1,0 +1,8 @@
+# Podfile
+platform :ios, '10.0'
+use_frameworks!
+
+target 'YYBLEDemo1' do
+    pod 'RxSwift'
+    pod 'RxCocoa'
+end
