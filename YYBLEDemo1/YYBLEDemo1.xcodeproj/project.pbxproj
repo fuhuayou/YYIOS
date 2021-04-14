@@ -15,6 +15,14 @@
 		825D28752612CD6900F727D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825D28732612CD6900F727D9 /* LaunchScreen.storyboard */; };
 		825D28862612D49B00F727D9 /* BLECenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D28852612D49B00F727D9 /* BLECenter.swift */; };
 		825D288B2612FBC500F727D9 /* ViewControllerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D288A2612FBC500F727D9 /* ViewControllerVM.swift */; };
+		82BE167E261EA9EB001B9FBE /* BLEDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE167D261EA9EB001B9FBE /* BLEDevice.swift */; };
+		82BE1681261EB574001B9FBE /* BLEOTAMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE1680261EB574001B9FBE /* BLEOTAMgr.swift */; };
+		82BE1697261F0D73001B9FBE /* DeviceManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE1696261F0D72001B9FBE /* DeviceManagerVC.swift */; };
+		82C414892623F8B00024C02A /* HttpsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C414882623F8B00024C02A /* HttpsRequest.swift */; };
+		82CB632D26203CAC00DDF3FD /* ZeGear_v1.9_191225.bin in Resources */ = {isa = PBXBuildFile; fileRef = 82CB632C26203CAC00DDF3FD /* ZeGear_v1.9_191225.bin */; };
+		82D2F2BC26267BA0003CD49E /* HttpsTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2F2BB26267BA0003CD49E /* HttpsTask.swift */; };
+		82D2F2C42626D08F003CD49E /* ZKTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2F2C32626D08F003CD49E /* ZKTimer.swift */; };
+		82FBC626261D7F5500CDC21A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 82FBC625261D7F5500CDC21A /* .swiftlint.yml */; };
 		D126A5C9208ABEB4F8DFC5BF /* Pods_YYBLEDemo1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370BE22AA006AA0A5D08CC2B /* Pods_YYBLEDemo1.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +39,14 @@
 		825D28762612CD6900F727D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		825D28852612D49B00F727D9 /* BLECenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECenter.swift; sourceTree = "<group>"; };
 		825D288A2612FBC500F727D9 /* ViewControllerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerVM.swift; sourceTree = "<group>"; };
+		82BE167D261EA9EB001B9FBE /* BLEDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEDevice.swift; sourceTree = "<group>"; };
+		82BE1680261EB574001B9FBE /* BLEOTAMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEOTAMgr.swift; sourceTree = "<group>"; };
+		82BE1696261F0D72001B9FBE /* DeviceManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManagerVC.swift; sourceTree = "<group>"; };
+		82C414882623F8B00024C02A /* HttpsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsRequest.swift; sourceTree = "<group>"; };
+		82CB632C26203CAC00DDF3FD /* ZeGear_v1.9_191225.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = ZeGear_v1.9_191225.bin; sourceTree = "<group>"; };
+		82D2F2BB26267BA0003CD49E /* HttpsTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsTask.swift; sourceTree = "<group>"; };
+		82D2F2C32626D08F003CD49E /* ZKTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKTimer.swift; sourceTree = "<group>"; };
+		82FBC625261D7F5500CDC21A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		FDAB40597738542C73CEFC31 /* Pods-YYBLEDemo1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYBLEDemo1.release.xcconfig"; path = "Target Support Files/Pods-YYBLEDemo1/Pods-YYBLEDemo1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +73,7 @@
 		825D285C2612CD6800F727D9 = {
 			isa = PBXGroup;
 			children = (
+				82FBC625261D7F5500CDC21A /* .swiftlint.yml */,
 				825D28672612CD6800F727D9 /* YYBLEDemo1 */,
 				825D28662612CD6800F727D9 /* Products */,
 				C4216321A460352AA2834362 /* Pods */,
@@ -75,11 +92,14 @@
 		825D28672612CD6800F727D9 /* YYBLEDemo1 */ = {
 			isa = PBXGroup;
 			children = (
+				82CB632F26204FD800DDF3FD /* Components */,
+				82CB632B26203C7F00DDF3FD /* Sources */,
 				825D28892612FB9100F727D9 /* ViewModels */,
 				825D28842612D49B00F727D9 /* BLECenter */,
 				825D28682612CD6800F727D9 /* AppDelegate.swift */,
 				825D286A2612CD6800F727D9 /* SceneDelegate.swift */,
 				825D286C2612CD6800F727D9 /* ViewController.swift */,
+				82BE1696261F0D72001B9FBE /* DeviceManagerVC.swift */,
 				825D286E2612CD6800F727D9 /* Main.storyboard */,
 				825D28712612CD6900F727D9 /* Assets.xcassets */,
 				825D28732612CD6900F727D9 /* LaunchScreen.storyboard */,
@@ -92,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				825D28852612D49B00F727D9 /* BLECenter.swift */,
+				82BE167D261EA9EB001B9FBE /* BLEDevice.swift */,
+				82BE1680261EB574001B9FBE /* BLEOTAMgr.swift */,
 			);
 			path = BLECenter;
 			sourceTree = "<group>";
@@ -102,6 +124,40 @@
 				825D288A2612FBC500F727D9 /* ViewControllerVM.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		82C414872623F8860024C02A /* HttpsRequest */ = {
+			isa = PBXGroup;
+			children = (
+				82C414882623F8B00024C02A /* HttpsRequest.swift */,
+				82D2F2BB26267BA0003CD49E /* HttpsTask.swift */,
+			);
+			path = HttpsRequest;
+			sourceTree = "<group>";
+		};
+		82CB632B26203C7F00DDF3FD /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				82CB632C26203CAC00DDF3FD /* ZeGear_v1.9_191225.bin */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		82CB632F26204FD800DDF3FD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				82D2F2BE2626D04C003CD49E /* Timer */,
+				82C414872623F8860024C02A /* HttpsRequest */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		82D2F2BE2626D04C003CD49E /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				82D2F2C32626D08F003CD49E /* ZKTimer.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		C4216321A460352AA2834362 /* Pods */ = {
@@ -125,6 +181,7 @@
 				825D28622612CD6800F727D9 /* Frameworks */,
 				825D28632612CD6800F727D9 /* Resources */,
 				AAECBA74967A9C8515708245 /* [CP] Embed Pods Frameworks */,
+				82A2395D261C57B5008EE63D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -172,15 +229,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82FBC626261D7F5500CDC21A /* .swiftlint.yml in Resources */,
 				825D28752612CD6900F727D9 /* LaunchScreen.storyboard in Resources */,
 				825D28722612CD6900F727D9 /* Assets.xcassets in Resources */,
 				825D28702612CD6800F727D9 /* Main.storyboard in Resources */,
+				82CB632D26203CAC00DDF3FD /* ZeGear_v1.9_191225.bin in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		82A2395D261C57B5008EE63D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		AAECBA74967A9C8515708245 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,10 +303,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82BE1681261EB574001B9FBE /* BLEOTAMgr.swift in Sources */,
 				825D286D2612CD6800F727D9 /* ViewController.swift in Sources */,
+				82BE167E261EA9EB001B9FBE /* BLEDevice.swift in Sources */,
 				825D28692612CD6800F727D9 /* AppDelegate.swift in Sources */,
+				82BE1697261F0D73001B9FBE /* DeviceManagerVC.swift in Sources */,
 				825D288B2612FBC500F727D9 /* ViewControllerVM.swift in Sources */,
+				82C414892623F8B00024C02A /* HttpsRequest.swift in Sources */,
+				82D2F2C42626D08F003CD49E /* ZKTimer.swift in Sources */,
 				825D28862612D49B00F727D9 /* BLECenter.swift in Sources */,
+				82D2F2BC26267BA0003CD49E /* HttpsTask.swift in Sources */,
 				825D286B2612CD6800F727D9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WWYF2H4Z6;
 				INFOPLIST_FILE = YYBLEDemo1/Info.plist;
@@ -388,6 +471,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fuhuayou.YYBLEDemo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -399,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WWYF2H4Z6;
 				INFOPLIST_FILE = YYBLEDemo1/Info.plist;
@@ -408,6 +493,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fuhuayou.YYBLEDemo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -9,11 +9,8 @@ import Foundation
 import RxSwift
 
 struct ViewControllerVM {
-    
     var data = Observable<Array>.just([["name": "无条件", "singer": "学友哥"],
                                 ["name": "Hello", "singer": "陈奕迅"]])
-    
-    
 //    init() {
 //        changeData();
 //    }

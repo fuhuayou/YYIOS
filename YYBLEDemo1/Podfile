@@ -5,4 +5,6 @@ use_frameworks!
 target 'YYBLEDemo1' do
     pod 'RxSwift'
     pod 'RxCocoa'
+    pod 'SwiftLint'
+    pod 'Alamofire', '~> 5.2'
 end
