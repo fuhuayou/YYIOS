@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821D8421262985CE00508B0A /* Pods_YYBLEDemo1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370BE22AA006AA0A5D08CC2B /* Pods_YYBLEDemo1.framework */; };
 		825D28692612CD6800F727D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D28682612CD6800F727D9 /* AppDelegate.swift */; };
 		825D286B2612CD6800F727D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D286A2612CD6800F727D9 /* SceneDelegate.swift */; };
 		825D286D2612CD6800F727D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D286C2612CD6800F727D9 /* ViewController.swift */; };
@@ -23,12 +24,15 @@
 		82D2F2BC26267BA0003CD49E /* HttpsTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2F2BB26267BA0003CD49E /* HttpsTask.swift */; };
 		82D2F2C42626D08F003CD49E /* ZKTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2F2C32626D08F003CD49E /* ZKTimer.swift */; };
 		82FBC626261D7F5500CDC21A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 82FBC625261D7F5500CDC21A /* .swiftlint.yml */; };
-		D126A5C9208ABEB4F8DFC5BF /* Pods_YYBLEDemo1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370BE22AA006AA0A5D08CC2B /* Pods_YYBLEDemo1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2885FE96A9B12CD6B92097A5 /* Pods-YYBLEDemo1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYBLEDemo1.debug.xcconfig"; path = "Target Support Files/Pods-YYBLEDemo1/Pods-YYBLEDemo1.debug.xcconfig"; sourceTree = "<group>"; };
 		370BE22AA006AA0A5D08CC2B /* Pods_YYBLEDemo1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYBLEDemo1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		821D8414262980F800508B0A /* settings.common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = settings.common.xcconfig; sourceTree = "<group>"; };
+		821D84152629810900508B0A /* settings.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = settings.release.xcconfig; sourceTree = "<group>"; };
+		821D84162629811D00508B0A /* settings.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = settings.debug.xcconfig; sourceTree = "<group>"; };
+		821D84172629814700508B0A /* settings.grey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = settings.grey.xcconfig; sourceTree = "<group>"; };
 		825D28652612CD6800F727D9 /* YYBLEDemo1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YYBLEDemo1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825D28682612CD6800F727D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825D286A2612CD6800F727D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 		82D2F2BB26267BA0003CD49E /* HttpsTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsTask.swift; sourceTree = "<group>"; };
 		82D2F2C32626D08F003CD49E /* ZKTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKTimer.swift; sourceTree = "<group>"; };
 		82FBC625261D7F5500CDC21A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		8432C5FEC29B269E74CFE0F5 /* Pods-YYBLEDemo1.grey.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYBLEDemo1.grey.xcconfig"; path = "Target Support Files/Pods-YYBLEDemo1/Pods-YYBLEDemo1.grey.xcconfig"; sourceTree = "<group>"; };
 		FDAB40597738542C73CEFC31 /* Pods-YYBLEDemo1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYBLEDemo1.release.xcconfig"; path = "Target Support Files/Pods-YYBLEDemo1/Pods-YYBLEDemo1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D126A5C9208ABEB4F8DFC5BF /* Pods_YYBLEDemo1.framework in Frameworks */,
+				821D8421262985CE00508B0A /* Pods_YYBLEDemo1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,9 +75,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		821D8413262980C400508B0A /* configs */ = {
+			isa = PBXGroup;
+			children = (
+				821D8414262980F800508B0A /* settings.common.xcconfig */,
+				821D84152629810900508B0A /* settings.release.xcconfig */,
+				821D84162629811D00508B0A /* settings.debug.xcconfig */,
+				821D84172629814700508B0A /* settings.grey.xcconfig */,
+			);
+			path = configs;
+			sourceTree = "<group>";
+		};
 		825D285C2612CD6800F727D9 = {
 			isa = PBXGroup;
 			children = (
+				821D8413262980C400508B0A /* configs */,
 				82FBC625261D7F5500CDC21A /* .swiftlint.yml */,
 				825D28672612CD6800F727D9 /* YYBLEDemo1 */,
 				825D28662612CD6800F727D9 /* Products */,
@@ -165,6 +182,7 @@
 			children = (
 				2885FE96A9B12CD6B92097A5 /* Pods-YYBLEDemo1.debug.xcconfig */,
 				FDAB40597738542C73CEFC31 /* Pods-YYBLEDemo1.release.xcconfig */,
+				8432C5FEC29B269E74CFE0F5 /* Pods-YYBLEDemo1.grey.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -339,6 +357,89 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		821D844926298F2200508B0A /* Grey */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Grey;
+		};
+		821D844A26298F2200508B0A /* Grey */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 821D84172629814700508B0A /* settings.grey.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3WWYF2H4Z6;
+				INFOPLIST_FILE = YYBLEDemo1/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuhuayou.YYBLEDemo1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Grey;
+		};
 		825D28772612CD6900F727D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -457,7 +558,7 @@
 		};
 		825D287A2612CD6900F727D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2885FE96A9B12CD6B92097A5 /* Pods-YYBLEDemo1.debug.xcconfig */;
+			baseConfigurationReference = 821D84162629811D00508B0A /* settings.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -479,7 +580,7 @@
 		};
 		825D287B2612CD6900F727D9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDAB40597738542C73CEFC31 /* Pods-YYBLEDemo1.release.xcconfig */;
+			baseConfigurationReference = 821D84152629810900508B0A /* settings.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -506,6 +607,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				825D28772612CD6900F727D9 /* Debug */,
+				821D844926298F2200508B0A /* Grey */,
 				825D28782612CD6900F727D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -515,6 +617,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				825D287A2612CD6900F727D9 /* Debug */,
+				821D844A26298F2200508B0A /* Grey */,
 				825D287B2612CD6900F727D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -10,25 +10,30 @@ class ZKTimer: NSObject {
     
     var timeout: Double?
     var isRepeat: Bool?
-    var timer: Timer?
+    var timer: DispatchSourceTimer?
+    let tQueue = DispatchQueue(label: "ZKTimer")
     init(interval:Double, repeats:Bool, block:((ZKTimer?) -> Void )? ) {
         super.init()
-        DispatchQueue.global().async {
-            self.timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: repeats, block: {[weak self] Timer in
+        
+        self.timer = DispatchSource.makeTimerSource(flags:[], queue: tQueue)
+        if repeats == false {
+            self.timer?.schedule(wallDeadline: .now()+interval, leeway: .milliseconds(10))
+        } else {
+            self.timer?.schedule(wallDeadline: .now() + interval, repeating: interval, leeway: .milliseconds(10))
+        }
+        self.timer?.setEventHandler(handler: {
+            DispatchQueue.main.sync {
+                
                 if let block = block {
                     block(self)
                 }
                 
-                if self?.isRepeat == false {
-                    self?.invalidate()
+                if repeats == false {
+                    self.invalidate()
                 }
-            })
-            
-            if let timer = self.timer {
-                RunLoop.current.add(timer, forMode: RunLoop.Mode.common) // make sure will not stuck by UI tracking.
-                RunLoop.current.run()
             }
-        }
+        })
+        self.timer?.resume()
         self.isRepeat = repeats
         self.timeout = interval
     }
@@ -39,9 +44,12 @@ class ZKTimer: NSObject {
     
     func invalidate() {
         if let timer = self.timer {
-            timer.invalidate()
-            self.timer = nil
+            timer.cancel()
         }
+        self.timer = nil
     }
 
+//    deinit {
+//        print("======= timer did deinit =======")
+//    }
 }

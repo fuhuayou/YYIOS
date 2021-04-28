@@ -9,10 +9,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 import CoreBluetooth
-class ViewController: UIViewController {
+import SnapKit
+class ViewController: UIViewController, ConstraintRelatableTarget {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scanBtn: UIButton!
+    @IBOutlet weak var topNaviItem: UINavigationItem!
     
     var iBleCenter: BLECenter?
     var otaMgr: BLEOTAMgr?
@@ -26,6 +28,10 @@ class ViewController: UIViewController {
     
     var timer: ZKTimer?
     
+    var tasks:[String: Any] = [:]
+    
+    
+    let testView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +43,18 @@ class ViewController: UIViewController {
                 self.tableView.reloadData()
             }
         })
+        
+        view.addSubview(testView)
+        testView.backgroundColor = .red
+//        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) {
+//            self.testView.snp.makeConstraints { (make) in
+//                make.left.equalTo(60)
+//                make.top.equalTo(self.view).offset(100)
+//                make.height.width.equalTo(100)
+//            }
+//        }
+//        testView.addConstraint(NSLayoutConstraint)
+
 
         //rxswift.
         //        vm.data.bind(to: tableView.rx.items(cellIdentifier: "TestingCell")){_, music, cell in
@@ -82,27 +100,35 @@ class ViewController: UIViewController {
     }
 
     @IBAction func ota (_ sender : UIButton) {
-//        let path = Bundle.main.path(forResource: "ZeGear_v1.9_191225", ofType: "bin")
-//        otaMgr = BLEOTAMgr(iBleCenter, path);
-//        otaMgr?.resumeStream()
-        
-        ZKTimer.timer(interval: 0.5, repeats: false) { timer in
-            print("===============")
-        }
+        let path = Bundle.main.path(forResource: "ZeGear_v1.9_191225", ofType: "bin")
+        otaMgr = BLEOTAMgr(iBleCenter, path);
+        otaMgr?.resumeStream()
     }
     
     @IBAction func scan(_ sender : UIButton) {
+        
+        self.iBleCenter?.scan(true, nil, 20, { [self](devices) in
+            self.scanedDevices = devices
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+        
+        
+        
 //        let url = "https://httpbin.org/get"
-//        let url = "https://api-prod.mykronoz.com/v2/accounts?grant_type=password"
+////        let url = "https://api-prod.mykronoz.com/v2/accounts?grant_type=password"
 //        let parameters = ["client_id" : "3923806144116395740",
 //                          "grant_type" : "password",
 //                          "username" : "Tom",
 //                          "password": "tomgogogo"];
-//        HttpsRequest.post(url: url, parameters, {response in
-//            print("========== : ", response)
-//        })
+//
+//        for _ in 1...5 {
+//            HttpsRequest.get(url: url, nil, {response in
+//                print("========== : ", response)
+//            })
+//        }
     }
-    
 }
 
 extension ViewController : UITableViewDelegate, UITableViewDataSource {

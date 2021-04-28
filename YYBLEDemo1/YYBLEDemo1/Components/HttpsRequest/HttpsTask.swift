@@ -33,7 +33,12 @@ class HttpsTask: NSObject {
     private var timer: ZKTimer?
     
     func finished(_ result: [String: Any]) {
-        timer?.invalidate()
+        
+        // remove timer.
+        self.timer?.invalidate()
+        self.timer = nil;
+
+        // callback.
         if let completion = self.completion {
             completion(result)
             self.completion = nil
@@ -41,27 +46,34 @@ class HttpsTask: NSObject {
     }
     
     func resume(responseBlock:(() -> Void)?) {
-        timer = ZKTimer(interval: Double(self.timeout ?? 60),
+        self.timer = ZKTimer(interval: Double(10),
                         repeats: false) { [weak self] timer in
+            // remove timer.
+            timer?.invalidate()
+            self?.timer = nil
+            
+            // cancel task.
             if let afTask = self?.afTask {
                 afTask.cancel()
                 self?.afTask = nil
             }
             
+            // callback
             if let completion = self?.completion {
                 completion(["success":false, "code": 10000, "body": ["message": "timeout"]])
                 self?.completion = nil;
             }
             
+            // response.
             if let responseBlock = responseBlock {
                 responseBlock()
             }
         }
     }
     
-    deinit {
-        print("==============")
-    }
+//    deinit {
+//        print("======= HttpsTask deinit =======")
+//    }
 }
 
 extension Date {

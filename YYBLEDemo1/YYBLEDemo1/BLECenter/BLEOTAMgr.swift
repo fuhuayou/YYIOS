@@ -34,7 +34,6 @@ class BLEOTAMgr: NSObject {
     }
 }
 
-
 // send data stream.
 extension BLEOTAMgr: StreamDelegate {
     
@@ -67,9 +66,6 @@ extension BLEOTAMgr: StreamDelegate {
                 self.inputStream?.delegate = self
                 self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
                 self.inputStream?.open()
-//                self.inputStream?.close()
-//                self.inputStream?.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
-//                self.inputStream = nil
                 RunLoop.current.run()
             }
         }
@@ -100,13 +96,14 @@ extension BLEOTAMgr: StreamDelegate {
             print("=====Stream.Event.errorOccurred=====")
         case Stream.Event.endEncountered:
             print("=====Stream.Event.endEncountered=====")
+            self.inputStream?.close()
+            self.inputStream?.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
+            self.inputStream = nil
         default:
             break
         }
         
     }
-    
-    
     
     func completion(success: Bool, message: String?, error: NSError?) {
         

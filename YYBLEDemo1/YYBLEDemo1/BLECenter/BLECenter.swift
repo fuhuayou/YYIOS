@@ -28,7 +28,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     var connectCallback : BLECallback?
     
     //connected services
-    var connServices: Dictionary<String, Array<CBCharacteristic>>?//"service: [特征值数组]"
+    var connServices: [String: [CBCharacteristic]]?//"service: [特征值数组]"
     
     override init() {
         super.init();
@@ -59,15 +59,21 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
                 self.centralStateSemaphore!.wait();
                 self.centralStateSemaphore = nil;
             }
-            
+
             if isEnable {
                 self.filter = filter;
+                self.scanDevices = [];
+                if self.bleCenter!.isScanning {
+                    self.bleCenter?.stopScan()
+                }
+                
                 self.bleCenter?.scanForPeripherals(withServices: nil, options: nil);
                 print("========= BLECenter DID SCAN ==============");
             } else {
                 self.bleCenter?.stopScan();
                 print("========= BLECenter DID STOP SCAN ==============")
             }
+            self.bleCenter?.retrievePeripherals(withIdentifiers:[])
         }
     }
     
@@ -107,8 +113,11 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         if tCha == nil {
             return
         }
-        
-        let mBytes: [UInt8]  =  [10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
+//        let mBytes: [UInt8]  =  [10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 10, 10, 0xa1, 0xa2, 33, 0xa2, 33]
+        let mBytes: [UInt8]  =  [
+//                                 10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
+//                                 10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
+            
                                  10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
                                  10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
                                  10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
@@ -116,11 +125,22 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
                                  10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
                                  10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
                                  10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
-                                 10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 0xff, 0xff, 0xff ];
+                                 10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
+                                 10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
+                                 10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 0xff, 0xff, 0xff];
         let data: Data = Data(bytes: mBytes, count:mBytes.count);
-        for _ in 1...10 {
-            self.connectedDevice?.blePeripheral?.writeValue(data as Data, for: tCha!, type: CBCharacteristicWriteType.withoutResponse)
+        self.connectedDevice?.blePeripheral?.writeValue(data as Data, for: tCha!, type: CBCharacteristicWriteType.withoutResponse)
+//        for index in 1...50 {
+//            Thread.sleep(forTimeInterval: 0.01)
+//            print("=============== index: ", index)
+//            self.connectedDevice?.blePeripheral?.writeValue(data as Data, for: tCha!, type: CBCharacteristicWriteType.withoutResponse)
+//        }
+//        
+        if let blePeripheral = self.connectedDevice?.blePeripheral {
+            self.bleCenter?.cancelPeripheralConnection(blePeripheral)
         }
+    
+       
     }
     
     /**
@@ -132,7 +152,6 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             if self.scanDevices == nil {
                 self.scanDevices = Array();
             }
-            
             
             var exist = false;
             for per in self.scanDevices! where per.name == peripheral.name {
@@ -158,6 +177,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         peripheral.delegate = self;
         peripheral.discoverServices(nil)
         connectCallback?(["sucess" : true, "message" : "didConnect"]);
+        print("============ didConnect peripheral: ", peripheral)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -181,8 +201,11 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             return
         }
             
-        print("=========characteristics: ", service.characteristics!)
+        print("========= service: ", service.uuid.uuidString)
         connServices?[service.uuid.uuidString] = service.characteristics
+        for characteristic in  service.characteristics! {
+            print("=========  ------characteristic: ", characteristic.uuid.uuidString)
+        }
         // 判断是否已经发现所有的服务和对应服务的特征值。
         
         // 全部打开。
@@ -200,8 +223,12 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             connServices = Dictionary();
         }
         print("=========services: ", peripheral.services!)
+//        for server in  peripheral.services! {
+//            print("=========services: ", server.uuid.uuidString)
+//        }
+//
         for service in peripheral.services! {
-            connServices?[service.uuid.uuidString] = Array<CBCharacteristic>();
+            connServices?[service.uuid.uuidString] = [CBCharacteristic]();
             peripheral.discoverCharacteristics(nil, for: service)
         }
     }

@@ -16,10 +16,11 @@ class DeviceManagerVC: UIViewController {
     }
     
     @IBAction func click (_ sender : UIButton) {
-        bleCenter?.sendData("", "FFE0", "FFE1")
+//        bleCenter?.sendData("", "1000", "1001")
+        bleCenter?.sendData("", "6666", "7777")
     }
     
-
+ 
     
 
     
