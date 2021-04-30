@@ -6,7 +6,7 @@
 //
 import CoreBluetooth
 import Foundation
-
+//swiftlint:disable force_unwrapping force_cast
 class BLEOTAMgr: NSObject {
     
     typealias OTACallback = (Bool, Float, Error) -> Void
@@ -42,7 +42,7 @@ extension BLEOTAMgr: StreamDelegate {
         // if path nil or file nil, then return.
         if self.filePath == nil || !(FileManager.default.fileExists(atPath: self.filePath!)) {
             completion(success: false, message: "File path nil or file nil.", error: nil)
-            return;
+            return
         }
         
         do {
@@ -55,14 +55,14 @@ extension BLEOTAMgr: StreamDelegate {
         }
         if self.fileSize == 0 {
             completion(success: false, message: "File could not get size.", error: nil)
-            return;
+            return
         }
         
         // init inputStream
         if self.inputStream == nil {
             let backgroundQueue = DispatchQueue.global(qos: .background)
             backgroundQueue.async {
-                self.inputStream = InputStream.init(fileAtPath: self.filePath!)
+                self.inputStream = InputStream(fileAtPath: self.filePath!)
                 self.inputStream?.delegate = self
                 self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
                 self.inputStream?.open()

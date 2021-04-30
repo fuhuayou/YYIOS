@@ -37,12 +37,24 @@ class ViewController: UIViewController, ConstraintRelatableTarget {
         super.viewDidLoad()
         scanedDevices = []
         self.iBleCenter = BLECenter.init();
-        self.iBleCenter?.scan(true, nil, 20, { [self](devices) in
-            self.scanedDevices = devices
+        self.iBleCenter?.scan(true, nil, 10, ["6006", "6666", "FFE0"], {[weak self] devices in
+            self?.scanedDevices = devices
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         })
+        
+        self.iBleCenter?.connectCallback = {result in
+            print("========== result: ", result)
+            let iResult = result as! [String: Any]
+            if (iResult["success"] as! Bool) == true {
+                DispatchQueue.main.async {
+                    let ivc: DeviceManagerVC? = self.storyboard?.instantiateViewController(identifier:"DeviceManagerVC") as? DeviceManagerVC
+                    ivc?.bleCenter = self.iBleCenter
+                    self.navigationController?.pushViewController(ivc!, animated: true);
+                }
+            }
+        }
         
         view.addSubview(testView)
         testView.backgroundColor = .red
@@ -100,14 +112,14 @@ class ViewController: UIViewController, ConstraintRelatableTarget {
     }
 
     @IBAction func ota (_ sender : UIButton) {
-        let path = Bundle.main.path(forResource: "ZeGear_v1.9_191225", ofType: "bin")
-        otaMgr = BLEOTAMgr(iBleCenter, path);
-        otaMgr?.resumeStream()
+//        let path = Bundle.main.path(forResource: "ZeGear_v1.9_191225", ofType: "bin")
+//        otaMgr = BLEOTAMgr(iBleCenter, path);
+//        otaMgr?.resumeStream()
+        BLETasksCenter().getTask()
     }
     
     @IBAction func scan(_ sender : UIButton) {
-        
-        self.iBleCenter?.scan(true, nil, 20, { [self](devices) in
+        self.iBleCenter?.scan(true, nil, 20, ["6606", "6666", "FFE0"], { [self](devices) in
             self.scanedDevices = devices
             DispatchQueue.main.async {
                 self.tableView.reloadData()
