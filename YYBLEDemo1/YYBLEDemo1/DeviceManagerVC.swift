@@ -22,23 +22,32 @@ class DeviceManagerVC: UIViewController {
     @objc func connectOrDisconnect() {
         if connectState == 1 {
             bleCenter?.disconnectDevice(callback: { _ in
-                self.navigationItem.rightBarButtonItem?.title = "Disconnected"
-                print("=========== Did disconnected")
-                self.connectState = 0
+                DispatchQueue.main.async {
+                    self.navigationItem.rightBarButtonItem?.title = "Disconnected"
+                    print("=========== Did disconnected")
+                    self.connectState = 0
+                }
             })
         } else {
-            bleCenter?.connectDevice(self.bleCenter?.connectedDevice, { value in
-                self.connectState = 1
-                print("=========== connectDevice: ", value)
+            bleCenter?.connectDevice(device: self.bleCenter!.connectedDevice!, callback: { value in
+                DispatchQueue.main.async {
+                    self.navigationItem.rightBarButtonItem?.title = "connected"
+                    self.connectState = 1
+                    print("=========== connectDevice: ", value)
+                }
             })
         }
     }
     
     @IBAction func click (_ sender : UIButton) {
         let data = self.getBigData(count: 100)
-        bleCenter?.sendData(data, "FFE0", "FFE1", { (success, messge) in
-            print("================= send data message: ", messge)
+        bleCenter?.sendData("FFE0", "FFE1", data:data, type:.withoutResponse, callback: { (response:[String : Any]) in
+            print("=========== sendData response: ", response)
         })
+        
+        //        bleCenter?.sendData([55, 66, 77, 88], "FFE0", "FFE1", callback: { (response:[String : Any]) in
+        //            print("=========== sendData response: ", response)
+        //        })
     }
 }
 
@@ -76,6 +85,6 @@ extension DeviceManagerVC {
             10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 0xa2, 33,
             10, 10, 10, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 33, 10, 0, 0, 0xa1, 0xa2, 0xff, 0xff, 0xff];
         let data: Data = Data(bytes: mBytes, count:mBytes.count);
-        bleCenter?.sendData(data, "6666", "7777")
+        bleCenter?.sendData("6666", "7777", data: data)
     }
 }

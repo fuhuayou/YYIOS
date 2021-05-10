@@ -6,84 +6,365 @@
 //
 
 import UIKit
-//swiftlint:disable empty_count force_unwrapping
-class BLETasksCenter: NSObject {
+import CoreBluetooth
+protocol BLETasksCenterProtocol: NSObject {
+    func iSendData(data: Data?, service: String, characteristic: String, type:BLETaskWriteType, callback: BLECALLBACK?)
+    func iConnectDevice(device:BLEDevice, callback: BLECALLBACK?)
+    func iRetrieveConnect(serviceUUID:String?, callback: BLECALLBACK?)
+    func iReconnect(callback: BLECALLBACK?)
+}
+
+//swiftlint:disable empty_count force_unwrapping force_cast collection_alignment syntactic_sugar type_body_length
+class BLETasksCenter {
     
-    var tasks:[BLETask] = []
+    weak var delegate: BLETasksCenterProtocol?
+    
+    /**
+     系统级任务队列。直接利用串行队列处理**/
+    
+    /*串行队列*/
+    var tasks = NSMutableArray()
+    //sync waitting task
+    var syncWaitingTask:BLETask?
     let lock = NSLock()
-    func addTask(task:BLETask?) {
-        if let task = task {
-            DispatchQueue.global().async {
-                self.lock.lock()
-                task.tasksCenterBlock = {[weak self] task in
-                    self?.removeTask(task: task)
+    var isTasking = false
+    
+    /**
+     异步队列
+     */
+    var isAsyncTasking = false
+    var asyncTasks = NSMutableArray()
+    var asyncWaitingTasks = NSMutableArray()
+    let asyncWaitingTasksLock = NSLock()
+    
+    func executeSystemSyncTask(type:BLETaskType = .normal,
+                               priority:BLETaskPriority = .height,
+                               timeout:Float = 5.0,
+                               parameters:[String:Any]? = nil,
+                               completedBlock:(([String: Any]) -> Void)? = nil) {
+        let task = BLETask(type: type, priority: priority, timeout: timeout, parameters: parameters, resonseBlock: completedBlock)
+        self.addTask(task: task)
+        self.execute()
+    }
+    
+    func executeTask(data:Any?,
+                     service:String?,
+                     characteristic:String?,
+                     writeReadType: BLETaskWriteType = BLETaskWriteType.withoutResponse,
+                     resonseService: String? = nil,
+                     resonseCharacteristic: String? = nil,
+                     priority:BLETaskPriority = BLETaskPriority.default,
+                     isAsync:Bool = false,
+                     identifier:String? = nil,
+                     completedBlock:(([String: Any]) -> Void)? = nil) {
+        self.addTaskToQueue(data: data,
+                            service: service,
+                            characteristic: characteristic,
+                            writeReadType: writeReadType,
+                            resonseService: resonseService,
+                            resonseCharacteristic: resonseCharacteristic,
+                            priority: priority,
+                            isAsync: isAsync,
+                            identifier: identifier,
+                            completedBlock: completedBlock)
+        isAsync ? self.asyncExecute() : execute()
+    }
+
+    private func execute() {
+        DispatchQueue.global().async {
+            if self.isTasking {
+                return
+            }
+            self.isTasking = true
+            
+            let task = self.getTask()
+            //no task, then return.
+            if task == nil {
+                self.isTasking = false
+                return
+            }
+            
+            if task!.taskType.rawValue <= BLETaskType.normal.rawValue {
+                //check if the service and characteristic exist.
+                if task!.service == nil || task!.characteristic == nil {
+                    task!.taskCompleted(response: ["state":false, "message":"Service or characteristic nil."])
+                    self.isTasking = false
+                    self.execute() //next task.
+                    return
                 }
-                self.tasks.append(task)
-                self.lock.unlock()
+                
+                if task!.writeReadType == BLETaskWriteType.withResponse {
+                    self.syncWaitingTask = task
+                    task!.execute() //execute timer.
+                }
+                
+                if self.delegate != nil {
+                    self.delegate!.iSendData(data:task!.cmdData,
+                                             service:task!.service!,
+                                             characteristic:task!.characteristic!,
+                                             type:task!.writeReadType,
+                                             callback: { (val:[String : Any]) in     // state: Bool, message: String
+                                                let state = val["state"] as! BLETaskCompletedState
+                                                if task!.writeReadType == BLETaskWriteType.withoutResponse || state == BLETaskCompletedState.fail {
+                                                    task?.taskCompleted(response: val)
+                                                    self.syncWaitingTask = nil
+                                                    DispatchQueue.global().asyncAfter(deadline: .now() + 0.1, execute: {
+                                                        self.isTasking = false
+                                                        self.execute() //next task.
+                                                    })
+                                                }
+                                             })
+                } else {
+                    task?.taskCompleted(response: ["state":BLETaskCompletedState.fail, "message":"Not set the ble center."])
+                    self.syncWaitingTask = nil
+                    self.isTasking = false
+                    self.execute() //next task.
+                }
+            } else { //系统级别
+                self.executeSystemTask(task: task)
             }
         }
     }
     
-    func addTask(data:[UInt8]?,
-                 service:String?,
-                 characteristic:String?,
-                 writeReadType: BLETaskWriteType? = BLETaskWriteType.withoutResponse,
-                 priority:BLETaskPriority? = BLETaskPriority.default,
-                 identifier:String? = nil,
-                 completedBlock:(([String: Any]) -> Void)? = nil) {
+    private func executeSystemTask(task:BLETask?) {
+        if let task = task {
+            switch task.taskType {
+            case .connectWithDevice:
+                self.syncWaitingTask = task
+                let device = task.parameters![BLEConstants.DEVICE] as! BLEDevice
+                self.delegate?.iConnectDevice(device:device, callback: { response in
+                    task.taskCompleted(response: response)
+                    self.syncWaitingTask = nil
+                    self.isTasking = false
+                    self.execute() //next task.
+                })
+            case .connectWithServerUUID:
+                break
+            case .connectFromConnectedList:
+                self.syncWaitingTask = task
+                let serviceUUID = task.parameters![BLEConstants.SERVICE_UUID] as! String
+                self.delegate?.iRetrieveConnect(serviceUUID: serviceUUID, callback: { response in
+                    task.taskCompleted(response: response)
+                    self.syncWaitingTask = nil
+                    self.isTasking = false
+                    self.execute() //next task.
+                })
+            case .reconnect:
+                self.syncWaitingTask = task
+                self.delegate?.iReconnect { response in
+                    task.taskCompleted(response: response)
+                    self.syncWaitingTask = nil
+                    self.isTasking = false
+                    self.execute() //next task.
+                }
+            case .disconnect:
+                break
+            case .ota:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    private func asyncExecute() {
+        DispatchQueue.global().async {
+            if self.isAsyncTasking {
+                return
+            }
+            self.isAsyncTasking = true
+            let task = self.getTask(isAsync: true)
+            self.removeTask(task: task, isAsync: true)
+            //no task, then return.
+            if task == nil {
+                self.isAsyncTasking = false
+                return
+            }
+            
+            //check if the service and characteristic exist.
+            if task!.service == nil || task!.characteristic == nil {
+                task!.taskCompleted(response: ["state":false, "message":"Service or characteristic nil."])
+                self.isAsyncTasking = false
+                self.asyncExecute() //next task.
+                return
+            }
+            
+            if task!.writeReadType == .withResponse {
+                self.asyncWaitingTasksLock.lock()
+                self.asyncWaitingTasks.add(task!)
+                self.asyncWaitingTasksLock.unlock()
+                task!.execute() //execute timer.
+            }
+            
+            if self.delegate != nil {
+                self.delegate!.iSendData(data:task!.cmdData,
+                                         service:task!.service!,
+                                         characteristic:task!.characteristic!,
+                                         type:task!.writeReadType,
+                                         callback: { (val:[String : Any]) in     // state: Bool, message: String
+                                            let state = val["state"] as! BLETaskCompletedState
+                                            if task!.writeReadType == BLETaskWriteType.withoutResponse || state == BLETaskCompletedState.fail {
+                                                task?.taskCompleted(response: val)
+                                                self.asyncWaitingTasksLock.lock()
+                                                self.asyncWaitingTasks.remove(task!)
+                                                self.asyncWaitingTasksLock.unlock()
+                                            }
+                                         })
+            } else {
+                task?.taskCompleted(response: ["state":BLETaskCompletedState.fail, "message":"Not set the ble center."])
+            }
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + 0.3) {
+                self.isAsyncTasking = false
+                self.asyncExecute() //next task.
+            }
+        }
+    }
+    
+    func writeWithResonseTaskFinished(state:BLETaskCompletedState, task:BLETask, error: Error?) {
+        task.taskCompleted(response: ["state": state,
+                                      "message": error != nil ? error!.localizedDescription : "success",
+                                      "value":(task.resonseData ?? NULL_DATA())])
+        if !task.isAsync {
+            self.syncWaitingTask = nil
+            self.isTasking = false
+            self.execute() //next task.
+        }
+    }
+    
+    func addTaskToQueue(data:Any?,
+                        service:String?,
+                        characteristic:String?,
+                        writeReadType: BLETaskWriteType = .withoutResponse,
+                        resonseService: String? = nil,
+                        resonseCharacteristic: String? = nil,
+                        priority:BLETaskPriority = BLETaskPriority.default,
+                        isAsync:Bool = false,
+                        identifier:String? = nil,
+                        completedBlock:(([String: Any]) -> Void)? = nil) {
         if data == nil || service == nil || characteristic == nil {
             return
         }
-        let newTask = BLETask(data: data,
+        let newTask = BLETask(data:data,
                               service: service,
                               characteristic: characteristic,
                               writeReadType: writeReadType,
+                              resonseService: resonseService,
+                              resonseCharacteristic: resonseCharacteristic,
                               priority: priority,
+                              isAsync: isAsync,
                               identifier: identifier,
                               resonseBlock:completedBlock)
         addTask(task: newTask)
     }
     
+    func addTask(task:BLETask?) {
+        if let task = task {
+            DispatchQueue.global().sync {
+                self.lock.lock()
+                //finished block.
+                task.tasksCenterBlock = {[weak self] task in
+                    if task.isTimeout { // timeout.
+                        if !task.isAsync && self?.syncWaitingTask != nil && self?.syncWaitingTask == task {
+                            self?.syncWaitingTask = nil
+                            self?.removeTask(task: task, isAsync: task.isAsync)
+                            self?.isTasking = false
+                            self?.execute() //next task.
+                        } else {
+                            //check async waiting tasks.
+                            self?.asyncWaitingTasksLock.lock()
+                            self?.asyncWaitingTasks.remove(task)
+                            self?.asyncWaitingTasksLock.unlock()
+                        }
+                    } else {
+                        self?.removeTask(task: task, isAsync: task.isAsync)
+                    }
+                }
+                
+                //add task.
+                let temTasks = task.isAsync ? self.asyncTasks : self.tasks
+                temTasks.add(task)
+                self.lock.unlock()
+            }
+        }
+    }
     
-    func removeTask(task:BLETask?) {
+    func removeTask(task:BLETask?, isAsync: Bool = false) {
+        let temTasks = isAsync ? self.asyncTasks : self.tasks
         DispatchQueue.global().async {
             self.lock.lock()
-            if self.tasks.count == 0 || task == nil {
-                return
+            if let task = task {
+                temTasks.remove(task)
             }
-            var tIndex = -1
-            for index in 0...(self.tasks.count - 1) {
-                let tModel = self.tasks[index]
-                if tModel.isEqual(task!) {
-                    tIndex = index
-                }
-            }
-            self.tasks.remove(at: tIndex)
             self.lock.unlock()
         }
     }
     
-    func getTask() -> BLETask? {
-        self.tasks.append(BLETask())
+    func getTask(isAsync: Bool = false) -> BLETask? {
         var maxPriorityTask:BLETask?
+        let temTasks = isAsync ? self.asyncTasks : self.tasks
         DispatchQueue.global().sync {
             self.lock.lock()
-            if self.tasks.count == 0 {
+            if temTasks.count == 0 {
+                self.lock.unlock()
                 return
             }
             
-            for index in 0...(self.tasks.count - 1) {
-                let tModel = self.tasks[index]
+            for index in 0...(temTasks.count - 1) {
+                let tModel = temTasks[index] as! BLETask
                 if maxPriorityTask == nil {
                     maxPriorityTask = tModel
                 } else {
-                    if tModel.priority!.rawValue > maxPriorityTask!.priority!.rawValue {
+                    if tModel.priority.rawValue > maxPriorityTask!.priority.rawValue {
                         maxPriorityTask = tModel
                     }
                 }
             }
             self.lock.unlock()
         }
+        print("==================current tasks count: ", temTasks.count)
         return maxPriorityTask
+    }
+}
+
+extension BLETasksCenter {
+    
+    func didReceiveDataFrom(characteristic: CBCharacteristic, error: Error?) {
+        let service = characteristic.service.uuid.uuidString
+        let uuid = characteristic.uuid.uuidString
+        
+        //check sync waitting task.
+        if self.syncWaitingTask != nil && self.syncWaitingTask!.resonseServerUUID != nil && self.syncWaitingTask!.resonseCharacteristic != nil {
+            if (self.syncWaitingTask!.resonseServerUUID! == service) && (self.syncWaitingTask!.resonseCharacteristic! == uuid) {
+                self.syncWaitingTask?.resonseData = characteristic.value
+                self.writeWithResonseTaskFinished(state:(error == nil ? BLETaskCompletedState.success : BLETaskCompletedState.fail), task:self.syncWaitingTask!, error: error)
+            }
+        }
+        
+        //check async waiting tasks.
+        self.asyncWaitingTasksLock.lock()
+        let tTasks = self.getTasksByServiceAndCha(service: service, cha: uuid, from: self.asyncWaitingTasks as! Array<Any>)
+        for task in tTasks {
+            let iTask = task as! BLETask
+            iTask.resonseData = characteristic.value
+            self.writeWithResonseTaskFinished(state:(error == nil ? BLETaskCompletedState.success : BLETaskCompletedState.fail), task:iTask, error: error)
+            self.asyncWaitingTasks.remove(task)
+        }
+        self.asyncWaitingTasksLock.unlock()
+    }
+    
+    func NULL_DATA() -> Data {
+        return Data(bytes: [], count: 0)
+    }
+    
+    func getTasksByServiceAndCha(service:String, cha: String, from aTasks:Array<Any>) -> NSMutableArray {
+        let tTasks = NSMutableArray()
+        for tem in aTasks {
+            let iTem = tem as! BLETask
+            if iTem.resonseServerUUID == service && iTem.characteristic == cha {
+                tTasks.add(tem)
+            }
+        }
+        return tTasks
     }
 }

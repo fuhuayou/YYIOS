@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import CoreBluetooth
 import SnapKit
-class ViewController: UIViewController, ConstraintRelatableTarget {
+class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStateProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scanBtn: UIButton!
@@ -44,29 +44,9 @@ class ViewController: UIViewController, ConstraintRelatableTarget {
             }
         })
         
-        self.iBleCenter?.connectCallback = {result in
-            print("========== result: ", result)
-            let iResult = result as! [String: Any]
-            if (iResult["success"] as! Bool) == true {
-                DispatchQueue.main.async {
-                    let ivc: DeviceManagerVC? = self.storyboard?.instantiateViewController(identifier:"DeviceManagerVC") as? DeviceManagerVC
-                    ivc?.bleCenter = self.iBleCenter
-                    self.navigationController?.pushViewController(ivc!, animated: true);
-                }
-            }
-        }
-        
+
         view.addSubview(testView)
         testView.backgroundColor = .red
-//        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) {
-//            self.testView.snp.makeConstraints { (make) in
-//                make.left.equalTo(60)
-//                make.top.equalTo(self.view).offset(100)
-//                make.height.width.equalTo(100)
-//            }
-//        }
-//        testView.addConstraint(NSLayoutConstraint)
-
 
         //rxswift.
         //        vm.data.bind(to: tableView.rx.items(cellIdentifier: "TestingCell")){_, music, cell in
@@ -97,6 +77,26 @@ class ViewController: UIViewController, ConstraintRelatableTarget {
         //            .disposed(by: disposeBag)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.iBleCenter?.delegates.add(delegate: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.iBleCenter?.delegates.remove(delegate: self)
+    }
+    
+    func onConnectStateDidUpdate(state: CBPeripheralState) {
+        DispatchQueue.main.async {
+            if state == .connected {
+                let ivc: DeviceManagerVC? = self.storyboard?.instantiateViewController(identifier:"DeviceManagerVC") as? DeviceManagerVC
+                ivc?.bleCenter = self.iBleCenter
+                self.navigationController?.pushViewController(ivc!, animated: true);
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       
         //判断哪条segue
@@ -110,12 +110,27 @@ class ViewController: UIViewController, ConstraintRelatableTarget {
 //        }
   
     }
+    
+    @IBAction func connect (_ sender : UIButton) {
+        
+        if sender.tag == 0 {
+            self.iBleCenter?.connectFromConnectedList(serviceUUID: "FFE0", callback: { mess in
+                print("========connectFromConnectedList : ", mess)
+            })
+        } else {
+            self.iBleCenter?.reconnect(callback: { mess in
+                print("========reconnect : ", mess)
+            })
+        }
+       
+    }
+    
 
     @IBAction func ota (_ sender : UIButton) {
 //        let path = Bundle.main.path(forResource: "ZeGear_v1.9_191225", ofType: "bin")
 //        otaMgr = BLEOTAMgr(iBleCenter, path);
 //        otaMgr?.resumeStream()
-        BLETasksCenter().getTask()
+//        BLETasksCenter().getTask()
     }
     
     @IBAction func scan(_ sender : UIButton) {
@@ -125,21 +140,6 @@ class ViewController: UIViewController, ConstraintRelatableTarget {
                 self.tableView.reloadData()
             }
         })
-        
-        
-        
-//        let url = "https://httpbin.org/get"
-////        let url = "https://api-prod.mykronoz.com/v2/accounts?grant_type=password"
-//        let parameters = ["client_id" : "3923806144116395740",
-//                          "grant_type" : "password",
-//                          "username" : "Tom",
-//                          "password": "tomgogogo"];
-//
-//        for _ in 1...5 {
-//            HttpsRequest.get(url: url, nil, {response in
-//                print("========== : ", response)
-//            })
-//        }
     }
 }
 
@@ -162,13 +162,13 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let device = scanedDevices?[indexPath.row]
-        self.iBleCenter?.connectDevice(device, { (result) in
+        self.iBleCenter?.connectDevice(device: device!, callback: { (result) in
             print("========== result: ", result)
-            DispatchQueue.main.async {
-                let ivc: DeviceManagerVC? = self.storyboard?.instantiateViewController(identifier:"DeviceManagerVC") as? DeviceManagerVC
-                ivc?.bleCenter = self.iBleCenter
-                self.navigationController?.pushViewController(ivc!, animated: true);
-            }
         })
     }
+}
+
+
+func testing(name: String = "小黑") {
+    print(name)
 }

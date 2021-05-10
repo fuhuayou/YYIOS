@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		327B5ACA2646247A00914F7D /* BLEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5AC92646247A00914F7D /* BLEConstants.swift */; };
+		327B5ACC264668FC00914F7D /* BLECenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5ACB264668FC00914F7D /* BLECenterProtocol.swift */; };
+		327B5ACE2646739500914F7D /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5ACD2646739500914F7D /* MulticastDelegate.swift */; };
 		3286AE54263C064A00209108 /* BLETask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3286AE4F263C064A00209108 /* BLETask.swift */; };
 		3286AE55263C064A00209108 /* BLETasksCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3286AE50263C064A00209108 /* BLETasksCenter.swift */; };
 		3286AE56263C064A00209108 /* BLECenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3286AE51263C064A00209108 /* BLECenter.swift */; };
@@ -30,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		2885FE96A9B12CD6B92097A5 /* Pods-YYBLEDemo1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYBLEDemo1.debug.xcconfig"; path = "Target Support Files/Pods-YYBLEDemo1/Pods-YYBLEDemo1.debug.xcconfig"; sourceTree = "<group>"; };
+		327B5AC92646247A00914F7D /* BLEConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConstants.swift; sourceTree = "<group>"; };
+		327B5ACB264668FC00914F7D /* BLECenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLECenterProtocol.swift; sourceTree = "<group>"; };
+		327B5ACD2646739500914F7D /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		3286AE4F263C064A00209108 /* BLETask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLETask.swift; sourceTree = "<group>"; };
 		3286AE50263C064A00209108 /* BLETasksCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLETasksCenter.swift; sourceTree = "<group>"; };
 		3286AE51263C064A00209108 /* BLECenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECenter.swift; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 				3286AE51263C064A00209108 /* BLECenter.swift */,
 				3286AE52263C064A00209108 /* BLEOTAMgr.swift */,
 				3286AE53263C064A00209108 /* BLEDevice.swift */,
+				327B5AC92646247A00914F7D /* BLEConstants.swift */,
+				327B5ACB264668FC00914F7D /* BLECenterProtocol.swift */,
 			);
 			path = BLECenter;
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 			children = (
 				82D2F2BE2626D04C003CD49E /* Timer */,
 				82C414872623F8860024C02A /* HttpsRequest */,
+				327B5ACD2646739500914F7D /* MulticastDelegate.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -337,14 +346,17 @@
 			files = (
 				825D286D2612CD6800F727D9 /* ViewController.swift in Sources */,
 				3286AE54263C064A00209108 /* BLETask.swift in Sources */,
+				327B5ACE2646739500914F7D /* MulticastDelegate.swift in Sources */,
 				825D28692612CD6800F727D9 /* AppDelegate.swift in Sources */,
 				3286AE55263C064A00209108 /* BLETasksCenter.swift in Sources */,
 				82BE1697261F0D73001B9FBE /* DeviceManagerVC.swift in Sources */,
 				825D288B2612FBC500F727D9 /* ViewControllerVM.swift in Sources */,
 				82C414892623F8B00024C02A /* HttpsRequest.swift in Sources */,
 				3286AE57263C064A00209108 /* BLEOTAMgr.swift in Sources */,
+				327B5ACA2646247A00914F7D /* BLEConstants.swift in Sources */,
 				82D2F2C42626D08F003CD49E /* ZKTimer.swift in Sources */,
 				82D2F2BC26267BA0003CD49E /* HttpsTask.swift in Sources */,
+				327B5ACC264668FC00914F7D /* BLECenterProtocol.swift in Sources */,
 				3286AE56263C064A00209108 /* BLECenter.swift in Sources */,
 				825D286B2612CD6800F727D9 /* SceneDelegate.swift in Sources */,
 				3286AE58263C064A00209108 /* BLEDevice.swift in Sources */,

@@ -25,12 +25,10 @@ class BLEOTAMgr: NSObject {
     
     func resumeOtaCallback(_ callback: OTACallback?) {
         otaCallback = callback
-        
     }
     
     func stopOtaCallback(_ callback: OTACallback?) {
         otaCallback = callback
-        
     }
 }
 
@@ -97,7 +95,7 @@ extension BLEOTAMgr: StreamDelegate {
         case Stream.Event.endEncountered:
             print("=====Stream.Event.endEncountered=====")
             self.inputStream?.close()
-            self.inputStream?.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
+            self.inputStream?.remove(from: .current, forMode: RunLoop.Mode.default)
             self.inputStream = nil
         default:
             break
