@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreBluetooth
-
+//swiftlint:disable attributes
 @objc protocol BLECenterStateProtocol {
     
     //power state.

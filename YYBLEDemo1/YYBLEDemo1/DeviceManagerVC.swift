@@ -21,7 +21,7 @@ class DeviceManagerVC: UIViewController {
     
     @objc func connectOrDisconnect() {
         if connectState == 1 {
-            bleCenter?.disconnectDevice(callback: { _ in
+            bleCenter?.disconnect(callback: { _ in
                 DispatchQueue.main.async {
                     self.navigationItem.rightBarButtonItem?.title = "Disconnected"
                     print("=========== Did disconnected")
@@ -44,10 +44,6 @@ class DeviceManagerVC: UIViewController {
         bleCenter?.sendData("FFE0", "FFE1", data:data, type:.withoutResponse, callback: { (response:[String : Any]) in
             print("=========== sendData response: ", response)
         })
-        
-        //        bleCenter?.sendData([55, 66, 77, 88], "FFE0", "FFE1", callback: { (response:[String : Any]) in
-        //            print("=========== sendData response: ", response)
-        //        })
     }
 }
 

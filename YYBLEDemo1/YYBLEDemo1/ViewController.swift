@@ -68,14 +68,13 @@ class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStat
         //            print("你选中的歌曲信息\(music)")
         //                }).disposed(by: disposeBag)
         
-        
-        //        scanBtn.rx.tap.subscribe(onNext:{ [weak self] in
-        //            let sender = self?.scanBtn!;
-        //            sender?.isSelected = !(sender?.isSelected ?? default value);
-        //            self?.iBleCenter?.scan((self?.scanBtn.isSelected)!, nil, 20);
-        //            })
-        //            .disposed(by: disposeBag)
+        scanBtn.rx.tap.subscribe(onNext: {[weak self] in
+            let sender = self!.scanBtn!;
+            sender.isSelected = !sender.isSelected;
+            self?.iBleCenter?.scan((self?.scanBtn.isSelected)!, nil, 20);
+        }).disposed(by: disposeBag)
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -112,7 +111,6 @@ class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStat
     }
     
     @IBAction func connect (_ sender : UIButton) {
-        
         if sender.tag == 0 {
             self.iBleCenter?.connectFromConnectedList(serviceUUID: "FFE0", callback: { mess in
                 print("========connectFromConnectedList : ", mess)
@@ -122,7 +120,6 @@ class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStat
                 print("========reconnect : ", mess)
             })
         }
-       
     }
     
 
@@ -134,12 +131,12 @@ class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStat
     }
     
     @IBAction func scan(_ sender : UIButton) {
-        self.iBleCenter?.scan(true, nil, 20, ["6606", "6666", "FFE0"], { [self](devices) in
-            self.scanedDevices = devices
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+//        self.iBleCenter?.scan(true, nil, 20, ["6606", "6666", "FFE0"], { [self](devices) in
+//            self.scanedDevices = devices
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        })
     }
 }
 

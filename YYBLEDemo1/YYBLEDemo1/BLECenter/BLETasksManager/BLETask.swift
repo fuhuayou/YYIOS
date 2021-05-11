@@ -4,7 +4,7 @@
 //
 //  Created by zk-fuhuayou on 2021/4/29.
 //
-//swiftlint:disable empty_count
+//swiftlint:disable empty_count force_unwrapping
 import Foundation
 enum BLETaskPriority:Int {
     case low = 0
@@ -22,6 +22,7 @@ enum BLETaskCompletedState:Int {
     case fail = 0
     case success = 1
     case timeout = 2
+    case cancel = 3
 }
 
 enum BLETaskType:Int {
@@ -72,6 +73,7 @@ class BLETask: NSObject {
         self.timeout = timeout
         self.parameters = parameters
         self.resonseBlock = resonseBlock
+        self.priority = priority
     }
     
     init(data:Any? = nil,

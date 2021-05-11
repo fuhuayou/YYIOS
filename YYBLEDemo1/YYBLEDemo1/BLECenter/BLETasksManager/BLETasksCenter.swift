@@ -12,9 +12,10 @@ protocol BLETasksCenterProtocol: NSObject {
     func iConnectDevice(device:BLEDevice, callback: BLECALLBACK?)
     func iRetrieveConnect(serviceUUID:String?, callback: BLECALLBACK?)
     func iReconnect(callback: BLECALLBACK?)
+    func iDisconnect(callback: BLECALLBACK?)
 }
 
-//swiftlint:disable empty_count force_unwrapping force_cast collection_alignment syntactic_sugar type_body_length
+//swiftlint:disable empty_count force_unwrapping force_cast syntactic_sugar type_body_length
 class BLETasksCenter {
     
     weak var delegate: BLETasksCenterProtocol?
@@ -50,10 +51,10 @@ class BLETasksCenter {
     func executeTask(data:Any?,
                      service:String?,
                      characteristic:String?,
-                     writeReadType: BLETaskWriteType = BLETaskWriteType.withoutResponse,
+                     writeReadType: BLETaskWriteType = .withoutResponse,
                      resonseService: String? = nil,
                      resonseCharacteristic: String? = nil,
-                     priority:BLETaskPriority = BLETaskPriority.default,
+                     priority:BLETaskPriority = .default,
                      isAsync:Bool = false,
                      identifier:String? = nil,
                      completedBlock:(([String: Any]) -> Void)? = nil) {
@@ -93,7 +94,7 @@ class BLETasksCenter {
                     return
                 }
                 
-                if task!.writeReadType == BLETaskWriteType.withResponse {
+                if task!.writeReadType == .withResponse {
                     self.syncWaitingTask = task
                     task!.execute() //execute timer.
                 }
@@ -105,7 +106,7 @@ class BLETasksCenter {
                                              type:task!.writeReadType,
                                              callback: { (val:[String : Any]) in     // state: Bool, message: String
                                                 let state = val["state"] as! BLETaskCompletedState
-                                                if task!.writeReadType == BLETaskWriteType.withoutResponse || state == BLETaskCompletedState.fail {
+                                                if task!.writeReadType == .withoutResponse || state == .fail {
                                                     task?.taskCompleted(response: val)
                                                     self.syncWaitingTask = nil
                                                     DispatchQueue.global().asyncAfter(deadline: .now() + 0.1, execute: {
@@ -158,7 +159,17 @@ class BLETasksCenter {
                     self.execute() //next task.
                 }
             case .disconnect:
-                break
+                self.syncWaitingTask = task
+                self.delegate?.iDisconnect(callback: { response in
+                    task.taskCompleted(response: response)
+                    self.syncWaitingTask = nil
+                    
+                    //cancle all tasks.
+                    self.removeAllTasks()
+                    
+                    self.isTasking = false
+                    self.execute() //next task.
+                })
             case .ota:
                 break
             default:
@@ -214,7 +225,7 @@ class BLETasksCenter {
                 task?.taskCompleted(response: ["state":BLETaskCompletedState.fail, "message":"Not set the ble center."])
             }
             
-            DispatchQueue.global().asyncAfter(deadline: .now() + 0.3) {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
                 self.isAsyncTasking = false
                 self.asyncExecute() //next task.
             }
@@ -238,7 +249,7 @@ class BLETasksCenter {
                         writeReadType: BLETaskWriteType = .withoutResponse,
                         resonseService: String? = nil,
                         resonseCharacteristic: String? = nil,
-                        priority:BLETaskPriority = BLETaskPriority.default,
+                        priority:BLETaskPriority = .default,
                         isAsync:Bool = false,
                         identifier:String? = nil,
                         completedBlock:(([String: Any]) -> Void)? = nil) {
@@ -324,6 +335,24 @@ class BLETasksCenter {
         }
         print("==================current tasks count: ", temTasks.count)
         return maxPriorityTask
+    }
+    
+    func removeAllTasks() {
+        for task in self.tasks {
+            DispatchQueue.global().async {
+                let temTask = task as! BLETask
+                temTask.resonseBlock?([BLEConstants.STATE: BLETaskCompletedState.cancel, BLEConstants.MESSAGE:"Cancel."])
+            }
+        }
+        self.tasks.removeAllObjects()
+        
+        for task in  self.asyncTasks {
+            DispatchQueue.global().async {
+                let temTask = task as! BLETask
+                temTask.resonseBlock?([BLEConstants.STATE: BLETaskCompletedState.cancel, BLEConstants.MESSAGE:"Cancel."])
+            }
+        }
+        self.asyncTasks.removeAllObjects()
     }
 }
 

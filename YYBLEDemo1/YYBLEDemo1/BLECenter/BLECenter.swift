@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreBluetooth
-//swiftlint:disable force_unwrapping empty_count force_cast control_statement attributes file_length type_body_length
+//swiftlint:disable force_unwrapping empty_count force_cast control_statement redundant_nil_coalescing file_length type_body_length
 class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETasksCenterProtocol {
     
     //delegate.
@@ -110,12 +110,12 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
                       name: String? = nil,
                       retrieveServers: [String]? = nil,
                       duration:Int = 20,
-                      callback:BLECALLBACK?) {
+                      callback:BLECALLBACK? = nil) {
         var iCallback = callback
         guard (uuid != nil || name != nil) else {
             iCallback?([BLEConstants.STATE: BLETaskCompletedState.fail, BLEConstants.MESSAGE: "uuid and name should not be all nil."])
             iCallback = nil
-            return;
+            return
         }
         let timer = ZKTimer(interval: Double(duration), repeats: false) { timer in
             timer?.invalidate()
@@ -156,7 +156,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
             return
         }
         self.connectedDevice = device
-        self.delegates.do { $0.onConnectStateDidUpdate?(state: .connecting)}
+        self.delegates.do { $0.onConnectStateDidUpdate?(state: .connecting) }
         self.bleCenter.connect((device.blePeripheral)!, options: nil)
     }
     
@@ -166,15 +166,13 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
     func iRetrieveConnect(serviceUUID:String?, callback: TaskCallback? = nil) {
         //stop scan.
         guard serviceUUID != nil else {
-            callback?([BLEConstants.STATE : BLETaskCompletedState.fail,
-                              BLEConstants.MESSAGE : "service uuid could not be nil."])
+            callback?([BLEConstants.STATE : BLETaskCompletedState.fail, BLEConstants.MESSAGE : "service uuid could not be nil."])
             return
         }
         let uuids = changeToUUIDD(servers: [serviceUUID!])
         let devices = self.bleCenter.retrieveConnectedPeripherals(withServices: uuids!)
         guard devices.count > 0 else {
-            callback?([BLEConstants.STATE : BLETaskCompletedState.fail,
-                              BLEConstants.MESSAGE : "Could not find device."])
+            callback?([BLEConstants.STATE : BLETaskCompletedState.fail, BLEConstants.MESSAGE : "Could not find device."])
             return
         }
         let device = devices[0]
@@ -206,16 +204,12 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
     /**
      disconnect device
      */
-    func disconnectDevice(callback: ((Bool) -> Void)?) {
-        
+    func iDisconnect(callback: BLECALLBACK? = nil) {
         if self.connectedDevice != nil && self.connectedDevice!.blePeripheral != nil {
-            self.delegates.do {$0.onConnectStateDidUpdate?(state: .disconnecting)}
+            self.delegates.do { $0.onConnectStateDidUpdate?(state: .disconnecting) }
             bleCenter.cancelPeripheralConnection(self.connectedDevice!.blePeripheral!)
         }
-        
-        if let callback = callback {
-            callback(true)
-        }
+        callback?([BLEConstants.STATE:BLETaskCompletedState.success, BLEConstants.MESSAGE: "success"])
     }
     
     /**
@@ -286,7 +280,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("============ centralManagerDidUpdateState: ", central.state)
-        self.delegates.do { $0.onPowerStateDidUpdate?(state: central.state)}
+        self.delegates.do { $0.onPowerStateDidUpdate?(state: central.state) }
         if central.state == .poweredOn {
             if let centralStateSemaphore = self.centralStateSemaphore {
                 centralStateSemaphore.signal()
@@ -304,23 +298,23 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         connectCallback?([BLEConstants.STATE : BLETaskCompletedState.success,
                           BLEConstants.MESSAGE : "didConnect",
                           BLEConstants.VALUE : self.connectedDevice!])
-        delegates.do {$0.onConnectStateDidUpdate?(state: .connected)}
+        delegates.do { $0.onConnectStateDidUpdate?(state: .connected) }
         UserDefaults.standard.set([BLEConstants.BLE_DEVICE_UUID: peripheral.identifier.uuidString,
                                    BLEConstants.BLE_DEVICE_NAME:(peripheral.name ?? ""),
-                                   BLEConstants.SERVICE_UUIDS: peripheral.services != nil ? peripheral.services!.map {service in return service.uuid.uuidString} : []],
+                                   BLEConstants.SERVICE_UUIDS: peripheral.services != nil ? peripheral.services!.map { service in return service.uuid.uuidString } : []],
                                   forKey: BLEConstants.BLE_LAST_CONNECTED)
         print("============ didConnect peripheral: ", peripheral)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         connServices = [:]
-        delegates.do {$0.onConnectStateDidUpdate?(state: .disconnected)}
+        delegates.do { $0.onConnectStateDidUpdate?(state: .disconnected) }
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         connectCallback?([BLEConstants.STATE : BLETaskCompletedState.fail,
                           BLEConstants.MESSAGE : "didFailToConnect"])
-        delegates.do {$0.onConnectStateDidUpdate?(state: .disconnected)}
+        delegates.do { $0.onConnectStateDidUpdate?(state: .disconnected) }
     }
     
     //Ble wake up by the IOS system.
@@ -369,10 +363,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         if peripheral.services == nil {
             return
         }
-        
-        if connServices == nil {
-            connServices = Dictionary()
-        }
+        connServices = connServices ?? Dictionary()
         print("=========services: ", peripheral.services!)
         for service in peripheral.services! {
             connServices?[service.uuid.uuidString] = [CBCharacteristic]()
@@ -436,6 +427,13 @@ extension BLECenter {
     func reconnect(callback:TaskCallback? = nil) {
         self.tasksCenterMgr.executeSystemSyncTask(type: .reconnect,
                                                   priority: .height,
+                                                  parameters: nil,
+                                                  completedBlock: callback)
+    }
+    
+    func disconnect(callback:TaskCallback? = nil) {
+        self.tasksCenterMgr.executeSystemSyncTask(type: .disconnect,
+                                                  priority: .emergency,
                                                   parameters: nil,
                                                   completedBlock: callback)
     }
