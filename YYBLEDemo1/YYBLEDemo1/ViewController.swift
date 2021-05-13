@@ -112,7 +112,7 @@ class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStat
     
     @IBAction func connect (_ sender : UIButton) {
         if sender.tag == 0 {
-            self.iBleCenter?.connectFromConnectedList(serviceUUID: "FFE0", callback: { mess in
+            self.iBleCenter?.connectFromConnectedList(serviceUUID: "6006", callback: { mess in //"FFE0"
                 print("========connectFromConnectedList : ", mess)
             })
         } else {

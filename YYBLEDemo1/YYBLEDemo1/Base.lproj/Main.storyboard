@@ -48,12 +48,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Or0-4G-nqN">
-                                <rect key="frame" x="157" y="128" width="100" height="30"/>
+                                <rect key="frame" x="132" y="128" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="A5p-C1-9rt"/>
-                                    <constraint firstAttribute="width" constant="100" id="aeG-4h-eIm"/>
+                                    <constraint firstAttribute="width" constant="150" id="aeG-4h-eIm"/>
                                 </constraints>
-                                <state key="normal" title="connect"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="connectFromConnectedList"/>
                                 <connections>
                                     <action selector="connect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ndl-lH-zlh"/>
                                 </connections>
@@ -107,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueA-2H-xIm">
-                                <rect key="frame" x="110" y="226" width="195" height="49"/>
+                                <rect key="frame" x="102" y="172" width="195" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Test OTA"/>
                             </button>
@@ -123,6 +124,14 @@
                                 <rect key="frame" x="87" y="430" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGR-OV-6rL">
+                                <rect key="frame" x="110" y="249" width="195" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Read Data"/>
+                                <connections>
+                                    <action selector="readData:" destination="KcR-D3-6zR" eventType="touchUpInside" id="zUv-Zw-yjH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GQE-Mn-v5k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -13,9 +13,10 @@ protocol BLETasksCenterProtocol: NSObject {
     func iRetrieveConnect(serviceUUID:String?, callback: BLECALLBACK?)
     func iReconnect(callback: BLECALLBACK?)
     func iDisconnect(callback: BLECALLBACK?)
+    func iReadData(service: String, characteristic: String, callback: BLECALLBACK?)
 }
 
-//swiftlint:disable empty_count force_unwrapping force_cast syntactic_sugar type_body_length
+//swiftlint:disable empty_count force_unwrapping force_cast syntactic_sugar type_body_length file_length
 class BLETasksCenter {
     
     weak var delegate: BLETasksCenterProtocol?
@@ -51,6 +52,7 @@ class BLETasksCenter {
     func executeTask(data:Any?,
                      service:String?,
                      characteristic:String?,
+                     type:BLETaskType = .normal,
                      writeReadType: BLETaskWriteType = .withoutResponse,
                      resonseService: String? = nil,
                      resonseCharacteristic: String? = nil,
@@ -61,6 +63,7 @@ class BLETasksCenter {
         self.addTaskToQueue(data: data,
                             service: service,
                             characteristic: characteristic,
+                            type: type,
                             writeReadType: writeReadType,
                             resonseService: resonseService,
                             resonseCharacteristic: resonseCharacteristic,
@@ -85,7 +88,7 @@ class BLETasksCenter {
                 return
             }
             
-            if task!.taskType.rawValue <= BLETaskType.normal.rawValue {
+            if task!.taskType == BLETaskType.normal {
                 //check if the service and characteristic exist.
                 if task!.service == nil || task!.characteristic == nil {
                     task!.taskCompleted(response: ["state":false, "message":"Service or characteristic nil."])
@@ -121,10 +124,26 @@ class BLETasksCenter {
                     self.isTasking = false
                     self.execute() //next task.
                 }
+            } else if(task!.taskType == .readData) {
+                self.executeReadTask(task: task!)
             } else { //系统级别
                 self.executeSystemTask(task: task)
             }
         }
+    }
+    
+    private func executeReadTask(task:BLETask) {
+        if task.writeReadType == .withResponse {
+            self.syncWaitingTask = task
+            task.execute() //execute timer.
+        }
+        self.delegate?.iReadData(service: task.service!,
+                                 characteristic: task.characteristic!, callback: { response in
+                                    task.taskCompleted(response: response)
+                                    self.syncWaitingTask = nil
+                                    self.isTasking = false
+                                    self.execute() //next task.
+                                })
     }
     
     private func executeSystemTask(task:BLETask?) {
@@ -246,6 +265,7 @@ class BLETasksCenter {
     func addTaskToQueue(data:Any?,
                         service:String?,
                         characteristic:String?,
+                        type:BLETaskType = .normal,
                         writeReadType: BLETaskWriteType = .withoutResponse,
                         resonseService: String? = nil,
                         resonseCharacteristic: String? = nil,
@@ -253,12 +273,20 @@ class BLETasksCenter {
                         isAsync:Bool = false,
                         identifier:String? = nil,
                         completedBlock:(([String: Any]) -> Void)? = nil) {
-        if data == nil || service == nil || characteristic == nil {
+        if service == nil || characteristic == nil {
+            completedBlock?([BLEConstants.STATE: BLETaskCompletedState.fail, BLEConstants.MESSAGE:"Service or characteristic nil."])
             return
         }
+        
+        if  type == .normal && data == nil {
+            completedBlock?([BLEConstants.STATE: BLETaskCompletedState.fail, BLEConstants.MESSAGE:"Data nil."])
+            return
+        }
+        
         let newTask = BLETask(data:data,
                               service: service,
                               characteristic: characteristic,
+                              type: type,
                               writeReadType: writeReadType,
                               resonseService: resonseService,
                               resonseCharacteristic: resonseCharacteristic,

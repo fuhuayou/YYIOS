@@ -27,14 +27,19 @@ enum BLETaskCompletedState:Int {
 
 enum BLETaskType:Int {
     case normal = 0
-    case disconnect = 1
-    case ota = 2
-    case connectWithDevice = 3
-    case connectWithServerUUID = 4
-    case connectFromConnectedList = 5
-    case reconnect = 6
+    case readData = 1
+    case disconnect = 2
+    case ota = 3
+    case connectWithDevice = 4
+    case connectWithServerUUID = 5
+    case connectFromConnectedList = 6
+    case reconnect = 7
 }
 
+enum BLETaskDisconnectCase:Int {
+    case remove
+    case wait
+}
 
 class BLETask: NSObject {
     
@@ -79,6 +84,7 @@ class BLETask: NSObject {
     init(data:Any? = nil,
          service:String? = nil,
          characteristic:String? = nil,
+         type:BLETaskType = .normal,
          writeReadType: BLETaskWriteType = .withoutResponse,
          resonseService: String? = nil,
          resonseCharacteristic: String? = nil,
@@ -90,6 +96,7 @@ class BLETask: NSObject {
         self.identifier = identifier
         self.isAsync = isAsync
         self.priority = priority
+        self.taskType = type
         let isData = data is Data
         if isData {
             self.cmdData = data as? Data
