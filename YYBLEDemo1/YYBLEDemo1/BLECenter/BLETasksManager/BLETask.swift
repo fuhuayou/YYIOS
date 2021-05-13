@@ -18,7 +18,7 @@ enum BLETaskWriteType:Int {
     case withoutResponse = 1
 }
 
-enum BLETaskCompletedState:Int {
+enum BLETaskState:Int {
     case fail = 0
     case success = 1
     case timeout = 2
@@ -27,13 +27,14 @@ enum BLETaskCompletedState:Int {
 
 enum BLETaskType:Int {
     case normal = 0
-    case readData = 1
-    case disconnect = 2
-    case ota = 3
-    case connectWithDevice = 4
-    case connectWithServerUUID = 5
-    case connectFromConnectedList = 6
-    case reconnect = 7
+    case scan = 1 //保留
+    case readData = 2
+    case disconnect = 3
+    case ota = 4
+    case connectWithDevice = 5
+    case connectWithServerUUID = 6
+    case connectFromConnectedList = 7
+    case reconnect = 8
 }
 
 enum BLETaskDisconnectCase:Int {
@@ -120,7 +121,7 @@ class BLETask: NSObject {
     func execute() {
         self.timer = ZKTimer(interval:Double(self.timeout), repeats: false) {[weak self] _ in
             self?.isTimeout = true
-            self?.taskCompleted(response: ["state":BLETaskCompletedState.timeout, "message":"timeout"])
+            self?.taskCompleted(response: ["state":BLETaskState.timeout, "message":"timeout"])
         }
     }
     

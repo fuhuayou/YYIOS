@@ -117,13 +117,13 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
                       callback:BLECALLBACK? = nil) {
         var iCallback = callback
         guard (uuid != nil || name != nil) else {
-            iCallback?([BLEConstants.STATE: BLETaskCompletedState.fail, BLEConstants.MESSAGE: "uuid and name should not be all nil."])
+            iCallback?([BLEConstants.STATE: BLETaskState.fail, BLEConstants.MESSAGE: "uuid and name should not be all nil."])
             iCallback = nil
             return
         }
         let timer = ZKTimer(interval: Double(duration), repeats: false) { timer in
             timer?.invalidate()
-            iCallback?([BLEConstants.STATE: BLETaskCompletedState.timeout, BLEConstants.MESSAGE: "Timeout."])
+            iCallback?([BLEConstants.STATE: BLETaskState.timeout, BLEConstants.MESSAGE: "Timeout."])
             iCallback = nil
             self.scan(false)
         }
@@ -131,13 +131,13 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         
         self.searchDeviceCallback = {device in
             if isUUID && device.blePeripheral!.identifier.uuidString == uuid {
-                iCallback?([BLEConstants.STATE: BLETaskCompletedState.success, BLEConstants.MESSAGE: "success.", BLEConstants.VALUE: device])
+                iCallback?([BLEConstants.STATE: BLETaskState.success, BLEConstants.MESSAGE: "success.", BLEConstants.VALUE: device])
                 iCallback = nil
                 timer.invalidate()
                 self.scan(false)
                 self.searchDeviceCallback = nil
             } else if (!isUUID && device.blePeripheral!.name == name) {
-                iCallback?([BLEConstants.STATE: BLETaskCompletedState.success, BLEConstants.MESSAGE: "success.", BLEConstants.VALUE: device])
+                iCallback?([BLEConstants.STATE: BLETaskState.success, BLEConstants.MESSAGE: "success.", BLEConstants.VALUE: device])
                 iCallback = nil
                 timer.invalidate()
                 self.scan(false)
@@ -155,7 +155,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         self.scan(false)
         connectCallback = callback
         if device.blePeripheral == nil {
-            connectCallback?([BLEConstants.STATE : BLETaskCompletedState.fail,
+            connectCallback?([BLEConstants.STATE : BLETaskState.fail,
                               BLEConstants.MESSAGE : "device nil"])
             return
         }
@@ -170,13 +170,13 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
     func iRetrieveConnect(serviceUUID:String?, callback: TaskCallback? = nil) {
         //stop scan.
         guard serviceUUID != nil else {
-            callback?([BLEConstants.STATE : BLETaskCompletedState.fail, BLEConstants.MESSAGE : "service uuid could not be nil."])
+            callback?([BLEConstants.STATE : BLETaskState.fail, BLEConstants.MESSAGE : "service uuid could not be nil."])
             return
         }
         let uuids = changeToUUIDD(servers: [serviceUUID!])
         let devices = self.bleCenter.retrieveConnectedPeripherals(withServices: uuids!)
         guard devices.count > 0 else {
-            callback?([BLEConstants.STATE : BLETaskCompletedState.fail, BLEConstants.MESSAGE : "Could not find device."])
+            callback?([BLEConstants.STATE : BLETaskState.fail, BLEConstants.MESSAGE : "Could not find device."])
             return
         }
         let device = devices[0]
@@ -187,7 +187,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
     func iReconnect(callback: BLECALLBACK? = nil) {
         let deviceInfo = (UserDefaults.standard.value(forKey: BLEConstants.BLE_LAST_CONNECTED) as? [String:Any]) ?? nil
         guard deviceInfo != nil else {
-            callback?([BLEConstants.STATE: BLETaskCompletedState.fail, BLEConstants.MESSAGE: "No last connected device found"])
+            callback?([BLEConstants.STATE: BLETaskState.fail, BLEConstants.MESSAGE: "No last connected device found"])
             return
         }
         
@@ -195,7 +195,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
                           uuid:deviceInfo![BLEConstants.BLE_DEVICE_UUID] as? String,
                           retrieveServers: deviceInfo![BLEConstants.SERVICE_UUIDS] as? [String],
                           duration:20) { response in
-            let state:BLETaskCompletedState = response[BLEConstants.STATE] as! BLETaskCompletedState
+            let state:BLETaskState = response[BLEConstants.STATE] as! BLETaskState
             if state == .success {
                 let device:BLEDevice = response[BLEConstants.VALUE] as! BLEDevice
                 self.iConnectDevice(device: device, callback: callback)
@@ -215,7 +215,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
             bleCenter.cancelPeripheralConnection(self.connectedDevice!.blePeripheral!)
         }
         self.connectedDevice = nil
-        callback?([BLEConstants.STATE:BLETaskCompletedState.success, BLEConstants.MESSAGE: "success"])
+        callback?([BLEConstants.STATE:BLETaskState.success, BLEConstants.MESSAGE: "success"])
     }
     
     /**
@@ -227,10 +227,15 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
                    type: BLETaskWriteType = .withoutResponse,
                    callback: BLECALLBACK?) {
         
+        if !isDeviceConnected() {
+            callback?(["state": BLETaskState.fail, "message": "Device not connect"])
+            return
+        }
+        
         //get characteristic
         let characteristics = connServices?[service]
         if characteristics == nil || characteristics!.count == 0 {
-            callback?(["state": BLETaskCompletedState.fail, "message": "Could not find characteristics."])
+            callback?(["state": BLETaskState.fail, "message": "Could not find characteristics."])
             return
         }
         var tCha:CBCharacteristic?
@@ -238,20 +243,25 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
             tCha = cha
         }
         if tCha == nil {
-            callback?(["state": BLETaskCompletedState.fail, "message": "Could not find command characteristic."])
+            callback?(["state": BLETaskState.fail, "message": "Could not find command characteristic."])
             return
         }
         
         //check data.
         if data == nil || data!.count == 0 {
-            callback?(["state": BLETaskCompletedState.fail, "message": "Data nil."])
+            callback?(["state": BLETaskState.fail, "message": "Data nil."])
             return
         }
         self.connectedDevice?.blePeripheral?.writeValue(data!, for: tCha!, type: changeReadWriteType(type: type))
-        callback?(["state": BLETaskCompletedState.success, "message": "success."])
+        callback?(["state": BLETaskState.success, "message": "success."])
     }
     
     func iReadData(service: String, characteristic: String, callback: BLECALLBACK?) {
+        if !isDeviceConnected() {
+            callback?(["state": BLETaskState.fail, "message": "Device not connect"])
+            return
+        }
+        
         var char:CBCharacteristic?
         let chars = connServices?[service] ?? []
         if chars.count > 0 {
@@ -260,13 +270,13 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
             }
         }
         if char == nil {
-            callback?(["state": BLETaskCompletedState.fail, "message": "Could not find the characteristic"])
+            callback?(["state": BLETaskState.fail, "message": "Could not find the characteristic"])
             return
         }
         
         let blePeripheral = self.connectedDevice?.blePeripheral ?? nil
         if blePeripheral == nil {
-            callback?(["state": BLETaskCompletedState.fail, "message": "No connected blePeripheral"])
+            callback?(["state": BLETaskState.fail, "message": "No connected blePeripheral"])
             return
         }
         blePeripheral?.readValue(for: char!)
@@ -324,7 +334,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         self.connectingDevice = nil
         peripheral.delegate = self
         peripheral.discoverServices(nil)
-        connectCallback?([BLEConstants.STATE : BLETaskCompletedState.success,
+        connectCallback?([BLEConstants.STATE : BLETaskState.success,
                           BLEConstants.MESSAGE : "didConnect",
                           BLEConstants.VALUE : self.connectedDevice!])
         delegates.do { $0.onConnectStateDidUpdate?(state: .connected) }
@@ -354,12 +364,15 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         delegates.do { $0.onConnectStateDidUpdate?(state: .disconnected) }
     }
     
+    func isDeviceConnected() -> Bool {
+        return (self.connectedDevice != nil) && (self.connectedDevice!.blePeripheral != nil) && (self.connectedDevice!.blePeripheral!.state == .connected)
+    }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("============ didFailToConnect ====== ")
-        connectCallback?([BLEConstants.STATE : BLETaskCompletedState.fail,
+        connectCallback?([BLEConstants.STATE : BLETaskState.fail,
                           BLEConstants.MESSAGE : "didFailToConnect"])
-        delegates.do { $0.onConnectStateDidUpdate?(state: .disconnected) }
+        self.didDisconnect()
     }
     
     //Ble wake up by the IOS system.
@@ -420,7 +433,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
             let bytes = [UInt8](readValue)
             var index = 0
             for val in bytes {
-                print(" ------------------\(index):", val)
+                print(" ------------------\(index):", String(format: "%02x", val).uppercased())
                 index += 1
             }
         }
@@ -497,7 +510,7 @@ extension BLECenter {
                   callback: (([String: Any]) -> Void)? = nil) {
         
         guard (data != nil || bytes != nil) else {
-            callback?([BLEConstants.STATE: BLETaskCompletedState.fail, BLEConstants.MESSAGE: "Data could not be nil. "])
+            callback?([BLEConstants.STATE: BLETaskState.fail, BLEConstants.MESSAGE: "Data could not be nil. "])
             return
         }
         

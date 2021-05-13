@@ -108,7 +108,7 @@ class BLETasksCenter {
                                              characteristic:task!.characteristic!,
                                              type:task!.writeReadType,
                                              callback: { (val:[String : Any]) in     // state: Bool, message: String
-                                                let state = val["state"] as! BLETaskCompletedState
+                                                let state = val["state"] as! BLETaskState
                                                 if task!.writeReadType == .withoutResponse || state == .fail {
                                                     task?.taskCompleted(response: val)
                                                     self.syncWaitingTask = nil
@@ -119,7 +119,7 @@ class BLETasksCenter {
                                                 }
                                              })
                 } else {
-                    task?.taskCompleted(response: ["state":BLETaskCompletedState.fail, "message":"Not set the ble center."])
+                    task?.taskCompleted(response: ["state":BLETaskState.fail, "message":"Not set the ble center."])
                     self.syncWaitingTask = nil
                     self.isTasking = false
                     self.execute() //next task.
@@ -232,8 +232,8 @@ class BLETasksCenter {
                                          characteristic:task!.characteristic!,
                                          type:task!.writeReadType,
                                          callback: { (val:[String : Any]) in     // state: Bool, message: String
-                                            let state = val["state"] as! BLETaskCompletedState
-                                            if task!.writeReadType == BLETaskWriteType.withoutResponse || state == BLETaskCompletedState.fail {
+                                            let state = val["state"] as! BLETaskState
+                                            if task!.writeReadType == BLETaskWriteType.withoutResponse || state == BLETaskState.fail {
                                                 task?.taskCompleted(response: val)
                                                 self.asyncWaitingTasksLock.lock()
                                                 self.asyncWaitingTasks.remove(task!)
@@ -241,7 +241,7 @@ class BLETasksCenter {
                                             }
                                          })
             } else {
-                task?.taskCompleted(response: ["state":BLETaskCompletedState.fail, "message":"Not set the ble center."])
+                task?.taskCompleted(response: ["state":BLETaskState.fail, "message":"Not set the ble center."])
             }
             
             DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
@@ -251,7 +251,7 @@ class BLETasksCenter {
         }
     }
     
-    func writeWithResonseTaskFinished(state:BLETaskCompletedState, task:BLETask, error: Error?) {
+    func writeWithResonseTaskFinished(state:BLETaskState, task:BLETask, error: Error?) {
         task.taskCompleted(response: ["state": state,
                                       "message": error != nil ? error!.localizedDescription : "success",
                                       "value":(task.resonseData ?? NULL_DATA())])
@@ -274,12 +274,12 @@ class BLETasksCenter {
                         identifier:String? = nil,
                         completedBlock:(([String: Any]) -> Void)? = nil) {
         if service == nil || characteristic == nil {
-            completedBlock?([BLEConstants.STATE: BLETaskCompletedState.fail, BLEConstants.MESSAGE:"Service or characteristic nil."])
+            completedBlock?([BLEConstants.STATE: BLETaskState.fail, BLEConstants.MESSAGE:"Service or characteristic nil."])
             return
         }
         
         if  type == .normal && data == nil {
-            completedBlock?([BLEConstants.STATE: BLETaskCompletedState.fail, BLEConstants.MESSAGE:"Data nil."])
+            completedBlock?([BLEConstants.STATE: BLETaskState.fail, BLEConstants.MESSAGE:"Data nil."])
             return
         }
         
@@ -369,7 +369,7 @@ class BLETasksCenter {
         for task in self.tasks {
             DispatchQueue.global().async {
                 let temTask = task as! BLETask
-                temTask.resonseBlock?([BLEConstants.STATE: BLETaskCompletedState.cancel, BLEConstants.MESSAGE:"Cancel."])
+                temTask.resonseBlock?([BLEConstants.STATE: BLETaskState.cancel, BLEConstants.MESSAGE:"Cancel."])
             }
         }
         self.tasks.removeAllObjects()
@@ -377,7 +377,7 @@ class BLETasksCenter {
         for task in  self.asyncTasks {
             DispatchQueue.global().async {
                 let temTask = task as! BLETask
-                temTask.resonseBlock?([BLEConstants.STATE: BLETaskCompletedState.cancel, BLEConstants.MESSAGE:"Cancel."])
+                temTask.resonseBlock?([BLEConstants.STATE: BLETaskState.cancel, BLEConstants.MESSAGE:"Cancel."])
             }
         }
         self.asyncTasks.removeAllObjects()
@@ -394,7 +394,7 @@ extension BLETasksCenter {
         if self.syncWaitingTask != nil && self.syncWaitingTask!.resonseServerUUID != nil && self.syncWaitingTask!.resonseCharacteristic != nil {
             if (self.syncWaitingTask!.resonseServerUUID! == service) && (self.syncWaitingTask!.resonseCharacteristic! == uuid) {
                 self.syncWaitingTask?.resonseData = characteristic.value
-                self.writeWithResonseTaskFinished(state:(error == nil ? BLETaskCompletedState.success : BLETaskCompletedState.fail), task:self.syncWaitingTask!, error: error)
+                self.writeWithResonseTaskFinished(state:(error == nil ? BLETaskState.success : BLETaskState.fail), task:self.syncWaitingTask!, error: error)
             }
         }
         
@@ -404,7 +404,7 @@ extension BLETasksCenter {
         for task in tTasks {
             let iTask = task as! BLETask
             iTask.resonseData = characteristic.value
-            self.writeWithResonseTaskFinished(state:(error == nil ? BLETaskCompletedState.success : BLETaskCompletedState.fail), task:iTask, error: error)
+            self.writeWithResonseTaskFinished(state:(error == nil ? BLETaskState.success : BLETaskState.fail), task:iTask, error: error)
             self.asyncWaitingTasks.remove(task)
         }
         self.asyncWaitingTasksLock.unlock()
