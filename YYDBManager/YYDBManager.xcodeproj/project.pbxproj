@@ -15,6 +15,10 @@
 		3277E1AA2654FD420006164B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3277E1A82654FD420006164B /* LaunchScreen.storyboard */; };
 		3277E1B52654FD420006164B /* YYDBManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277E1B42654FD420006164B /* YYDBManagerTests.swift */; };
 		3277E1C02654FD420006164B /* YYDBManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277E1BF2654FD420006164B /* YYDBManagerUITests.swift */; };
+		3277E1D22654FD530006164B /* DatabaseProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277E1CE2654FD530006164B /* DatabaseProtocols.swift */; };
+		3277E1D32654FD530006164B /* DatabaseCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277E1CF2654FD530006164B /* DatabaseCenter.swift */; };
+		3277E1D42654FD530006164B /* DatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277E1D02654FD530006164B /* DatabaseModel.swift */; };
+		3277E1D52654FD530006164B /* DatabaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3277E1D12654FD530006164B /* DatabaseConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		3277E1BB2654FD420006164B /* YYDBManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YYDBManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3277E1BF2654FD420006164B /* YYDBManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYDBManagerUITests.swift; sourceTree = "<group>"; };
 		3277E1C12654FD420006164B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3277E1CE2654FD530006164B /* DatabaseProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseProtocols.swift; sourceTree = "<group>"; };
+		3277E1CF2654FD530006164B /* DatabaseCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCenter.swift; sourceTree = "<group>"; };
+		3277E1D02654FD530006164B /* DatabaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseModel.swift; sourceTree = "<group>"; };
+		3277E1D12654FD530006164B /* DatabaseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		3277E19C2654FD410006164B /* YYDBManager */ = {
 			isa = PBXGroup;
 			children = (
+				3277E1CD2654FD530006164B /* Database */,
 				3277E19D2654FD410006164B /* AppDelegate.swift */,
 				3277E19F2654FD410006164B /* SceneDelegate.swift */,
 				3277E1A12654FD410006164B /* ViewController.swift */,
@@ -126,6 +135,17 @@
 				3277E1C12654FD420006164B /* Info.plist */,
 			);
 			path = YYDBManagerUITests;
+			sourceTree = "<group>";
+		};
+		3277E1CD2654FD530006164B /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				3277E1CE2654FD530006164B /* DatabaseProtocols.swift */,
+				3277E1CF2654FD530006164B /* DatabaseCenter.swift */,
+				3277E1D02654FD530006164B /* DatabaseModel.swift */,
+				3277E1D12654FD530006164B /* DatabaseConstants.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +278,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3277E1D42654FD530006164B /* DatabaseModel.swift in Sources */,
+				3277E1D32654FD530006164B /* DatabaseCenter.swift in Sources */,
+				3277E1D22654FD530006164B /* DatabaseProtocols.swift in Sources */,
 				3277E1A22654FD410006164B /* ViewController.swift in Sources */,
 				3277E19E2654FD410006164B /* AppDelegate.swift in Sources */,
+				3277E1D52654FD530006164B /* DatabaseConstants.swift in Sources */,
 				3277E1A02654FD410006164B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
