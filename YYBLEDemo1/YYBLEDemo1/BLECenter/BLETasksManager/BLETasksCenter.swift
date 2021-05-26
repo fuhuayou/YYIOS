@@ -14,6 +14,7 @@ protocol BLETasksCenterProtocol: NSObject {
     func iReconnect(callback: BLECALLBACK?)
     func iDisconnect(callback: BLECALLBACK?)
     func iReadData(service: String, characteristic: String, callback: BLECALLBACK?)
+    func iConnectWithServiceUUID(uuids: [String], timeout:Int, callback: BLECALLBACK?)
 }
 
 //swiftlint:disable empty_count force_unwrapping force_cast syntactic_sugar type_body_length file_length
@@ -76,11 +77,13 @@ class BLETasksCenter {
 
     private func execute() {
         DispatchQueue.global().async {
+            print("================ is tasking: ", self.isTasking)
+            print("================ self.asyncTasks.count: ", self.asyncTasks.count)
+            print("================ self.tasks.count: ", self.tasks.count)
             if self.isTasking {
                 return
             }
             self.isTasking = true
-            
             let task = self.getTask()
             //no task, then return.
             if task == nil {
@@ -124,7 +127,7 @@ class BLETasksCenter {
                     self.isTasking = false
                     self.execute() //next task.
                 }
-            } else if(task!.taskType == .readData) {
+            } else if task!.taskType == .readData {
                 self.executeReadTask(task: task!)
             } else { //系统级别
                 self.executeSystemTask(task: task)
@@ -159,7 +162,16 @@ class BLETasksCenter {
                     self.execute() //next task.
                 })
             case .connectWithServerUUID:
-                break
+                self.syncWaitingTask = task
+                task.execute() //启动超时计时器。
+                let uuids = task.parameters![BLEConstants.SERVICE_UUIDS] as! [String]
+                let timeout = task.parameters![BLEConstants.BLE_TIMEOUT] as! Int
+                self.delegate?.iConnectWithServiceUUID(uuids: uuids, timeout: timeout) {res in
+                    task.taskCompleted(response: res)
+                    self.syncWaitingTask = nil
+                    self.isTasking = false
+                    self.execute() //next task.
+                }
             case .connectFromConnectedList:
                 self.syncWaitingTask = task
                 let serviceUUID = task.parameters![BLEConstants.SERVICE_UUID] as! String
@@ -366,21 +378,21 @@ class BLETasksCenter {
     }
     
     func removeAllTasks() {
-        for task in self.tasks {
-            DispatchQueue.global().async {
+        DispatchQueue.global().async {
+            self.lock.lock()
+            for task in self.tasks {
                 let temTask = task as! BLETask
                 temTask.resonseBlock?([BLEConstants.STATE: BLETaskState.cancel, BLEConstants.MESSAGE:"Cancel."])
             }
-        }
-        self.tasks.removeAllObjects()
-        
-        for task in  self.asyncTasks {
-            DispatchQueue.global().async {
+            self.tasks.removeAllObjects()
+            
+            for task in self.asyncTasks {
                 let temTask = task as! BLETask
                 temTask.resonseBlock?([BLEConstants.STATE: BLETaskState.cancel, BLEConstants.MESSAGE:"Cancel."])
             }
+            self.asyncTasks.removeAllObjects()
+            self.lock.unlock()
         }
-        self.asyncTasks.removeAllObjects()
     }
 }
 

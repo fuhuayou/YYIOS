@@ -15,6 +15,8 @@ struct BLEConstants {
     static let CHARACTERISTIC_UUID = "CHARACTETRISTIC_UUID"
     static let BLE_DEVICE_UUID = "DEVICE_UUID"
     static let BLE_DEVICE_NAME = "DEVICE_NAME"
+    static let BLE_TIMEOUT = "TIMEOUT"
+    static let BLE_IS_DISCONNECTED_MANUAL = "IS_DISCONNECTED_MANUAL"
 
     static let DEVICE = "DEVICE"
     //callback key.
