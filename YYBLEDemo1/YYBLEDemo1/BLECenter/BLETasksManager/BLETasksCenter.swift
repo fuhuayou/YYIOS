@@ -46,8 +46,13 @@ class BLETasksCenter {
                                parameters:[String:Any]? = nil,
                                completedBlock:(([String: Any]) -> Void)? = nil) {
         let task = BLETask(type: type, priority: priority, timeout: timeout, parameters: parameters, resonseBlock: completedBlock)
-        self.addTask(task: task)
-        self.execute()
+        if type == .disconnect {
+            self.execDisconnectTask(task: task)
+        } else {
+            self.addTask(task: task)
+            self.execute()
+        }
+        
     }
     
     func executeTask(data:Any?,
@@ -78,7 +83,6 @@ class BLETasksCenter {
     private func execute() {
         DispatchQueue.global().async {
             print("================ is tasking: ", self.isTasking)
-            print("================ self.asyncTasks.count: ", self.asyncTasks.count)
             print("================ self.tasks.count: ", self.tasks.count)
             if self.isTasking {
                 return
@@ -147,6 +151,19 @@ class BLETasksCenter {
                                     self.isTasking = false
                                     self.execute() //next task.
                                 })
+    }
+    
+    func execDisconnectTask(task:BLETask) {
+        self.isTasking = true
+        self.removeAllTasks()
+        self.syncWaitingTask = nil
+        self.delegate?.iDisconnect(callback: { response in
+            task.taskCompleted(response: response)
+            self.syncWaitingTask = nil
+            self.removeAllTasks()
+            self.isTasking = false
+            self.execute() //next task.
+        })
     }
     
     private func executeSystemTask(task:BLETask?) {

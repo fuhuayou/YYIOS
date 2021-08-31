@@ -10,20 +10,21 @@ import CoreBluetooth
 //swiftlint:disable attributes
 @objc enum BLEConnState : Int {
     case searching = -1
-    case disconnected = 0
-    case connecting = 1
-    case connected = 2
-    case disconnecting = 3
+    case connecting = 0
+    case connected = 1
+    case disconnecting = 2
+    case disconnected = 3
 }
 
 //swiftlint:disable attributes
-@objc protocol BLECenterStateProtocol {
+@objc protocol BLECenterProtocol {
     
     //power state.
     @objc optional func onPowerStateDidUpdate(state: CBManagerState)
     
     //scan state.
     @objc optional func onScanStateDidUpdate(isScan: Bool)
+    @objc optional func onScanDevicesListUpdate(devices:[BLEDevice])
     
     //connect state
     @objc optional func onConnectStateDidUpdate(state: BLEConnState)

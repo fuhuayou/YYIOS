@@ -7,11 +7,12 @@
 
 import UIKit
 import CoreBluetooth
+import AVFoundation
 //swiftlint:disable force_unwrapping empty_count force_cast control_statement redundant_nil_coalescing file_length type_body_length
 class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETasksCenterProtocol {
     
     //delegate.
-    var delegates:MulticastDelegate<BLECenterStateProtocol> = MulticastDelegate()
+    var delegates:MulticastDelegate<BLECenterProtocol> = MulticastDelegate()
     
     // type
     typealias TaskCallback = BLECALLBACK
@@ -29,6 +30,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
     var scanTimer: ZKTimer?
     
     //connect
+    var connectState: BLEConnState = .disconnected
     var lastConnectedDevice: BLEDevice?
     var connectedDevice: BLEDevice?
     var connectingDevice: BLEDevice?
@@ -68,9 +70,10 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         self.bleCenter = CBCentralManager(
             delegate: self as CBCentralManagerDelegate,
             queue: DispatchQueue(label: "BLEQUEUE"),
-            options:[CBCentralManagerOptionShowPowerAlertKey: 0,
+            options:[CBCentralManagerOptionShowPowerAlertKey: 1,
                      CBCentralManagerOptionRestoreIdentifierKey: BLEIDENTIFIER])
         tasksCenterMgr.delegate = self
+        isA2DPConnectExist()
         print("========= BLECenter BEGAIN TO INIT CENTRAL ==========")
     }
     
@@ -98,17 +101,20 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
                     self.bleCenter.stopScan()
                 }
                 
-                let uuids = self.changeToUUIDD(servers: retrieveServers)
+                let uuids = self.changeToUUIDD(servers:retrieveServers)
                 self.bleCenter.scanForPeripherals(withServices:uuids, options: nil)
                 self.delegates.do { $0.onScanStateDidUpdate?(isScan: true) }
                 self.retrieveConnectedPeripherals(services: retrieveServers)
                 self.runScanTimer(timeout: durarion ?? 10, retrieveServers: retrieveServers)
                 print("========= BLECenter DID SCAN ==============")
             } else {
-                self.bleCenter.stopScan()
+                if self.bleCenter.isScanning {
+                    self.bleCenter.stopScan()
+                    print("========= BLECenter DID STOP SCAN ==============")
+                }
                 self.delegates.do { $0.onScanStateDidUpdate?(isScan: false) }
                 self.cancelScanTimer()
-                print("========= BLECenter DID STOP SCAN ==============")
+                
             }
         }
     }
@@ -153,6 +159,9 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
     
     func searchDeviceWithServiceUUIDs(uuids: [String], enable: Bool = true, timeout: Int = 20, callback:BLECALLBACK? = nil) {
         self.searchDeviceCallback = {device in
+            if device.name != "ZK-ANCC" {
+                return
+            }
             self.scan(false) //stop scan.
             callback?([BLEConstants.STATE : BLETaskState.success,
                        BLEConstants.MESSAGE : "success",
@@ -168,6 +177,13 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         //stop scan.
         self.scan(false)
         connectCallback = callback
+        
+        if self.centralState != .poweredOn {
+            connectCallback?([BLEConstants.STATE : BLETaskState.fail,
+                              BLEConstants.MESSAGE : "Bluetooth central state don't on poweredOn."])
+            return
+        }
+        
         if device.blePeripheral == nil {
             connectCallback?([BLEConstants.STATE : BLETaskState.fail,
                               BLEConstants.MESSAGE : "device nil"])
@@ -175,9 +191,9 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         }
         self.connectingDevice = device
         self.delegates.do { $0.onConnectStateDidUpdate?(state: .connecting) }
+        self.connectState = .connecting
         self.bleCenter.connect((device.blePeripheral)!, options: nil)
     }
-    
     
     /**
      connect device.
@@ -193,6 +209,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         }
         self.runConnTimer(timeout: timeout)
         self.delegates.do { $0.onConnectStateDidUpdate?(state: .searching) }
+        self.connectState = .searching
         self.searchDeviceWithServiceUUIDs(uuids: uuids, enable: true, timeout: timeout) { message in
             self.searchDeviceCallback = nil
             if message[BLEConstants.STATE] as! BLETaskState == BLETaskState.success {
@@ -202,6 +219,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
                 self.connectCallback?([BLEConstants.STATE : BLETaskState.fail, BLEConstants.MESSAGE : "Search Device error."])
                 self.connectCallback = nil
                 self.delegates.do { $0.onConnectStateDidUpdate?(state: .disconnected) }
+                self.connectState = .disconnected
             }
         }
     }
@@ -250,6 +268,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
      disconnect device
      */
     func iDisconnect(callback: BLECALLBACK? = nil) {
+        self.cancleConnecting()
         self.isManualDisconnected = true
         if self.isDeviceConnected() {
             self.delegates.do { $0.onConnectStateDidUpdate?(state: .disconnecting) }
@@ -272,18 +291,20 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         let value = isCompleteInitializedCharacteristic(service: service, cha: characteristic)
         if value.sussess {
             self.connectedDevice?.blePeripheral?.writeValue(data!, for: value.cha!, type: changeReadWriteType(type: type))
+            callback?(["state": BLETaskState.success, "message": "success."])
         } else {
-            callback?(["state": BLETaskState.fail, "message": "Peripheral still no initialize"])
+            callback?(["state": BLETaskState.fail, "message": value.message])
         }
-        callback?(["state": BLETaskState.success, "message": "success."])
+        
     }
     
     func iReadData(service: String, characteristic: String, callback: BLECALLBACK?) {
         let value = isCompleteInitializedCharacteristic(service: service, cha: characteristic)
         if value.sussess {
             self.connectedDevice?.blePeripheral?.readValue(for: value.cha!)
+            callback?(["state": BLETaskState.success, "message": "success."])
         } else {
-            callback?(["state": BLETaskState.fail, "message": "Peripheral still no initialize"])
+            callback?(["state": BLETaskState.fail, "message": value.message])
         }
     }
     
@@ -292,7 +313,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
      */
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if (peripheral.name != nil && ((self.filter == nil) || peripheral.name!.lowercased().contains(self.filter!))) {
-            
+            print("================ 扫描到：" + (peripheral.name ?? "NULL"))
             if self.scanDevices == nil {
                 self.scanDevices = Array()
             }
@@ -304,14 +325,24 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
             
             if !exist {
                 print("================ 扫描到：" + peripheral.name!)
+//                if peripheral.name == "ZK-ANCS" {
+//
+//                }
+                print("===========================================")
+                print(peripheral)
+                print("-------------------------------------------")
+                print(advertisementData)
+                print("===========================================")
                 let aDev = BLEDevice(peripheral.name, peripheral.identifier.uuidString, peripheral)
                 self.scanDevices?.append(aDev)
                 scanDevicesCallback?(scanDevices!)
+                self.delegates.do { $0.onScanDevicesListUpdate?(devices: scanDevices!) }
                 self.searchDeviceCallback?(aDev)
             }
         }
     }
     
+    // Mark:= bluetooth central state change.
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("============ centralManagerDidUpdateState ======", central.state.rawValue)
         self.centralState = central.state
@@ -343,10 +374,15 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         self.connectingDevice = nil
         peripheral.delegate = self
         peripheral.discoverServices(nil)
+        if self.connectedDevice == nil { //系统自动重连, 会出现本地为空的 case
+            self.connectedDevice = BLEDevice(peripheral.name, peripheral.identifier.uuidString, peripheral)
+            self.lastConnectedDevice = self.connectedDevice
+        }
         connectCallback?([BLEConstants.STATE : BLETaskState.success,
                           BLEConstants.MESSAGE : "didConnect",
                           BLEConstants.VALUE : self.connectedDevice!])
         delegates.do { $0.onConnectStateDidUpdate?(state: .connected) }
+        self.connectState = .connected
         self.updateLastConnectDeviceInfo(peripheral: peripheral)
         print("============ didConnect peripheral ====== :", peripheral)
     }
@@ -368,6 +404,7 @@ class BLECenter: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BLETa
         }
         connServices = [:]
         delegates.do { $0.onConnectStateDidUpdate?(state: .disconnected) }
+        self.connectState = .disconnected
         self.cancelConnectTimer()
     }
     
@@ -502,6 +539,13 @@ extension BLECenter { //Scan
                 self.centralManager(self.bleCenter, didDiscover: peripheral, advertisementData:[:], rssi:NSNumber(0))
             }
         }
+//        else {
+//            let devices = self.bleCenter.retrieveConnectedPeripherals(withServices: [])
+//            print("========= retrieveConnectedPeripherals111111: ", devices)
+//            for peripheral in devices {
+//                self.centralManager(self.bleCenter, didDiscover: peripheral, advertisementData:[:], rssi:NSNumber(0))
+//            }
+//        }
     }
 }
 
@@ -556,9 +600,22 @@ extension BLECenter { //connect relate.
         return (self.connectedDevice != nil) && (self.connectedDevice!.blePeripheral != nil) && (self.connectedDevice!.blePeripheral!.state == .connected)
     }
     
-    func isCompleteInitializedCharacteristic(service: String, cha: String) -> (sussess: Bool, cha: CBCharacteristic?) {
+    func cancleConnecting() {
+        if self.connectState == .searching {
+            self.scan(false) //[BLEConstants.STATE : BLETaskState.cancel, BLEConstants.MESSAGE : "fail"]
+            self.searchDeviceCallback = nil
+        }
+    }
+    
+    //swiftlint:disable large_tuple
+    func isCompleteInitializedCharacteristic(service: String, cha: String) -> (sussess: Bool, cha: CBCharacteristic?, message:String) {
+        
+        if self.centralState != .poweredOn {
+            return (false, nil, self.centralState == .poweredOff ? "Bluetooth had colsed." : "Bluetooth no permission.")
+        }
+        
         if !self.isDeviceConnected() {
-            return (false, nil)
+            return (false, nil, "Device do not connect.")
         }
         
         var char:CBCharacteristic?
@@ -569,16 +626,15 @@ extension BLECenter { //connect relate.
             }
         }
         if char == nil {
-            return (false, nil)
+            return (false, nil, "Could not find characateristic.")
         }
         
         let blePeripheral = self.connectedDevice?.blePeripheral ?? nil
         if blePeripheral == nil {
-            return (false, nil)
+            return (false, nil, "Could not found the connected peripheral")
         }
-        return (true, char!)
+        return (true, char!, "success")
     }
-    
 }
 
 extension BLECenter {
@@ -655,4 +711,44 @@ extension BLECenter {
                                         isAsync: false,
                                         completedBlock:callback)
     }
+}
+
+extension BLECenter {
+    
+    func isA2DPConnectExist() {
+            let routeDescription = AVAudioSession.sharedInstance().currentRoute
+            for portDescription: AVAudioSessionPortDescription in routeDescription.outputs{
+                if portDescription.uid.count > 17 {
+                    let macAdress = String(portDescription.uid[..<portDescription.uid.index(portDescription.uid.startIndex, offsetBy: 17)])
+                    print("=============== iphone mac: ", portDescription)
+                    print("=============== iphone mac: ", macAdress)
+//                    let model_temp = DeviceModel()
+//                    model_temp.name = portDescription.portName
+//                    model_temp.customName = portDescription.portName
+//                    model_temp.macAdress = String(portDescription.uid[..<portDescription.uid.index(portDescription.uid.startIndex, offsetBy: 17)])
+                              
+//                    if LXBluetoothManager.shareSingle.blueState == blueMangerState.Connect{
+//                    if  LXBluetoothManager.shareSingle.peripheralCurrent?.name == model_temp.name && LXBluetoothManager.shareSingle.macAdressCurrent!.caseInsensitiveCompare((model_temp.macAdress)!).rawValue == 0{
+//                        return
+//                    }else{
+//            //                        LXBluetoothManager.shareSingle.requestDisConnect()
+//                        return
+//                        }
+//                    }
+//
+//                    for i: NSInteger in 0..<self.array_allDev.count{
+//                        let indexModel: DeviceModel = self.array_allDev[i] as! DeviceModel
+//                        if indexModel.name == model_temp.name && indexModel.macAdress == indexModel.macAdress{
+//                            self.startReconnectTimer(device: model_temp)
+//                            return
+//                        }
+//                    }
+                }
+            }
+                
+//            if LXBluetoothManager.shareSingle.blueState != blueMangerState.Connect {
+//    //            LXBluetoothManager.shareSingle.startScan(nil, options: nil)
+//            }
+        }
+    
 }

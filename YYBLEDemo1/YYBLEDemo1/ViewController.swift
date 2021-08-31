@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import CoreBluetooth
 import SnapKit
-class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStateProtocol {
+class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scanBtn: UIButton!
@@ -36,43 +36,17 @@ class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStat
     override func viewDidLoad() {
         super.viewDidLoad()
         scanedDevices = []
-        self.iBleCenter = BLECenter.init();
-        self.iBleCenter?.scan(true, nil, 10, ["6006", "6666", "FFE0"], {[weak self] devices in
-            self?.scanedDevices = devices
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        })
+        self.iBleCenter = BLECenter();
         
+//        self.iBleCenter?.scan(true)
 
-        view.addSubview(testView)
-        testView.backgroundColor = .red
-
-        //rxswift.
-        //        vm.data.bind(to: tableView.rx.items(cellIdentifier: "TestingCell")){_, music, cell in
-        //            cell.textLabel?.text = music["name"];
-        //            cell.detailTextLabel?.text = music["singer"];
-        //        }.disposed(by: disposeBag);
-        
-        //        vm.data.bind(to: tableView.rx.items) { (tb, row, model) -> UITableViewCell in
-        //            let icell = tb.dequeueReusableCell(withIdentifier: "TestingCell")
-        //            let cell = icell != nil ? icell : UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "TestingCell")
-        //            cell?.textLabel?.text = model["name"];
-        //            cell?.detailTextLabel?.text = model["singer"];
-        //            return cell!
-        //            }.disposed(by: disposeBag)
-        //
-        //
-        //        //tableView点击响应
-        //        tableView.rx.modelSelected([String : String].self).subscribe(onNext: { music in
-        //            print("你选中的歌曲信息\(music)")
-        //                }).disposed(by: disposeBag)
-        
         scanBtn.rx.tap.subscribe(onNext: {[weak self] in
             let sender = self!.scanBtn!;
             sender.isSelected = !sender.isSelected;
-            self?.iBleCenter?.scan((self?.scanBtn.isSelected)!, nil, 20);
+           // self?.iBleCenter?.scan((self?.scanBtn.isSelected)!, nil, 20, nil)//["6006"] ["180d"]["9BC1F0DC-F4CB-4159-BD38-7375CD0DD545"], ["180A", "2600"]
+            self?.iBleCenter?.scan((self?.scanBtn.isSelected)!, nil, 20, nil)//["9BC1F0DC-F4CB-4159-BD38-7375CD0DD545"]
         }).disposed(by: disposeBag)
+        
     }
     
     
@@ -86,7 +60,7 @@ class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStat
         self.iBleCenter?.delegates.remove(delegate: self)
     }
     
-    func onConnectStateDidUpdate(state: CBPeripheralState) {
+    func onConnectStateDidUpdate(state: BLEConnState) {
         DispatchQueue.main.async {
             if state == .connected {
                 let ivc: DeviceManagerVC? = self.storyboard?.instantiateViewController(identifier:"DeviceManagerVC") as? DeviceManagerVC
@@ -96,19 +70,13 @@ class ViewController: UIViewController, ConstraintRelatableTarget, BLECenterStat
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
-        //判断哪条segue
-//            if segue.identifier ==  {
-//                PhotoTableViewCell *cell = (PhotoTableViewCell *)[[sender superview]superview];
-//                PhotoListViewController *plvc = segue.destinationViewController;
-//                plvc.model = [_photoLibraryArray objectAtIndex:[_tableView indexPathForCell:cell].row];
-//            }
-//        if segue.identifier == "Main" {
-//            print("========")
-//        }
-  
+    func onScanDevicesListUpdate(devices: [BLEDevice]) {
+        DispatchQueue.main.async {
+            self.scanedDevices = devices
+            self.tableView.reloadData()
+        }
     }
+    
     
     @IBAction func connect (_ sender : UIButton) {
         if sender.tag == 0 {
@@ -165,7 +133,3 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
-func testing(name: String = "小黑") {
-    print(name)
-}

@@ -1,0 +1,6 @@
+framework module Pods_YYMap {
+  umbrella header "Pods-YYMap-umbrella.h"
+
+  export *
+  module * { export * }
+}

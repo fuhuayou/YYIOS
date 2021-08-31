@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreBluetooth
-class DeviceManagerVC: UIViewController, BLECenterStateProtocol {
+class DeviceManagerVC: UIViewController, BLECenterProtocol {
     
     var bleCenter: BLECenter?
     var connectState = 0
@@ -50,8 +50,8 @@ class DeviceManagerVC: UIViewController, BLECenterStateProtocol {
 //            print("=========== sendData response: ", response)
 //        })
         
-        let bytes = self.randomBytes()
-        bleCenter?.sendData("FFE0", "FFE1", bytes: bytes, type: .withoutResponse, callback: { response in
+        let bytes = self.randomBytes(len: 10)
+        bleCenter?.sendData("2600", "7000", bytes: bytes, type: .withoutResponse, callback: { response in
             print("=========== sendData response: ", response)
         })
     }

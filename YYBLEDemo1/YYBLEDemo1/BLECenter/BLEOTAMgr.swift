@@ -8,11 +8,11 @@ import CoreBluetooth
 import Foundation
 //swiftlint:disable force_unwrapping force_cast
 class BLEOTAMgr: NSObject {
+
+    var progressCallbcak: ZKCallback<ProgressHandle>?
     
-    typealias OTACallback = (Bool, Float, Error) -> Void
     var bleCenter: BLECenter?
     var filePath: String?
-    var otaCallback: OTACallback?
     var inputStream: InputStream? // 数据流
     var perMaxLength: Int = 180 // 每次读取长度
     var fileSize: Int64? // 文件大小
@@ -22,37 +22,35 @@ class BLEOTAMgr: NSObject {
         bleCenter = ble
         filePath = file
     }
-    
-    func resumeOtaCallback(_ callback: OTACallback?) {
-        otaCallback = callback
-    }
-    
-    func stopOtaCallback(_ callback: OTACallback?) {
-        otaCallback = callback
-    }
 }
 
 // send data stream.
 extension BLEOTAMgr: StreamDelegate {
     
-    func resumeStream() {
+    func resume(callback: @escaping ZKCallback<ProgressHandle>) {
+        self.progressCallbcak = callback
+        guard let filePath = self.filePath else {
+            self.execProgress(success: .error, message: "File path null")
+            return
+        }
         
-        // if path nil or file nil, then return.
-        if self.filePath == nil || !(FileManager.default.fileExists(atPath: self.filePath!)) {
-            completion(success: false, message: "File path nil or file nil.", error: nil)
+        if !(FileManager.default.fileExists(atPath: filePath)) {
+            self.execProgress(success: .error, message: "File null")
             return
         }
         
         do {
-            let fileAttributes = try FileManager.default.attributesOfItem(atPath: self.filePath!)
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath:filePath)
             if let fileSize = fileAttributes[FileAttributeKey.size] {
                 self.fileSize = (fileSize as! NSNumber).int64Value
             }
         } catch {
-            print(error)
+            self.execProgress(success: .error, message: "Could not get file size.")
+            return
         }
+        
         if self.fileSize == 0 {
-            completion(success: false, message: "File could not get size.", error: nil)
+            self.execProgress(success: .error, message: "File length == 0")
             return
         }
         
@@ -60,7 +58,7 @@ extension BLEOTAMgr: StreamDelegate {
         if self.inputStream == nil {
             let backgroundQueue = DispatchQueue.global(qos: .background)
             backgroundQueue.async {
-                self.inputStream = InputStream(fileAtPath: self.filePath!)
+                self.inputStream = InputStream(fileAtPath: filePath)
                 self.inputStream?.delegate = self
                 self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
                 self.inputStream?.open()
@@ -85,26 +83,33 @@ extension BLEOTAMgr: StreamDelegate {
                 print("======== temData =========", temData)
                 print("======== sentSize =========", sentSize)
                 // send data.
-                
-                // caculate progress.
+                print("=========== sentSize: \(sentSize) ==== data: \(temData)")
+                self.execProgress(success: .onGoing, progress: (Double(sentSize) / Double(self.fileSize!)))
             }
         case Stream.Event.hasSpaceAvailable:
             break
         case Stream.Event.errorOccurred:
             print("=====Stream.Event.errorOccurred=====")
+            self.execProgress(success: .error, message: "Input stream data error.")
         case Stream.Event.endEncountered:
             print("=====Stream.Event.endEncountered=====")
-            self.inputStream?.close()
-            self.inputStream?.remove(from: .current, forMode: RunLoop.Mode.default)
-            self.inputStream = nil
+            self.execProgress(success: .complete, message: "Success.")
         default:
             break
         }
-        
     }
     
-    func completion(success: Bool, message: String?, error: NSError?) {
+    func execProgress(success: SuccessFlag, message: String? = nil, progress:Double = 0) {
+        var error:NSError?
+        if let message = message {
+            error = NSError.error(messge: message)
+        }
+        self.progressCallbcak?(ProgressHandle(state:success, progress: progress, error: error))
         
+        if success == .error {
+            self.inputStream?.close()
+            self.inputStream?.remove(from: .current, forMode: RunLoop.Mode.default)
+            self.inputStream = nil
+        }
     }
-    
 }
