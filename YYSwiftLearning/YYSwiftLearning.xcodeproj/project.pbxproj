@@ -18,6 +18,7 @@
 		32A1ABFE26D621D40011B11D /* YYSwiftLearningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1ABFD26D621D40011B11D /* YYSwiftLearningTests.swift */; };
 		32A1AC0926D621D40011B11D /* YYSwiftLearningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1AC0826D621D40011B11D /* YYSwiftLearningUITests.swift */; };
 		32A1AC1726D623190011B11D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1AC1626D623190011B11D /* Person.swift */; };
+		32AFF41B26E88E0D009022CF /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFF41A26E88E0D009022CF /* GCD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		32A1AC0826D621D40011B11D /* YYSwiftLearningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYSwiftLearningUITests.swift; sourceTree = "<group>"; };
 		32A1AC0A26D621D40011B11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A1AC1626D623190011B11D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		32AFF41A26E88E0D009022CF /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		32A1ABE526D621D30011B11D /* YYSwiftLearning */ = {
 			isa = PBXGroup;
 			children = (
+				32AFF41926E88DEC009022CF /* SwiftGCD研究 */,
 				329D300826D89947008277C3 /* Swift指针研究 */,
 				32A1ABE626D621D30011B11D /* AppDelegate.swift */,
 				32A1ABE826D621D30011B11D /* SceneDelegate.swift */,
@@ -143,6 +146,14 @@
 				32A1AC0A26D621D40011B11D /* Info.plist */,
 			);
 			path = YYSwiftLearningUITests;
+			sourceTree = "<group>";
+		};
+		32AFF41926E88DEC009022CF /* SwiftGCD研究 */ = {
+			isa = PBXGroup;
+			children = (
+				32AFF41A26E88E0D009022CF /* GCD.swift */,
+			);
+			path = "SwiftGCD研究";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32AFF41B26E88E0D009022CF /* GCD.swift in Sources */,
 				32A1ABEB26D621D30011B11D /* ViewController.swift in Sources */,
 				32A1ABE726D621D30011B11D /* AppDelegate.swift in Sources */,
 				32A1AC1726D623190011B11D /* Person.swift in Sources */,

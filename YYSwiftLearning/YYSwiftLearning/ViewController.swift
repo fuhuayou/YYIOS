@@ -19,6 +19,12 @@ class ViewController: UIViewController {
         SwiftPointer().structPointerTesting()
     }
     
+    //MARK: GCD多线程的实现
+    @IBAction func gcdThread(_ sender: AnyObject) {
+        let gcd = GCD()
+        gcd.testing()
+    }
+    
     
 }
 

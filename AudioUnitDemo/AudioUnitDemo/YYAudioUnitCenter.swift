@@ -8,6 +8,9 @@
 import UIKit
 import AudioUnit
 class YYAudioUnitCenter: NSObject {
+
+
+    
     let kOutputBus:AudioUnitElement = 0
     let kInputBus:AudioUnitElement = 1
     var osStatus:OSStatus?
@@ -163,7 +166,27 @@ class YYAudioUnitCenter: NSObject {
 
 class YYAudio: NSObject {
     
+    
+    //采样的通道数，Apple只有一个
+    let KAUChannelCount = 1 //channel's count.
+    
+    //采样格式的配置
+    let KAUSampleRate = 44100.00 //smapling is 44.1k 采样率
+    let KAUFormatID = kAudioFormatLinearPCM
+    let KAUFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked
+    var KAUBytesPerPacket = 0 // 一个包里面有多少个字节
+    let KAUFramesPerPackage = UInt32(1) // 一包有多少贞
+    var KAUChannelsPerFrame = 1 //一贞里面的通道
+    let KAUBitsPerChannel = 16 //channel's bits count. 采样的宽度 16 位
+
     var audioUnit:AudioUnit?
+    
+    override init() {
+        super.init()
+        KAUChannelsPerFrame = KAUChannelCount
+        KAUBytesPerPacket = (Int(KAUFramesPerPackage) * KAUChannelsPerFrame * KAUBitsPerChannel) / 8
+    }
+    
     
     //init audio uinit.
     func iAudioUnit() -> AudioUnit? {
@@ -185,6 +208,15 @@ class YYAudio: NSObject {
     //set format for sampling
     func setSamplingFormat() {
         
+        var audioFormat = AudioStreamBasicDescription()
+        audioFormat.mSampleRate         = KAUSampleRate
+        audioFormat.mFormatID           = KAUFormatID
+        audioFormat.mFormatFlags        = KAUFormatFlags
+        audioFormat.mFramesPerPacket    = KAUFramesPerPackage
+        audioFormat.mChannelsPerFrame   = UInt32(KAUChannelsPerFrame)
+        audioFormat.mBitsPerChannel = UInt32(KAUBitsPerChannel)
+        audioFormat.mBytesPerPacket = UInt32(KAUBytesPerPacket)
+        audioFormat.mBytesPerFrame  =
     }
     
     

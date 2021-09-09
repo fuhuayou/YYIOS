@@ -29,11 +29,25 @@
                                     <action selector="onPointerTesting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dez-ef-ksb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrI-Cv-ArE">
+                                <rect key="frame" x="107" y="181" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YrN-qu-Usy"/>
+                                    <constraint firstAttribute="width" constant="200" id="tgQ-HY-w5K"/>
+                                </constraints>
+                                <state key="normal" title="GCD多线程"/>
+                                <connections>
+                                    <action selector="gcdThread:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9W-ak-Nop"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Uo0-3V-xjS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="66" id="FBs-nn-Q1C"/>
+                            <constraint firstItem="IrI-Cv-ArE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xth-Sf-O7S"/>
+                            <constraint firstItem="IrI-Cv-ArE" firstAttribute="top" secondItem="Uo0-3V-xjS" secondAttribute="bottom" constant="31" id="cVu-FU-4Q1"/>
                             <constraint firstItem="Uo0-3V-xjS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nim-Qo-iXo"/>
                         </constraints>
                     </view>
