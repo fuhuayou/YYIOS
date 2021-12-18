@@ -11,7 +11,10 @@
 
 - (NSArray *)lines;
 
-- (void)addTarget:(id)target selector:(SEL)sel range:(NSRange)range;
+- (void)addTarget:(id)target
+         selector:(SEL)sel
+            range:(NSRange)range
+       identifier:(NSString *)identifier;
 
 @end
 

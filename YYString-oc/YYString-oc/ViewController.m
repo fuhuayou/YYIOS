@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "UILabel+YYEventLabel.h"
+#import "GSRichTextLabel.h"
 @interface ViewController ()
 
 @property(nonatomic, weak)IBOutlet UITextField *textField;
@@ -26,11 +27,29 @@
     // Do any additional setup after loading the view.
     self.textField.text = @"12345678901";
     [self calculateTextHeight];
-    
-    //富文本操作
-    [self testingAttributedString];
-    
     self.view.backgroundColor = [UIColor grayColor];
+    //富文本操作
+//    [self testingAttributedString];
+    float sWidth = [[UIScreen mainScreen] bounds].size.width;
+    UIFont *font = [UIFont systemFontOfSize:14.0];
+    GSRichTextLabel *lable = [[GSRichTextLabel alloc] initWithSubStrings:@[@{
+        @"text":@"已经阅读并同意ffiudshfshfdsfhdskhfsjkhfd",
+    },@{
+        @"text":@"用户协议",
+        @"color":[UIColor redColor],
+        @"onClickEvent":@(YES),
+    },@{
+        @"text":@"与",
+    },@{
+        @"text":@"隐私政策是什么 fdskljflkajfla;fadkfja; fdajkfdjsa",
+        @"color":[UIColor redColor],
+        @"onClickEvent":@(YES),
+    }] lineHeight:18 maxSize:CGSizeMake(sWidth, 200) defaultFont:font align:NSTextAlignmentLeft
+                                                            defaultColor:[UIColor whiteColor]];
+    CGRect frame = lable.frame;
+    lable.frame = CGRectMake(0, 200, frame.size.width, frame.size.height);
+    lable.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:lable];
 }
 
 //富文本操作
@@ -50,17 +69,23 @@
         NSForegroundColorAttributeName: [UIColor whiteColor],
     } range:NSMakeRange(3, 2)];
     [string addAttributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)} range:NSMakeRange(13, 5)];
+    [string addAttributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)} range:NSMakeRange(20, 5)];
     self.label.attributedText = string;
-    [self.label addTarget:self selector:@selector(onClick:) range:NSMakeRange(3, 2)];
-    
-   
-    [self.label addTarget:self selector:@selector(onClick:) range:NSMakeRange(13, 5)];
+//    [self.label addTarget:self selector:@selector(onClick:) range:NSMakeRange(3, 2)];
+//    [self.label addTarget:self selector:@selector(onClick:) range:NSMakeRange(13, 5)];
+//    [self.label addTarget:self selector:@selector(onTap:) range:NSMakeRange(20, 5)];
 }
 
 - (void)onClick:(NSRange)range
 {
     NSLog(@"========= on Click ==============");
 }
+
+- (void)onTap:(NSRange)range
+{
+    NSLog(@"========= on onTap ==============");
+}
+
 
 
 //这个是判断是否是手机号

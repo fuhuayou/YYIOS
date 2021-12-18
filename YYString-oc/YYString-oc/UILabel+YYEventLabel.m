@@ -1,5 +1,5 @@
 //
-//  UILabel+YYEventLabel.m
+//  UILabel+GSEventLabel.m
 //  YYString-oc
 //
 //  Created by 符华友 on 2021/11/12.
@@ -13,7 +13,7 @@
 @property (nonatomic, weak) id target;
 @end
 
-@implementation UILabel (YYEventLabel)
+@implementation UILabel (GSEventLabel)
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
@@ -24,7 +24,7 @@
             SEL sel = NSSelectorFromString(info[@"sel"]);
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [self.target performSelector:sel withObject:info[@"rect"]];
+            [self.target performSelector:sel withObject:info[@"identifier"]];
 #pragma clang diagnostic pop
         }
     }
@@ -54,7 +54,8 @@
     return linesArray;
 }
 
-- (void)addTarget:(id)target selector:(SEL)sel range:(NSRange)range {
+- (void)addTarget:(id)target selector:(SEL)sel range:(NSRange)range identifier:(NSString *)identifier
+{
     self.target = target;
     if (!self.ranges) {
         self.ranges = [NSMutableArray array];
@@ -69,12 +70,13 @@
         if (intersectionRange.length != 0) {
             // 如果targetRange的范围超出了lineRange
             if (NSMaxRange(targetRange) > NSMaxRange(lineRange)) {
-                [self addTarget:target selector:sel range:intersectionRange];
-                [self addTarget:target selector:sel range:NSMakeRange(NSMaxRange(intersectionRange), targetRange.length - intersectionRange.length)];
+                [self addTarget:target selector:sel range:intersectionRange identifier:identifier];
+                [self addTarget:target selector:sel range:NSMakeRange(NSMaxRange(intersectionRange), targetRange.length - intersectionRange.length) identifier:identifier];
             }else {
                 CGRect rangeRect = [self boundingRectForCharacterRange:range];
                 [self.ranges addObject:@{@"sel":NSStringFromSelector(sel),
-                                         @"rect":[NSValue valueWithCGRect:rangeRect]
+                                         @"rect":[NSValue valueWithCGRect:rangeRect],
+                                         @"identifier":identifier?:@"",
                                          }];
             }
             /*

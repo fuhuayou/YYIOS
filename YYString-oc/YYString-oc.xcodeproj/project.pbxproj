@@ -15,27 +15,10 @@
 		82B68A372719889600592E23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B68A362719889600592E23 /* Assets.xcassets */; };
 		82B68A3A2719889600592E23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B68A382719889600592E23 /* LaunchScreen.storyboard */; };
 		82B68A3D2719889600592E23 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B68A3C2719889600592E23 /* main.m */; };
-		82B68A472719889700592E23 /* YYString_ocTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B68A462719889700592E23 /* YYString_ocTests.m */; };
-		82B68A512719889700592E23 /* YYString_ocUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B68A502719889700592E23 /* YYString_ocUITests.m */; };
-		82B68A532719889700592E23 /* YYString_ocUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B68A522719889700592E23 /* YYString_ocUITestsLaunchTests.m */; };
+		82C8CD29276748B900873315 /* YYRichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C8CD28276748B900873315 /* YYRichText.m */; };
+		82C8CD3A276C8CE200873315 /* GSRichTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C8CD39276C8CD200873315 /* GSRichTextLabel.m */; };
+		82C8CD3D276C8D9000873315 /* NSString+GS.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C8CD3B276C8D9000873315 /* NSString+GS.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		82B68A432719889700592E23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 82B68A1F2719889400592E23 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 82B68A262719889400592E23;
-			remoteInfo = "YYString-oc";
-		};
-		82B68A4D2719889700592E23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 82B68A1F2719889400592E23 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 82B68A262719889400592E23;
-			remoteInfo = "YYString-oc";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		827DF280273E54BF00D8CB63 /* UILabel+YYEventLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+YYEventLabel.h"; sourceTree = "<group>"; };
@@ -52,29 +35,19 @@
 		82B68A392719889600592E23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82B68A3B2719889600592E23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82B68A3C2719889600592E23 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		82B68A422719889700592E23 /* YYString-ocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "YYString-ocTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B68A462719889700592E23 /* YYString_ocTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYString_ocTests.m; sourceTree = "<group>"; };
-		82B68A4C2719889700592E23 /* YYString-ocUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "YYString-ocUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B68A502719889700592E23 /* YYString_ocUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYString_ocUITests.m; sourceTree = "<group>"; };
 		82B68A522719889700592E23 /* YYString_ocUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYString_ocUITestsLaunchTests.m; sourceTree = "<group>"; };
+		82C8CD27276748B900873315 /* YYRichText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYRichText.h; sourceTree = "<group>"; };
+		82C8CD28276748B900873315 /* YYRichText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYRichText.m; sourceTree = "<group>"; };
+		82C8CD38276C8CCD00873315 /* GSRichTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRichTextLabel.h; sourceTree = "<group>"; };
+		82C8CD39276C8CD200873315 /* GSRichTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRichTextLabel.m; sourceTree = "<group>"; };
+		82C8CD3B276C8D9000873315 /* NSString+GS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GS.m"; sourceTree = "<group>"; };
+		82C8CD3C276C8D9000873315 /* NSString+GS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GS.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		82B68A242719889400592E23 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82B68A3F2719889700592E23 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82B68A492719889700592E23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -98,8 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				82B68A272719889400592E23 /* YYString-oc.app */,
-				82B68A422719889700592E23 /* YYString-ocTests.xctest */,
-				82B68A4C2719889700592E23 /* YYString-ocUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,6 +91,12 @@
 				82B68A3C2719889600592E23 /* main.m */,
 				827DF280273E54BF00D8CB63 /* UILabel+YYEventLabel.h */,
 				827DF281273E54BF00D8CB63 /* UILabel+YYEventLabel.m */,
+				82C8CD27276748B900873315 /* YYRichText.h */,
+				82C8CD28276748B900873315 /* YYRichText.m */,
+				82C8CD38276C8CCD00873315 /* GSRichTextLabel.h */,
+				82C8CD39276C8CD200873315 /* GSRichTextLabel.m */,
+				82C8CD3C276C8D9000873315 /* NSString+GS.h */,
+				82C8CD3B276C8D9000873315 /* NSString+GS.m */,
 			);
 			path = "YYString-oc";
 			sourceTree = "<group>";
@@ -161,42 +138,6 @@
 			productReference = 82B68A272719889400592E23 /* YYString-oc.app */;
 			productType = "com.apple.product-type.application";
 		};
-		82B68A412719889700592E23 /* YYString-ocTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 82B68A592719889700592E23 /* Build configuration list for PBXNativeTarget "YYString-ocTests" */;
-			buildPhases = (
-				82B68A3E2719889700592E23 /* Sources */,
-				82B68A3F2719889700592E23 /* Frameworks */,
-				82B68A402719889700592E23 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				82B68A442719889700592E23 /* PBXTargetDependency */,
-			);
-			name = "YYString-ocTests";
-			productName = "YYString-ocTests";
-			productReference = 82B68A422719889700592E23 /* YYString-ocTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		82B68A4B2719889700592E23 /* YYString-ocUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 82B68A5C2719889700592E23 /* Build configuration list for PBXNativeTarget "YYString-ocUITests" */;
-			buildPhases = (
-				82B68A482719889700592E23 /* Sources */,
-				82B68A492719889700592E23 /* Frameworks */,
-				82B68A4A2719889700592E23 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				82B68A4E2719889700592E23 /* PBXTargetDependency */,
-			);
-			name = "YYString-ocUITests";
-			productName = "YYString-ocUITests";
-			productReference = 82B68A4C2719889700592E23 /* YYString-ocUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -208,14 +149,6 @@
 				TargetAttributes = {
 					82B68A262719889400592E23 = {
 						CreatedOnToolsVersion = 13.0;
-					};
-					82B68A412719889700592E23 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 82B68A262719889400592E23;
-					};
-					82B68A4B2719889700592E23 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 82B68A262719889400592E23;
 					};
 				};
 			};
@@ -233,8 +166,6 @@
 			projectRoot = "";
 			targets = (
 				82B68A262719889400592E23 /* YYString-oc */,
-				82B68A412719889700592E23 /* YYString-ocTests */,
-				82B68A4B2719889700592E23 /* YYString-ocUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,20 +181,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		82B68A402719889700592E23 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82B68A4A2719889700592E23 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -272,44 +189,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				82B68A322719889400592E23 /* ViewController.m in Sources */,
+				82C8CD3A276C8CE200873315 /* GSRichTextLabel.m in Sources */,
 				827DF282273E54BF00D8CB63 /* UILabel+YYEventLabel.m in Sources */,
 				82B68A2C2719889400592E23 /* AppDelegate.m in Sources */,
+				82C8CD3D276C8D9000873315 /* NSString+GS.m in Sources */,
 				82B68A3D2719889600592E23 /* main.m in Sources */,
+				82C8CD29276748B900873315 /* YYRichText.m in Sources */,
 				82B68A2F2719889400592E23 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		82B68A3E2719889700592E23 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82B68A472719889700592E23 /* YYString_ocTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82B68A482719889700592E23 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82B68A512719889700592E23 /* YYString_ocUITests.m in Sources */,
-				82B68A532719889700592E23 /* YYString_ocUITestsLaunchTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		82B68A442719889700592E23 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 82B68A262719889400592E23 /* YYString-oc */;
-			targetProxy = 82B68A432719889700592E23 /* PBXContainerItemProxy */;
-		};
-		82B68A4E2719889700592E23 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 82B68A262719889400592E23 /* YYString-oc */;
-			targetProxy = 82B68A4D2719889700592E23 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		82B68A332719889400592E23 /* Main.storyboard */ = {
@@ -450,7 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SXMFVRXWG;
+				DEVELOPMENT_TEAM = 3WWYF2H4Z6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "YYString-oc/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -477,7 +367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SXMFVRXWG;
+				DEVELOPMENT_TEAM = 3WWYF2H4Z6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "YYString-oc/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -494,94 +384,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		82B68A5A2719889700592E23 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SXMFVRXWG;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fuhuayou.YYString-ocTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YYString-oc.app/YYString-oc";
-			};
-			name = Debug;
-		};
-		82B68A5B2719889700592E23 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SXMFVRXWG;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fuhuayou.YYString-ocTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YYString-oc.app/YYString-oc";
-			};
-			name = Release;
-		};
-		82B68A5D2719889700592E23 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SXMFVRXWG;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fuhuayou.YYString-ocUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "YYString-oc";
-			};
-			name = Debug;
-		};
-		82B68A5E2719889700592E23 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SXMFVRXWG;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fuhuayou.YYString-ocUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "YYString-oc";
 			};
 			name = Release;
 		};
@@ -602,24 +404,6 @@
 			buildConfigurations = (
 				82B68A572719889700592E23 /* Debug */,
 				82B68A582719889700592E23 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		82B68A592719889700592E23 /* Build configuration list for PBXNativeTarget "YYString-ocTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				82B68A5A2719889700592E23 /* Debug */,
-				82B68A5B2719889700592E23 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		82B68A5C2719889700592E23 /* Build configuration list for PBXNativeTarget "YYString-ocUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				82B68A5D2719889700592E23 /* Debug */,
-				82B68A5E2719889700592E23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
