@@ -19,6 +19,7 @@
 		82E088E727004173008B7E7C /* YYOcSwiftMixUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E088E627004173008B7E7C /* YYOcSwiftMixUITestsLaunchTests.m */; };
 		82E088F6270041B4008B7E7C /* TestSwift1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E088F5270041B4008B7E7C /* TestSwift1.swift */; };
 		82E088F8270043F7008B7E7C /* TestingSwift2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E088F7270043F7008B7E7C /* TestingSwift2.swift */; };
+		82F221D327E82309000F3B23 /* TestOc.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F221D227E82309000F3B23 /* TestOc.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		82E088F4270041B4008B7E7C /* YYOcSwiftMix-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYOcSwiftMix-Bridging-Header.h"; sourceTree = "<group>"; };
 		82E088F5270041B4008B7E7C /* TestSwift1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwift1.swift; sourceTree = "<group>"; };
 		82E088F7270043F7008B7E7C /* TestingSwift2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSwift2.swift; sourceTree = "<group>"; };
+		82F221D127E82309000F3B23 /* TestOc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOc.h; sourceTree = "<group>"; };
+		82F221D227E82309000F3B23 /* TestOc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOc.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,7 @@
 		82E088BD27004170008B7E7C /* YYOcSwiftMix */ = {
 			isa = PBXGroup;
 			children = (
+				82F221D027E822F0000F3B23 /* OcFiles */,
 				82E088F327004190008B7E7C /* SwiftFiles */,
 				82E088BE27004170008B7E7C /* AppDelegate.h */,
 				82E088BF27004170008B7E7C /* AppDelegate.m */,
@@ -150,6 +154,15 @@
 				82E088F4270041B4008B7E7C /* YYOcSwiftMix-Bridging-Header.h */,
 			);
 			path = SwiftFiles;
+			sourceTree = "<group>";
+		};
+		82F221D027E822F0000F3B23 /* OcFiles */ = {
+			isa = PBXGroup;
+			children = (
+				82F221D127E82309000F3B23 /* TestOc.h */,
+				82F221D227E82309000F3B23 /* TestOc.m */,
+			);
+			path = OcFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +302,7 @@
 				82E088F8270043F7008B7E7C /* TestingSwift2.swift in Sources */,
 				82E088D127004172008B7E7C /* main.m in Sources */,
 				82E088C327004170008B7E7C /* SceneDelegate.m in Sources */,
+				82F221D327E82309000F3B23 /* TestOc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -448,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -464,7 +478,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SXMFVRXWG;
+				DEVELOPMENT_TEAM = M5FUTSFBMU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YYOcSwiftMix/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -495,7 +509,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SXMFVRXWG;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YYOcSwiftMix/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

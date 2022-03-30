@@ -12,5 +12,4 @@ class TestingSwift2: NSObject {
     @objc func hello() {
         print("TestingSwift2 say: hello..")
     }
-
 }

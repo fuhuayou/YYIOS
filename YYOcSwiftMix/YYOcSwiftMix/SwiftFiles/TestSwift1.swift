@@ -8,8 +8,17 @@
 import UIKit
 
 class TestSwift1: NSObject {
+    
+    override init() {
+        super.init();
+        TestOc.sayHello();
+    }
+    
     let text = "Hello"
     @objc public func sayHello() {
         print("Hello .....")
     }
+    
+    
+    
 }
