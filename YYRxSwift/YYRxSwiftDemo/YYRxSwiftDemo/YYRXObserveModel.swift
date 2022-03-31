@@ -25,6 +25,10 @@ class YYRXObserveModel: NSObject {
         DispatchQueue.global().asyncAfter(deadline:.now() + 5) {
             self.agePublic.onNext(10)
         }
+        
+        
+            
+        
     }
     
     

@@ -16,10 +16,9 @@ class ViewController: UIViewController {
     var rxLabel: UILabel?
     var rxModel:YYRXObserveModel?
     var rxDisposeBag = DisposeBag()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .red
         //rxswift button.
         rxButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 40))
         rxButton?.backgroundColor = .blue
@@ -43,6 +42,9 @@ class ViewController: UIViewController {
         }.disposed(by: rxDisposeBag)
         
         //rxswift label. 没啥意义
+        rxLabel = UILabel(frame: CGRect(x: 100, y: 400, width: 200, height: 40));
+        view.addSubview(rxLabel!)
+        rxLabel?.text = "HELLLO.."
         
         //rxswift KVO
         rxModel = YYRXObserveModel()
@@ -60,9 +62,11 @@ class ViewController: UIViewController {
         
         //rxswift subscribe a model's properity update.
         rxModel?.age.subscribe(onNext: { newAge in
+            DispatchQueue.main.async {
+                self.rxLabel?.text = String(format: "%d", newAge)
+            }
             print("=========== next age:", newAge)
         }).disposed(by: rxDisposeBag)
-        
         
         //notification
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification).subscribe { _ in
