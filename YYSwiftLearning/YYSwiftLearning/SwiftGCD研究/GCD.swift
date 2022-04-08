@@ -11,7 +11,7 @@ class GCD: NSObject {
     
     func testing() {
         
-        //DispatchQueue, 和 DispatchGroup的使用。
+        //DispatchQueue, 和 DispatchGroup的使用。.... 
         DispatchQueue.global().async {
             let group = DispatchGroup()
             let queue0 = DispatchQueue(label:"queue0", attributes: .concurrent)
