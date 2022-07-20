@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/SwiftMonkeyPaws/SwiftMonkeyPaws.framework
+${BUILT_PRODUCTS_DIR}/SwiftMonkey/SwiftMonkey.framework
