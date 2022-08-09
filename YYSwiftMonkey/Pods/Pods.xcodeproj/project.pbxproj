@@ -6,139 +6,168 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		07BE573C77677B32CE70C46A82328D48 /* MimiSDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 33BC49584CA27AC170756BE41C5D88FB /* Build configuration list for PBXAggregateTarget "MimiSDK" */;
+			buildPhases = (
+				BECCAD281F35B3613EB8AB74EB4F52D9 /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+			);
+			name = MimiSDK;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		1C77FE9F9EEDB1612869D4A2528D6D68 /* SwiftMonkeyPaws-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE62E71ECB8288303542B243AD7850E /* SwiftMonkeyPaws-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2461337AD31619418B0FC4A1245635C5 /* MonkeyXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4757C0E3AC0A4026DEADE3CC45357C1B /* MonkeyXCTest.swift */; };
+		1C77FE9F9EEDB1612869D4A2528D6D68 /* SwiftMonkeyPaws-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA7DD02FA88696718AF1A57ED852D1D /* SwiftMonkeyPaws-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2461337AD31619418B0FC4A1245635C5 /* MonkeyXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99927F41D15D699AD562F4F21C366AF5 /* MonkeyXCTest.swift */; };
+		2E43B71A9A9696B48DF575B446780018 /* Pods-YYSwiftMonkeyTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A2B4344B6502D66AEBB5C7A60A704E /* Pods-YYSwiftMonkeyTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		456C951B268A7A0D8A8D1DE61CBF0F03 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBC8F300895E39EA0DF6D6B2B5E6BCD /* XCTest.framework */; };
 		4A69CA7BFE4A3604B93C0D2D8B7DD143 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C236349227976B3CBEFB4A0A9EBB7483 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5123C0EB888768F494D2C91B0C5F1B11 /* UIColor+MonkeyPaws.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71F5FED09CCD7854D55437DFF2BC16 /* UIColor+MonkeyPaws.swift */; };
-		549355D83F040F7DB20E9AD49DF7D198 /* MonkeyXCTestPrivate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE302E9AA6E6290B650455FBC1ECB016 /* MonkeyXCTestPrivate.swift */; };
-		6156FA1622FB15BBD68F96772CC213A4 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE94EC5B5FB2A9F612E8CB3A68768CD /* Configuration.swift */; };
+		4EC9E8238D8368AF98A18B8FE68D9C30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8B94E9D3B433157168D1EECCEC11CD /* Foundation.framework */; };
+		5123C0EB888768F494D2C91B0C5F1B11 /* UIColor+MonkeyPaws.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808747EF9784B7B148FFBC658C5E78B6 /* UIColor+MonkeyPaws.swift */; };
+		549355D83F040F7DB20E9AD49DF7D198 /* MonkeyXCTestPrivate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FB66596595E2201436ADC10EBD713 /* MonkeyXCTestPrivate.swift */; };
+		6156FA1622FB15BBD68F96772CC213A4 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76673517235893A995EF2D334BCE062E /* Configuration.swift */; };
 		6500A14E81080FDD0DD005E6B1356B60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8B94E9D3B433157168D1EECCEC11CD /* Foundation.framework */; };
 		65A86FD60CC28CC634030647DC2829C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8B94E9D3B433157168D1EECCEC11CD /* Foundation.framework */; };
-		75E1B73DC5CFDD1EEB3CB6078B825833 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8B94E9D3B433157168D1EECCEC11CD /* Foundation.framework */; };
-		77C9BAB28CFFEA6CC8127F9D1C726E5D /* MonkeyPaws.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9095F31727E1E31EAF3D6A7A2303A5C /* MonkeyPaws.swift */; };
-		83F8F7D0A3839900D56E7514478890BA /* Pods-YYSwiftMonkeyTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F963A705CFCC1DDE789E853AB4F295AA /* Pods-YYSwiftMonkeyTests-dummy.m */; };
-		9977B40DFFDCAC506CB8B6A4BD5B8760 /* MonkeyPawDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10818C22F651EEFDF12AB543CA785DD /* MonkeyPawDrawer.swift */; };
-		9E1B64E38AF82AA00330C9ADEE7B202D /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA70A216DBE090A06BF9AD087D28E16 /* Random.swift */; };
+		716423CE680419D3AD96E3548D8DAE80 /* Pods-YYSwiftMonkeyTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F963A705CFCC1DDE789E853AB4F295AA /* Pods-YYSwiftMonkeyTests-dummy.m */; };
+		77C9BAB28CFFEA6CC8127F9D1C726E5D /* MonkeyPaws.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0FFEC1AEDB973D076D840EE756C16 /* MonkeyPaws.swift */; };
+		9977B40DFFDCAC506CB8B6A4BD5B8760 /* MonkeyPawDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E8DC61D20F5D9B0561B70DCFE4AD3E /* MonkeyPawDrawer.swift */; };
+		9E1B64E38AF82AA00330C9ADEE7B202D /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504E7D6393EC6399C590942E30D2E0C /* Random.swift */; };
 		A65DFE3173E46A47992EA2DD9D9E29C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8B94E9D3B433157168D1EECCEC11CD /* Foundation.framework */; };
 		A849CF6DCEEE8A8EE7460DBB8FC49C09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8B94E9D3B433157168D1EECCEC11CD /* Foundation.framework */; };
 		ABE0DE77015CA403486A142CB0E33E3C /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E51651E019D5F04BEED3FA8B81A84C2B /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-dummy.m */; };
-		AC7BD5AE7EC8EE117C38FC8336E1D9DA /* SwiftMonkeyPaws-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 143063A8A0C66B1E4A1243482D7723FC /* SwiftMonkeyPaws-dummy.m */; };
-		B48A42EA59F9B03CFD0CCEB1205CC113 /* Monkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE253280E2FB5CE50B7EA3855C133A /* Monkey.swift */; };
-		C3E889F2ED609E1F0ECF2379635DBE2C /* SwiftMonkey-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 946A737078594CA2FCA3FDE2733EB4CD /* SwiftMonkey-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C46F6D7CE16C6A790F72693B37A46489 /* MonkeyUIAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242E4FA4C739F3CA8FCE909972D82A02 /* MonkeyUIAutomation.swift */; };
-		C5312C28AE9A7D536B3B74CB9377F470 /* Pods-YYSwiftMonkeyTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A2B4344B6502D66AEBB5C7A60A704E /* Pods-YYSwiftMonkeyTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC7BD5AE7EC8EE117C38FC8336E1D9DA /* SwiftMonkeyPaws-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB27454A7D2D76E73666F64A7ADE7FF /* SwiftMonkeyPaws-dummy.m */; };
+		B48A42EA59F9B03CFD0CCEB1205CC113 /* Monkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0379A5D60EF4D4627D306207E4221D /* Monkey.swift */; };
+		C3E889F2ED609E1F0ECF2379635DBE2C /* SwiftMonkey-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC786C258E9D86E3DEB117222F7E7D3 /* SwiftMonkey-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C46F6D7CE16C6A790F72693B37A46489 /* MonkeyUIAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABCB067AECD99E8159242F47BE0821 /* MonkeyUIAutomation.swift */; };
 		D09021BC21C8C18A56A6BA2C4724EB35 /* Pods-YYSwiftMonkey-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB5513608BE7DB4E766B2BDB9ECD68B /* Pods-YYSwiftMonkey-dummy.m */; };
-		D1908B5C052AFD46AF8638A56CF78909 /* SwiftMonkey-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9288DA4C0E8B45CD9FC959CE1C940B38 /* SwiftMonkey-dummy.m */; };
+		D1908B5C052AFD46AF8638A56CF78909 /* SwiftMonkey-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F420494FBEBF2448F5023740C2DF433 /* SwiftMonkey-dummy.m */; };
 		E610B200FE59FC0A66492034B4CDB7BF /* Pods-YYSwiftMonkey-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F38B6C05905904C7CF092D35A604AAEA /* Pods-YYSwiftMonkey-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		03AC1A55C2A26A44FE18A8B6361756F8 /* PBXContainerItemProxy */ = {
+		27A31B5D6844EB84899114A869B4EBE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07BE573C77677B32CE70C46A82328D48;
+			remoteInfo = MimiSDK;
+		};
+		33A9B281DE4F7E3DAB7ED46C3E0B9365 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F71478B90CAE678AD29D3BC83333927;
+			remoteInfo = SwiftMonkeyPaws;
+		};
+		6C25223C3862FF3C8B0CDFD7188C5BEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0FAD74CFC07BE7DDA411F9CB5107C0A;
+			remoteInfo = SwiftMonkey;
+		};
+		6EBBCC1397CD04EAC61C02C74D81D429 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7F00C9F49EFBDF5573E5053FA6903013;
 			remoteInfo = "Pods-YYSwiftMonkey";
 		};
-		2E38BFCAF5B47E664B80EE73CF9F4815 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0FAD74CFC07BE7DDA411F9CB5107C0A;
-			remoteInfo = SwiftMonkey;
-		};
-		32BFD50DFA333070361498AC2EF0486F /* PBXContainerItemProxy */ = {
+		95C0787EAA89B7CA6E10EA4120C0FFA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9F71478B90CAE678AD29D3BC83333927;
 			remoteInfo = SwiftMonkeyPaws;
 		};
-		7D844041A346C6F8E3803F4260251395 /* PBXContainerItemProxy */ = {
+		EBCD766F5FCCCE0FCC99F167EA43E02C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A0FAD74CFC07BE7DDA411F9CB5107C0A;
 			remoteInfo = SwiftMonkey;
-		};
-		8242107970B8CD8170969A4148F38AEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F71478B90CAE678AD29D3BC83333927;
-			remoteInfo = SwiftMonkeyPaws;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07C8FF836F4A9C569A0D3625D7703F10 /* SwiftMonkey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMonkey.debug.xcconfig; sourceTree = "<group>"; };
+		0BAD68251736A3E53860E76425373AFA /* MimiAuthKit.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = MimiAuthKit.xcframework; sourceTree = "<group>"; };
 		0D61C8C9411E769762A851D45E176B69 /* SwiftMonkey */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftMonkey; path = SwiftMonkey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E5F2D9C1A873ED4B5910BC4F7C789CD /* SwiftMonkeyPaws.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftMonkeyPaws.modulemap; sourceTree = "<group>"; };
+		1003A4A538D0BA3390CF9149CA0091E1 /* SwiftMonkeyPaws.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMonkeyPaws.release.xcconfig; sourceTree = "<group>"; };
 		1166C868291BCD0A8FA912E5FB9E49F5 /* Pods-YYSwiftMonkey-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YYSwiftMonkey-acknowledgements.plist"; sourceTree = "<group>"; };
-		143063A8A0C66B1E4A1243482D7723FC /* SwiftMonkeyPaws-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftMonkeyPaws-dummy.m"; sourceTree = "<group>"; };
-		17E958B8AF342991382B48F9AB1EF90B /* SwiftMonkey-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMonkey-prefix.pch"; sourceTree = "<group>"; };
 		1817F57666FE2DFA4E7B283269A9D1D4 /* Pods-YYSwiftMonkeyTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YYSwiftMonkeyTests-Info.plist"; sourceTree = "<group>"; };
+		1AB27454A7D2D76E73666F64A7ADE7FF /* SwiftMonkeyPaws-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftMonkeyPaws-dummy.m"; sourceTree = "<group>"; };
 		1BB5513608BE7DB4E766B2BDB9ECD68B /* Pods-YYSwiftMonkey-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YYSwiftMonkey-dummy.m"; sourceTree = "<group>"; };
-		242E4FA4C739F3CA8FCE909972D82A02 /* MonkeyUIAutomation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyUIAutomation.swift; path = SwiftMonkey/MonkeyUIAutomation.swift; sourceTree = "<group>"; };
-		3516D281E76DD7FA98FE620155B35477 /* SwiftMonkeyPaws.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMonkeyPaws.debug.xcconfig; sourceTree = "<group>"; };
+		1CE4D163AD60EB71729F453BDF65C199 /* SwiftMonkeyPaws-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftMonkeyPaws-Info.plist"; sourceTree = "<group>"; };
+		21D6B661891BC25C7E751FA707E6BD06 /* MimiHTEKit.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = MimiHTEKit.xcframework; sourceTree = "<group>"; };
+		2CC33739A71F32B5913340850C73CF4B /* SwiftMonkey-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMonkey-prefix.pch"; sourceTree = "<group>"; };
+		2F420494FBEBF2448F5023740C2DF433 /* SwiftMonkey-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftMonkey-dummy.m"; sourceTree = "<group>"; };
+		3504E7D6393EC6399C590942E30D2E0C /* Random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Random.swift; path = SwiftMonkey/Random.swift; sourceTree = "<group>"; };
 		35FF1E01E17B03EE4C5E3B5B89C295CD /* Pods-YYSwiftMonkey-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YYSwiftMonkey-frameworks.sh"; sourceTree = "<group>"; };
+		3AC786C258E9D86E3DEB117222F7E7D3 /* SwiftMonkey-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMonkey-umbrella.h"; sourceTree = "<group>"; };
+		3E2FB66596595E2201436ADC10EBD713 /* MonkeyXCTestPrivate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyXCTestPrivate.swift; path = SwiftMonkey/MonkeyXCTestPrivate.swift; sourceTree = "<group>"; };
 		3E52F383EF62C41420E33A6A631E637D /* Pods-YYSwiftMonkeyTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-YYSwiftMonkeyTests"; path = Pods_YYSwiftMonkeyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4757C0E3AC0A4026DEADE3CC45357C1B /* MonkeyXCTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyXCTest.swift; path = SwiftMonkey/MonkeyXCTest.swift; sourceTree = "<group>"; };
+		41ABCB067AECD99E8159242F47BE0821 /* MonkeyUIAutomation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyUIAutomation.swift; path = SwiftMonkey/MonkeyUIAutomation.swift; sourceTree = "<group>"; };
 		4B42573F9BD01A33BC26CC221CD7D83C /* Pods-YYSwiftMonkeyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YYSwiftMonkeyTests.release.xcconfig"; sourceTree = "<group>"; };
+		4E9711DACB6A2571E11E507DA98F5BD7 /* SwiftMonkey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMonkey.release.xcconfig; sourceTree = "<group>"; };
 		53102F3A1E47F646532969795716AF3B /* Pods-YYSwiftMonkey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YYSwiftMonkey.debug.xcconfig"; sourceTree = "<group>"; };
+		56CBF405FBF2979A57B8897DB1158303 /* SwiftMonkeyPaws-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMonkeyPaws-prefix.pch"; sourceTree = "<group>"; };
 		58A2B4344B6502D66AEBB5C7A60A704E /* Pods-YYSwiftMonkeyTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YYSwiftMonkeyTests-umbrella.h"; sourceTree = "<group>"; };
-		5A21FE4D3358297C15FA94A3E9A95737 /* SwiftMonkey-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftMonkey-Info.plist"; sourceTree = "<group>"; };
 		5EBC8F300895E39EA0DF6D6B2B5E6BCD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		64252EDCB1C39AB7A031EE75A4155ED2 /* Pods-YYSwiftMonkey.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-YYSwiftMonkey.modulemap"; sourceTree = "<group>"; };
 		67D16FE8EF23246B98760180535E22C9 /* Pods-YYSwiftMonkeyTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-YYSwiftMonkeyTests.modulemap"; sourceTree = "<group>"; };
-		6A28EBFA1A005D21239E093B002CBF5E /* SwiftMonkeyPaws.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMonkeyPaws.release.xcconfig; sourceTree = "<group>"; };
 		700311054EF1D28D441FDF537929EF38 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.modulemap"; sourceTree = "<group>"; };
+		747DB14FC018BECAEF4B3ACE0EF835D6 /* SwiftMonkey-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftMonkey-Info.plist"; sourceTree = "<group>"; };
+		76673517235893A995EF2D334BCE062E /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = SwiftMonkeyPaws/Configuration.swift; sourceTree = "<group>"; };
 		78C79367168E61CA8ECBF0607E3016AF /* Pods-YYSwiftMonkeyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YYSwiftMonkeyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		79CD9347F7838D9D0A998CF10940A016 /* Pods-YYSwiftMonkeyTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YYSwiftMonkeyTests-frameworks.sh"; sourceTree = "<group>"; };
+		7E60BE08F6C1BA819571F7A02DAECE48 /* SwiftMonkey.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftMonkey.modulemap; sourceTree = "<group>"; };
+		808747EF9784B7B148FFBC658C5E78B6 /* UIColor+MonkeyPaws.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+MonkeyPaws.swift"; path = "SwiftMonkeyPaws/UIColor+MonkeyPaws.swift"; sourceTree = "<group>"; };
 		8490003FED05281D48022ECC170252B8 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		856115261E6C0919D87628B97887FDF7 /* Pods-YYSwiftMonkey-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YYSwiftMonkey-acknowledgements.markdown"; sourceTree = "<group>"; };
-		88FD99976BF4F130EC377AED61D13702 /* SwiftMonkeyPaws-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftMonkeyPaws-Info.plist"; sourceTree = "<group>"; };
-		9288DA4C0E8B45CD9FC959CE1C940B38 /* SwiftMonkey-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftMonkey-dummy.m"; sourceTree = "<group>"; };
-		946A737078594CA2FCA3FDE2733EB4CD /* SwiftMonkey-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMonkey-umbrella.h"; sourceTree = "<group>"; };
-		9653487CAE37D10FFEF8D18AF2131A73 /* SwiftMonkeyPaws.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftMonkeyPaws.modulemap; sourceTree = "<group>"; };
-		9AE62E71ECB8288303542B243AD7850E /* SwiftMonkeyPaws-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMonkeyPaws-umbrella.h"; sourceTree = "<group>"; };
+		97E8DC61D20F5D9B0561B70DCFE4AD3E /* MonkeyPawDrawer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyPawDrawer.swift; path = SwiftMonkeyPaws/MonkeyPawDrawer.swift; sourceTree = "<group>"; };
+		97EB079D64050C9A123764CF9ADF4743 /* MimiSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MimiSDK.debug.xcconfig; sourceTree = "<group>"; };
+		99927F41D15D699AD562F4F21C366AF5 /* MonkeyXCTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyXCTest.swift; path = SwiftMonkey/MonkeyXCTest.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AA2719D462D5CB66F1CE1F7545B0BED0 /* Pods-YYSwiftMonkey-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YYSwiftMonkey-Info.plist"; sourceTree = "<group>"; };
-		AE302E9AA6E6290B650455FBC1ECB016 /* MonkeyXCTestPrivate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyXCTestPrivate.swift; path = SwiftMonkey/MonkeyXCTestPrivate.swift; sourceTree = "<group>"; };
+		AAA7DD02FA88696718AF1A57ED852D1D /* SwiftMonkeyPaws-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMonkeyPaws-umbrella.h"; sourceTree = "<group>"; };
+		AD3282445786078B088646F27119169C /* MimiCoreKit.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = MimiCoreKit.xcframework; sourceTree = "<group>"; };
 		B2A16B3AFF64A401168E901056B91280 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-Info.plist"; sourceTree = "<group>"; };
 		B69724C49FA6A8E21FA017094EAEFEBB /* Pods-YYSwiftMonkey */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-YYSwiftMonkey"; path = Pods_YYSwiftMonkey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B834AF0A25947A10950A84815F73A4FB /* MimiTestKit.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = MimiTestKit.xcframework; sourceTree = "<group>"; };
 		BAE8F401653DC06379B8870D3740A365 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		BDE94EC5B5FB2A9F612E8CB3A68768CD /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = SwiftMonkeyPaws/Configuration.swift; sourceTree = "<group>"; };
-		BFA70A216DBE090A06BF9AD087D28E16 /* Random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Random.swift; path = SwiftMonkey/Random.swift; sourceTree = "<group>"; };
 		C0131EF852AC46610F0F5732BA06F712 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-frameworks.sh"; sourceTree = "<group>"; };
 		C0771C31D237F06A09369B0F244F02CF /* Pods-YYSwiftMonkeyTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YYSwiftMonkeyTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		C0CE253280E2FB5CE50B7EA3855C133A /* Monkey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Monkey.swift; path = SwiftMonkey/Monkey.swift; sourceTree = "<group>"; };
 		C236349227976B3CBEFB4A0A9EBB7483 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-umbrella.h"; sourceTree = "<group>"; };
 		CA8B94E9D3B433157168D1EECCEC11CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CC66CD41D1DA8161FB50F1509D8DDB8B /* SwiftMonkeyPaws-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMonkeyPaws-prefix.pch"; sourceTree = "<group>"; };
 		CF46430488597B7C7FA34827B290BEBF /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests"; path = Pods_YYSwiftMonkey_YYSwiftMonkeyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01E2C78D782C4A45067E2C22EC85FFD /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D0C2A12F5DD80E3660CAE06B93D26D96 /* SwiftMonkeyPaws */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftMonkeyPaws; path = SwiftMonkeyPaws.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3EB0BAD3A2B12E63245AD8EABB8ADA2 /* Pods-YYSwiftMonkey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YYSwiftMonkey.release.xcconfig"; sourceTree = "<group>"; };
-		D9095F31727E1E31EAF3D6A7A2303A5C /* MonkeyPaws.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyPaws.swift; path = SwiftMonkeyPaws/MonkeyPaws.swift; sourceTree = "<group>"; };
+		D4B0FFEC1AEDB973D076D840EE756C16 /* MonkeyPaws.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyPaws.swift; path = SwiftMonkeyPaws/MonkeyPaws.swift; sourceTree = "<group>"; };
+		DBD2885450B24AAD6FD96D2E3430E3F1 /* SwiftMonkey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMonkey.debug.xcconfig; sourceTree = "<group>"; };
 		E51651E019D5F04BEED3FA8B81A84C2B /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-dummy.m"; sourceTree = "<group>"; };
-		EC71F5FED09CCD7854D55437DFF2BC16 /* UIColor+MonkeyPaws.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+MonkeyPaws.swift"; path = "SwiftMonkeyPaws/UIColor+MonkeyPaws.swift"; sourceTree = "<group>"; };
-		F10818C22F651EEFDF12AB543CA785DD /* MonkeyPawDrawer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonkeyPawDrawer.swift; path = SwiftMonkeyPaws/MonkeyPawDrawer.swift; sourceTree = "<group>"; };
+		E62BB07EB9E07BB316407A844F93CEEE /* MimiSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MimiSDK.release.xcconfig; sourceTree = "<group>"; };
+		EB4245644241E662C04AB753750ED664 /* MimiUXKit.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = MimiUXKit.xcframework; sourceTree = "<group>"; };
+		EFE6B722B4D73EABEB8791E35C34B45F /* MimiSDK.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = MimiSDK.xcframework; sourceTree = "<group>"; };
 		F1D455FB633CC421E58D2CD8CA71AD2C /* Pods-YYSwiftMonkeyTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YYSwiftMonkeyTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F2F43F829F291EF44FF8041519DF51DE /* SwiftMonkey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMonkey.release.xcconfig; sourceTree = "<group>"; };
 		F38B6C05905904C7CF092D35A604AAEA /* Pods-YYSwiftMonkey-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YYSwiftMonkey-umbrella.h"; sourceTree = "<group>"; };
-		F5E8C9C7E29693DF98864DC0FE4A8BAA /* SwiftMonkey.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftMonkey.modulemap; sourceTree = "<group>"; };
 		F963A705CFCC1DDE789E853AB4F295AA /* Pods-YYSwiftMonkeyTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YYSwiftMonkeyTests-dummy.m"; sourceTree = "<group>"; };
 		FA504D2FE774BE5B2A50ABC80B94C8A4 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FAFDD0C655E68AB9368E60B0E4DED717 /* MimiSDK-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "MimiSDK-xcframeworks.sh"; sourceTree = "<group>"; };
+		FD0379A5D60EF4D4627D306207E4221D /* Monkey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Monkey.swift; path = SwiftMonkey/Monkey.swift; sourceTree = "<group>"; };
+		FE60D1D1A71F5DD76D252112FECDC60A /* SwiftMonkeyPaws.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMonkeyPaws.debug.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1C8A8ED993326197E19D47446341D831 /* Frameworks */ = {
+		244C74D7D9682010D8F375AFC5931FEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75E1B73DC5CFDD1EEB3CB6078B825833 /* Foundation.framework in Frameworks */,
+				4EC9E8238D8368AF98A18B8FE68D9C30 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +207,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0881D94B5412F704AE300C7516ECF37C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAFDD0C655E68AB9368E60B0E4DED717 /* MimiSDK-xcframeworks.sh */,
+				97EB079D64050C9A123764CF9ADF4743 /* MimiSDK.debug.xcconfig */,
+				E62BB07EB9E07BB316407A844F93CEEE /* MimiSDK.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MimiSDK";
+			sourceTree = "<group>";
+		};
 		0EE71AC4A319CF2CD38219FCBF1D50E2 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,56 +243,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		39F32CF566D73D6B030871D7E994C0B6 /* Pods */ = {
+		2509983CDF9B353585430923CDC91041 /* SwiftMonkey */ = {
 			isa = PBXGroup;
 			children = (
-				B07B25DFF465E0591FDD7D2E98768AAA /* SwiftMonkey */,
-				5351775C415AB44574F75D2C0A8618FB /* SwiftMonkeyPaws */,
+				FD0379A5D60EF4D4627D306207E4221D /* Monkey.swift */,
+				41ABCB067AECD99E8159242F47BE0821 /* MonkeyUIAutomation.swift */,
+				99927F41D15D699AD562F4F21C366AF5 /* MonkeyXCTest.swift */,
+				3E2FB66596595E2201436ADC10EBD713 /* MonkeyXCTestPrivate.swift */,
+				3504E7D6393EC6399C590942E30D2E0C /* Random.swift */,
+				3AFEC7940D258BF401E0E15844FE0F2F /* Support Files */,
 			);
-			name = Pods;
+			name = SwiftMonkey;
+			path = SwiftMonkey;
 			sourceTree = "<group>";
 		};
-		454198B6E0233837C4D2F95AF9880262 /* Support Files */ = {
+		3AFEC7940D258BF401E0E15844FE0F2F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F5E8C9C7E29693DF98864DC0FE4A8BAA /* SwiftMonkey.modulemap */,
-				9288DA4C0E8B45CD9FC959CE1C940B38 /* SwiftMonkey-dummy.m */,
-				5A21FE4D3358297C15FA94A3E9A95737 /* SwiftMonkey-Info.plist */,
-				17E958B8AF342991382B48F9AB1EF90B /* SwiftMonkey-prefix.pch */,
-				946A737078594CA2FCA3FDE2733EB4CD /* SwiftMonkey-umbrella.h */,
-				07C8FF836F4A9C569A0D3625D7703F10 /* SwiftMonkey.debug.xcconfig */,
-				F2F43F829F291EF44FF8041519DF51DE /* SwiftMonkey.release.xcconfig */,
+				7E60BE08F6C1BA819571F7A02DAECE48 /* SwiftMonkey.modulemap */,
+				2F420494FBEBF2448F5023740C2DF433 /* SwiftMonkey-dummy.m */,
+				747DB14FC018BECAEF4B3ACE0EF835D6 /* SwiftMonkey-Info.plist */,
+				2CC33739A71F32B5913340850C73CF4B /* SwiftMonkey-prefix.pch */,
+				3AC786C258E9D86E3DEB117222F7E7D3 /* SwiftMonkey-umbrella.h */,
+				DBD2885450B24AAD6FD96D2E3430E3F1 /* SwiftMonkey.debug.xcconfig */,
+				4E9711DACB6A2571E11E507DA98F5BD7 /* SwiftMonkey.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftMonkey";
 			sourceTree = "<group>";
 		};
-		5351775C415AB44574F75D2C0A8618FB /* SwiftMonkeyPaws */ = {
+		5CB21333D86600C7087DF1AA61B4EEFE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BDE94EC5B5FB2A9F612E8CB3A68768CD /* Configuration.swift */,
-				F10818C22F651EEFDF12AB543CA785DD /* MonkeyPawDrawer.swift */,
-				D9095F31727E1E31EAF3D6A7A2303A5C /* MonkeyPaws.swift */,
-				EC71F5FED09CCD7854D55437DFF2BC16 /* UIColor+MonkeyPaws.swift */,
-				64DF15146C82EC417F44CF94F2849369 /* Support Files */,
+				6CDDA2483CB05951F217A2F6A0DDC129 /* MimiSDK */,
+				2509983CDF9B353585430923CDC91041 /* SwiftMonkey */,
+				BDEF91B3CC888D60BA1589C7D52E99AE /* SwiftMonkeyPaws */,
 			);
-			name = SwiftMonkeyPaws;
-			path = SwiftMonkeyPaws;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		64DF15146C82EC417F44CF94F2849369 /* Support Files */ = {
+		67812FE4805CEEA25FBCBB2101B292BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9653487CAE37D10FFEF8D18AF2131A73 /* SwiftMonkeyPaws.modulemap */,
-				143063A8A0C66B1E4A1243482D7723FC /* SwiftMonkeyPaws-dummy.m */,
-				88FD99976BF4F130EC377AED61D13702 /* SwiftMonkeyPaws-Info.plist */,
-				CC66CD41D1DA8161FB50F1509D8DDB8B /* SwiftMonkeyPaws-prefix.pch */,
-				9AE62E71ECB8288303542B243AD7850E /* SwiftMonkeyPaws-umbrella.h */,
-				3516D281E76DD7FA98FE620155B35477 /* SwiftMonkeyPaws.debug.xcconfig */,
-				6A28EBFA1A005D21239E093B002CBF5E /* SwiftMonkeyPaws.release.xcconfig */,
+				0BAD68251736A3E53860E76425373AFA /* MimiAuthKit.xcframework */,
+				AD3282445786078B088646F27119169C /* MimiCoreKit.xcframework */,
+				21D6B661891BC25C7E751FA707E6BD06 /* MimiHTEKit.xcframework */,
+				EFE6B722B4D73EABEB8791E35C34B45F /* MimiSDK.xcframework */,
+				B834AF0A25947A10950A84815F73A4FB /* MimiTestKit.xcframework */,
+				EB4245644241E662C04AB753750ED664 /* MimiUXKit.xcframework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftMonkeyPaws";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6C9A88A895BA13BF4A02DEB4FBE42794 /* Pods-YYSwiftMonkeyTests */ = {
@@ -270,6 +310,16 @@
 			);
 			name = "Pods-YYSwiftMonkeyTests";
 			path = "Target Support Files/Pods-YYSwiftMonkeyTests";
+			sourceTree = "<group>";
+		};
+		6CDDA2483CB05951F217A2F6A0DDC129 /* MimiSDK */ = {
+			isa = PBXGroup;
+			children = (
+				67812FE4805CEEA25FBCBB2101B292BB /* Frameworks */,
+				0881D94B5412F704AE300C7516ECF37C /* Support Files */,
+			);
+			name = MimiSDK;
+			path = MimiSDK;
 			sourceTree = "<group>";
 		};
 		7DD0E5A759C1CC7DD9C806E581A1038B /* Pods-YYSwiftMonkey */ = {
@@ -298,20 +348,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		B07B25DFF465E0591FDD7D2E98768AAA /* SwiftMonkey */ = {
-			isa = PBXGroup;
-			children = (
-				C0CE253280E2FB5CE50B7EA3855C133A /* Monkey.swift */,
-				242E4FA4C739F3CA8FCE909972D82A02 /* MonkeyUIAutomation.swift */,
-				4757C0E3AC0A4026DEADE3CC45357C1B /* MonkeyXCTest.swift */,
-				AE302E9AA6E6290B650455FBC1ECB016 /* MonkeyXCTestPrivate.swift */,
-				BFA70A216DBE090A06BF9AD087D28E16 /* Random.swift */,
-				454198B6E0233837C4D2F95AF9880262 /* Support Files */,
-			);
-			name = SwiftMonkey;
-			path = SwiftMonkey;
-			sourceTree = "<group>";
-		};
 		B0C02E549ECE36820DB908CC5875E803 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,12 +358,25 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		BDEF91B3CC888D60BA1589C7D52E99AE /* SwiftMonkeyPaws */ = {
+			isa = PBXGroup;
+			children = (
+				76673517235893A995EF2D334BCE062E /* Configuration.swift */,
+				97E8DC61D20F5D9B0561B70DCFE4AD3E /* MonkeyPawDrawer.swift */,
+				D4B0FFEC1AEDB973D076D840EE756C16 /* MonkeyPaws.swift */,
+				808747EF9784B7B148FFBC658C5E78B6 /* UIColor+MonkeyPaws.swift */,
+				DA0117C0BA44F8F74C071C72276A6006 /* Support Files */,
+			);
+			name = SwiftMonkeyPaws;
+			path = SwiftMonkeyPaws;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				39F32CF566D73D6B030871D7E994C0B6 /* Pods */,
+				5CB21333D86600C7087DF1AA61B4EEFE /* Pods */,
 				D6D05BD67D4D78EE331A5FA7BEF275AE /* Products */,
 				B0C02E549ECE36820DB908CC5875E803 /* Targets Support Files */,
 			);
@@ -345,17 +394,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DA0117C0BA44F8F74C071C72276A6006 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E5F2D9C1A873ED4B5910BC4F7C789CD /* SwiftMonkeyPaws.modulemap */,
+				1AB27454A7D2D76E73666F64A7ADE7FF /* SwiftMonkeyPaws-dummy.m */,
+				1CE4D163AD60EB71729F453BDF65C199 /* SwiftMonkeyPaws-Info.plist */,
+				56CBF405FBF2979A57B8897DB1158303 /* SwiftMonkeyPaws-prefix.pch */,
+				AAA7DD02FA88696718AF1A57ED852D1D /* SwiftMonkeyPaws-umbrella.h */,
+				FE60D1D1A71F5DD76D252112FECDC60A /* SwiftMonkeyPaws.debug.xcconfig */,
+				1003A4A538D0BA3390CF9149CA0091E1 /* SwiftMonkeyPaws.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftMonkeyPaws";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1C87FB61735CAD4649F522A0D4E5B708 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C5312C28AE9A7D536B3B74CB9377F470 /* Pods-YYSwiftMonkeyTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		59A7AA78507C281C7CCF9DEABFD62B09 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,6 +444,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB963DE8FB32E5D32988D358D294ED23 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E43B71A9A9696B48DF575B446780018 /* Pods-YYSwiftMonkeyTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -403,7 +467,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				555F4FD5364DF75A1D8D90FA3EEFB189 /* PBXTargetDependency */,
+				851B6D195893947A989D92B9FF1E92E3 /* PBXTargetDependency */,
 			);
 			name = "Pods-YYSwiftMonkey";
 			productName = Pods_YYSwiftMonkey;
@@ -412,18 +476,19 @@
 		};
 		851B15937446EE691E7C3C152C06D137 /* Pods-YYSwiftMonkeyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8045757B43671881C1E5771D5B03EE3E /* Build configuration list for PBXNativeTarget "Pods-YYSwiftMonkeyTests" */;
+			buildConfigurationList = 66702426D265CD17C6DDA465A3D08FF5 /* Build configuration list for PBXNativeTarget "Pods-YYSwiftMonkeyTests" */;
 			buildPhases = (
-				1C87FB61735CAD4649F522A0D4E5B708 /* Headers */,
-				46255DDDF11B0524200E16DB486C1EE4 /* Sources */,
-				1C8A8ED993326197E19D47446341D831 /* Frameworks */,
-				FF21C2203A856FF3E0E30EE3166F2487 /* Resources */,
+				EB963DE8FB32E5D32988D358D294ED23 /* Headers */,
+				2C6CAB8934BB4D961CFA8318439B4EE3 /* Sources */,
+				244C74D7D9682010D8F375AFC5931FEF /* Frameworks */,
+				F77B07D1F3EAE0ED8255FA4DD0A128FF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5A70788A7003807A90C1821FCC654CCA /* PBXTargetDependency */,
-				54109EBCDFC5A7087184A602E9896A3B /* PBXTargetDependency */,
+				50EA793723C1353CA939996105B47E58 /* PBXTargetDependency */,
+				A690C3197821E668FDA74EB674794F02 /* PBXTargetDependency */,
+				8EBCDB5BB6C28827ECBDE174E1163EAB /* PBXTargetDependency */,
 			);
 			name = "Pods-YYSwiftMonkeyTests";
 			productName = Pods_YYSwiftMonkeyTests;
@@ -478,8 +543,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				F2571117B946009E8D8B3EB296DB3438 /* PBXTargetDependency */,
-				8514988E27E5FE4F85103CB08E5304D9 /* PBXTargetDependency */,
+				A5CB61A5CD5D583023F5291904A2371B /* PBXTargetDependency */,
+				E46646CC1A418EBB3C7AAFAC02C7C6EE /* PBXTargetDependency */,
 			);
 			name = "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests";
 			productName = Pods_YYSwiftMonkey_YYSwiftMonkeyUITests;
@@ -508,6 +573,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				07BE573C77677B32CE70C46A82328D48 /* MimiSDK */,
 				7F00C9F49EFBDF5573E5053FA6903013 /* Pods-YYSwiftMonkey */,
 				CCF49EBF080D52CE10D1D3B4EC2A6FE6 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests */,
 				851B15937446EE691E7C3C152C06D137 /* Pods-YYSwiftMonkeyTests */,
@@ -546,7 +612,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF21C2203A856FF3E0E30EE3166F2487 /* Resources */ = {
+		F77B07D1F3EAE0ED8255FA4DD0A128FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -555,12 +621,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BECCAD281F35B3613EB8AB74EB4F52D9 /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/MimiSDK/MimiSDK-xcframeworks-input-files.xcfilelist",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/MimiSDK/MimiSDK-xcframeworks-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/MimiSDK/MimiSDK-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		46255DDDF11B0524200E16DB486C1EE4 /* Sources */ = {
+		2C6CAB8934BB4D961CFA8318439B4EE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83F8F7D0A3839900D56E7514478890BA /* Pods-YYSwiftMonkeyTests-dummy.m in Sources */,
+				716423CE680419D3AD96E3548D8DAE80 /* Pods-YYSwiftMonkeyTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,42 +694,86 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		54109EBCDFC5A7087184A602E9896A3B /* PBXTargetDependency */ = {
+		50EA793723C1353CA939996105B47E58 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SwiftMonkey;
-			target = A0FAD74CFC07BE7DDA411F9CB5107C0A /* SwiftMonkey */;
-			targetProxy = 7D844041A346C6F8E3803F4260251395 /* PBXContainerItemProxy */;
+			name = MimiSDK;
+			target = 07BE573C77677B32CE70C46A82328D48 /* MimiSDK */;
+			targetProxy = 27A31B5D6844EB84899114A869B4EBE8 /* PBXContainerItemProxy */;
 		};
-		555F4FD5364DF75A1D8D90FA3EEFB189 /* PBXTargetDependency */ = {
+		851B6D195893947A989D92B9FF1E92E3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftMonkeyPaws;
 			target = 9F71478B90CAE678AD29D3BC83333927 /* SwiftMonkeyPaws */;
-			targetProxy = 32BFD50DFA333070361498AC2EF0486F /* PBXContainerItemProxy */;
+			targetProxy = 33A9B281DE4F7E3DAB7ED46C3E0B9365 /* PBXContainerItemProxy */;
 		};
-		5A70788A7003807A90C1821FCC654CCA /* PBXTargetDependency */ = {
+		8EBCDB5BB6C28827ECBDE174E1163EAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftMonkey;
+			target = A0FAD74CFC07BE7DDA411F9CB5107C0A /* SwiftMonkey */;
+			targetProxy = EBCD766F5FCCCE0FCC99F167EA43E02C /* PBXContainerItemProxy */;
+		};
+		A5CB61A5CD5D583023F5291904A2371B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftMonkey;
+			target = A0FAD74CFC07BE7DDA411F9CB5107C0A /* SwiftMonkey */;
+			targetProxy = 6C25223C3862FF3C8B0CDFD7188C5BEE /* PBXContainerItemProxy */;
+		};
+		A690C3197821E668FDA74EB674794F02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-YYSwiftMonkey";
 			target = 7F00C9F49EFBDF5573E5053FA6903013 /* Pods-YYSwiftMonkey */;
-			targetProxy = 03AC1A55C2A26A44FE18A8B6361756F8 /* PBXContainerItemProxy */;
+			targetProxy = 6EBBCC1397CD04EAC61C02C74D81D429 /* PBXContainerItemProxy */;
 		};
-		8514988E27E5FE4F85103CB08E5304D9 /* PBXTargetDependency */ = {
+		E46646CC1A418EBB3C7AAFAC02C7C6EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftMonkeyPaws;
 			target = 9F71478B90CAE678AD29D3BC83333927 /* SwiftMonkeyPaws */;
-			targetProxy = 8242107970B8CD8170969A4148F38AEE /* PBXContainerItemProxy */;
-		};
-		F2571117B946009E8D8B3EB296DB3438 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftMonkey;
-			target = A0FAD74CFC07BE7DDA411F9CB5107C0A /* SwiftMonkey */;
-			targetProxy = 2E38BFCAF5B47E664B80EE73CF9F4815 /* PBXContainerItemProxy */;
+			targetProxy = 95C0787EAA89B7CA6E10EA4120C0FFA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		192D45BBE5EB0C6ED446622ECCF2E2A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3EB0BAD3A2B12E63245AD8EABB8ADA2 /* Pods-YYSwiftMonkey.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkey/Pods-YYSwiftMonkey-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YYSwiftMonkey/Pods-YYSwiftMonkey.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		2933B2EB6CC762A17F7E2FC6AB225674 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07C8FF836F4A9C569A0D3625D7703F10 /* SwiftMonkey.debug.xcconfig */;
+			baseConfigurationReference = DBD2885450B24AAD6FD96D2E3430E3F1 /* SwiftMonkey.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -675,7 +805,154 @@
 			};
 			name = Debug;
 		};
-		3C539EBF0E4A36573575BD3E51D5D47F /* Debug */ = {
+		3BE1689333B43A0A04A3143020E35DA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8490003FED05281D48022ECC170252B8 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		740363861DF57693B8EACF054074E552 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E62BB07EB9E07BB316407A844F93CEEE /* MimiSDK.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		74E935AFDE7D156A434457B2CE8CC2AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B42573F9BD01A33BC26CC221CD7D83C /* Pods-YYSwiftMonkeyTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkeyTests/Pods-YYSwiftMonkeyTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YYSwiftMonkeyTests/Pods-YYSwiftMonkeyTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7F4EC665A0E9C1AEE4819277B265C618 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97EB079D64050C9A123764CF9ADF4743 /* MimiSDK.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8597090B731F911EB17291B7EBEB1CFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53102F3A1E47F646532969795716AF3B /* Pods-YYSwiftMonkey.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkey/Pods-YYSwiftMonkey-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YYSwiftMonkey/Pods-YYSwiftMonkey.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		88A8B05D569CE5ADAA8AB8F27B2ED2F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 78C79367168E61CA8ECBF0607E3016AF /* Pods-YYSwiftMonkeyTests.debug.xcconfig */;
 			buildSettings = {
@@ -691,7 +968,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkeyTests/Pods-YYSwiftMonkeyTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -712,183 +989,7 @@
 			};
 			name = Debug;
 		};
-		4A7D76C66904F8E41E6DA421B93E16CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3EB0BAD3A2B12E63245AD8EABB8ADA2 /* Pods-YYSwiftMonkey.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkey/Pods-YYSwiftMonkey-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-YYSwiftMonkey/Pods-YYSwiftMonkey.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5AFB61F608FD5BC9C30E3A7B9F5F7315 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAE8F401653DC06379B8870D3740A365 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		652F85431A710A7F5A2F8901FF553EDE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B42573F9BD01A33BC26CC221CD7D83C /* Pods-YYSwiftMonkeyTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkeyTests/Pods-YYSwiftMonkeyTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-YYSwiftMonkeyTests/Pods-YYSwiftMonkeyTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		92486E5E72E54FAF60E1A7D022C21B10 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		934ED2B84836A780113D1F63484628B2 /* Debug */ = {
+		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -941,7 +1042,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -954,9 +1055,71 @@
 			};
 			name = Debug;
 		};
+		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
 		A052E698622F22A6749D51E3DC12F0E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2F43F829F291EF44FF8041519DF51DE /* SwiftMonkey.release.xcconfig */;
+			baseConfigurationReference = 4E9711DACB6A2571E11E507DA98F5BD7 /* SwiftMonkey.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -989,9 +1152,9 @@
 			};
 			name = Release;
 		};
-		A25DF4CE7920C818EA9F7F20516321DB /* Debug */ = {
+		BF32378AC9B3317DF43A64ADD30E3C2B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8490003FED05281D48022ECC170252B8 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.debug.xcconfig */;
+			baseConfigurationReference = BAE8F401653DC06379B8870D3740A365 /* Pods-YYSwiftMonkey-YYSwiftMonkeyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1005,7 +1168,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests/Pods-YYSwiftMonkey-YYSwiftMonkeyUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1021,51 +1184,15 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
-		};
-		C20B1902C278DDA311345F49B4AFE9C7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53102F3A1E47F646532969795716AF3B /* Pods-YYSwiftMonkey.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-YYSwiftMonkey/Pods-YYSwiftMonkey-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-YYSwiftMonkey/Pods-YYSwiftMonkey.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
+			name = Release;
 		};
 		C58A1351132703308B3121B8C13EDC1A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A28EBFA1A005D21239E093B002CBF5E /* SwiftMonkeyPaws.release.xcconfig */;
+			baseConfigurationReference = 1003A4A538D0BA3390CF9149CA0091E1 /* SwiftMonkeyPaws.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1100,7 +1227,7 @@
 		};
 		FD6161243DAB23A094334C7EE9B06C4E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3516D281E76DD7FA98FE620155B35477 /* SwiftMonkeyPaws.debug.xcconfig */;
+			baseConfigurationReference = FE60D1D1A71F5DD76D252112FECDC60A /* SwiftMonkeyPaws.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1144,20 +1271,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+		33BC49584CA27AC170756BE41C5D88FB /* Build configuration list for PBXAggregateTarget "MimiSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				934ED2B84836A780113D1F63484628B2 /* Debug */,
-				92486E5E72E54FAF60E1A7D022C21B10 /* Release */,
+				7F4EC665A0E9C1AEE4819277B265C618 /* Debug */,
+				740363861DF57693B8EACF054074E552 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8045757B43671881C1E5771D5B03EE3E /* Build configuration list for PBXNativeTarget "Pods-YYSwiftMonkeyTests" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3C539EBF0E4A36573575BD3E51D5D47F /* Debug */,
-				652F85431A710A7F5A2F8901FF553EDE /* Release */,
+				8DE5143C03248BB6CD542DE3963D6F3A /* Debug */,
+				9E406C6AAF85E580207CD97B0044DEAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66702426D265CD17C6DDA465A3D08FF5 /* Build configuration list for PBXNativeTarget "Pods-YYSwiftMonkeyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88A8B05D569CE5ADAA8AB8F27B2ED2F0 /* Debug */,
+				74E935AFDE7D156A434457B2CE8CC2AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1165,8 +1301,8 @@
 		CD9A7B4FAD1AFC93906DA53A62D4AF93 /* Build configuration list for PBXNativeTarget "Pods-YYSwiftMonkey" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C20B1902C278DDA311345F49B4AFE9C7 /* Debug */,
-				4A7D76C66904F8E41E6DA421B93E16CD /* Release */,
+				8597090B731F911EB17291B7EBEB1CFE /* Debug */,
+				192D45BBE5EB0C6ED446622ECCF2E2A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1183,8 +1319,8 @@
 		FCBAC3825F6E0211F9C0BC926035530C /* Build configuration list for PBXNativeTarget "Pods-YYSwiftMonkey-YYSwiftMonkeyUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A25DF4CE7920C818EA9F7F20516321DB /* Debug */,
-				5AFB61F608FD5BC9C30E3A7B9F5F7315 /* Release */,
+				3BE1689333B43A0A04A3143020E35DA5 /* Debug */,
+				BF32378AC9B3317DF43A64ADD30E3C2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

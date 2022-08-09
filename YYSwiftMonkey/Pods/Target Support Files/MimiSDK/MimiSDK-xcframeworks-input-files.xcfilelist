@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/MimiSDK/MimiSDK-xcframeworks.sh
+${PODS_ROOT}/MimiSDK/MimiSDK.xcframework
+${PODS_ROOT}/MimiSDK/MimiTestKit.xcframework
+${PODS_ROOT}/MimiSDK/MimiHTEKit.xcframework
+${PODS_ROOT}/MimiSDK/MimiAuthKit.xcframework
+${PODS_ROOT}/MimiSDK/MimiUXKit.xcframework
+${PODS_ROOT}/MimiSDK/MimiCoreKit.xcframework

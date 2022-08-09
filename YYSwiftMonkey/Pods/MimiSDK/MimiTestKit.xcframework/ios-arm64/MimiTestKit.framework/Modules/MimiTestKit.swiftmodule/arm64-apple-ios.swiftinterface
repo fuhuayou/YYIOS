@@ -1,0 +1,239 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MimiTestKit
+import AVFoundation
+import Combine
+import CommonCrypto
+import Foundation
+import MediaPlayer
+import MimiCoreKit
+import MimiHTEKit
+@_exported import MimiTestKit
+import MimiUXKit
+import Swift
+import SwiftUI
+import UIKit
+import _Concurrency
+@objc @_hasMissingDesignatedInitializers public class MimiTestFlow : MimiUXKit.MimiUserFlow {
+  override public func willAppear(animated: Swift.Bool)
+  override public func didAppear(animated: Swift.Bool)
+  override public func willDismiss(animated: Swift.Bool)
+  override public func didDismiss(animated: Swift.Bool)
+  override public func present(from presentingviewController: UIKit.UIViewController, animated: Swift.Bool, completion: (() -> Swift.Void)?)
+  override public func push(in navigationController: UIKit.UINavigationController?, animated: Swift.Bool)
+  override public func addAsChild(to viewController: UIKit.UIViewController, layout: ((UIKit.UIViewController, UIKit.UIView) -> Swift.Void)? = nil)
+  @objc deinit
+}
+extension MimiTestKit.MimiTestFlow {
+  public class func build(preferredTest: MimiCoreKit.MimiTestType? = nil) throws -> MimiTestKit.MimiTestFlow
+}
+extension MimiHTEKit.MimiHTEEngineStatus : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension MimiHTEKit.MimiHTETestStatus : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers final public class MimiDisclaimerBulletin : MimiUXKit.MimiBulletinItem {
+  override public init()
+  override final public func makeViews(maker: MimiUXKit.MimiBulletinViewMaker) -> [UIKit.UIView]
+  override final public func didAppear(animated: Swift.Bool)
+  @objc deinit
+}
+public struct MimiPersonalizationBarChartView : SwiftUI.View {
+  public init(visualization: MimiCoreKit.MimiPersonalizationVisualization)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11MimiTestKit0A27PersonalizationBarChartViewV4bodyQrvp", 0) __
+}
+public struct MimiResultCondition : Swift.Hashable, Swift.Equatable {
+  public enum ConditionType : Swift.Int {
+    case warning
+    case error
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum Group : Swift.Int, Swift.CaseIterable {
+    case missingData
+    case uncalibratedHeadphones
+    case loudEnvironment
+    case outOfBounds
+    public init?(rawValue: Swift.Int)
+    public typealias AllCases = [MimiTestKit.MimiResultCondition.Group]
+    public typealias RawValue = Swift.Int
+    public static var allCases: [MimiTestKit.MimiResultCondition.Group] {
+      get
+    }
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public let type: MimiTestKit.MimiResultCondition.ConditionType
+  public let error: MimiCoreKit.MimiTestResultError
+  public let testType: MimiCoreKit.MimiTestType
+  public let testId: Swift.String
+  public let group: MimiTestKit.MimiResultCondition.Group?
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: MimiTestKit.MimiResultCondition, b: MimiTestKit.MimiResultCondition) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct MimiResultConditionsData {
+  public var conditions: [MimiTestKit.MimiResultCondition] {
+    get
+  }
+  public var groupedConditions: [MimiTestKit.MimiResultCondition] {
+    get
+  }
+  public init(mtResult: MimiCoreKit.MimiTestResult<MimiCoreKit.MimiMTTestRunResultData>? = nil, pttResult: MimiCoreKit.MimiTestResult<MimiCoreKit.MimiPTTTestRunResultData>? = nil)
+  public mutating func addConditions(for mtResult: MimiCoreKit.MimiTestResult<MimiCoreKit.MimiMTTestRunResultData>)
+  public mutating func addConditions(for pttResult: MimiCoreKit.MimiTestResult<MimiCoreKit.MimiPTTTestRunResultData>)
+}
+extension MimiTestKit.MimiResultCondition.Group {
+  public var description: Swift.String? {
+    get
+  }
+  public var shortDescription: Swift.String? {
+    get
+  }
+  public var image: UIKit.UIImage? {
+    get
+  }
+}
+extension MimiTestKit.MimiResultCondition.ConditionType {
+  public func tintColor(in theme: MimiUXKit.MimiThemeDefinition) -> UIKit.UIColor
+}
+extension MimiTestKit.MimiTestFlow {
+  public static let didStartNotification: Foundation.Notification.Name
+  public static let didBecomeActiveNotification: Foundation.Notification.Name
+  public static let didBecomeInactiveNotification: Foundation.Notification.Name
+  public static let didFinishNotification: Foundation.Notification.Name
+  public static let didSubmitTestNotification: Foundation.Notification.Name
+  public static let didFailToSubmitTestNotification: Foundation.Notification.Name
+}
+extension MimiHTEKit.MimiAmbientLoudnessRating : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+public enum MimiTestFlowError : Swift.Error {
+  case notAuthenticated
+  case unsupportedDevice
+  public static func == (a: MimiTestKit.MimiTestFlowError, b: MimiTestKit.MimiTestFlowError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(*, deprecated, message: "MimiResultsViewController is no longer supported and will be removed in the next major release.")
+@_Concurrency.MainActor(unsafe) final public class MimiResultsViewController<RunResultData> : UIKit.UIViewController, MimiUXKit.MimiThemeable where RunResultData : MimiCoreKit.MimiTestRunResultData {
+  @_Concurrency.MainActor(unsafe) @objc override final public var navigationItem: UIKit.UINavigationItem {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @objc convenience dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) final public func apply(theme: MimiUXKit.MimiThemeDefinition)
+  @objc deinit
+}
+extension MimiTestKit.MimiResultsViewController : MimiCoreKit.MimiTestControllerObservable {
+  @_Concurrency.MainActor(unsafe) final public func testController(_ controller: MimiCoreKit.MimiTestController, didUpdate latestResults: MimiCoreKit.MimiTestResults)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class MimiHearingGradeAvatarView : MimiUXKit.MimiView {
+  public enum Avatar : Swift.Equatable {
+    public enum Style {
+      case filled
+      case outline
+      public static func == (a: MimiTestKit.MimiHearingGradeAvatarView.Avatar.Style, b: MimiTestKit.MimiHearingGradeAvatarView.Avatar.Style) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    case bubble(MimiTestKit.MimiHearingGradeAvatarView.Avatar.Style)
+    case beam
+    public static func == (a: MimiTestKit.MimiHearingGradeAvatarView.Avatar, b: MimiTestKit.MimiHearingGradeAvatarView.Avatar) -> Swift.Bool
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var tintColor: UIKit.UIColor! {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) final public var avatar: MimiTestKit.MimiHearingGradeAvatarView.Avatar {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override final public func construct(in view: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) override final public func apply(theme: MimiUXKit.MimiThemeDefinition)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension MimiHTEKit.MimiAmbientLoudnessRating : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension MimiHTEKit.MimiAmbientLoudnessRating {
+  public func color(theme: MimiUXKit.MimiThemeDefinition) -> UIKit.UIColor
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class MimiHearingGradeBorderedAvatarView : MimiUXKit.MimiView {
+  @_Concurrency.MainActor(unsafe) final public var view: MimiTestKit.MimiHearingGradeAvatarView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) final public var avatar: MimiTestKit.MimiHearingGradeAvatarView.Avatar {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var tintColor: UIKit.UIColor! {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc override final public var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) override final public func construct(in view: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class MimiPersonalizationVisualizationViewController : UIKit.UIViewController, MimiUXKit.MimiThemeable {
+  @_Concurrency.MainActor(unsafe) public init(visualization: MimiCoreKit.MimiPersonalizationVisualization)
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) final public func apply(theme: MimiUXKit.MimiThemeDefinition)
+  @objc deinit
+}
+public protocol MimiResultConditionsBulletinDelegate : AnyObject {
+  func resultConditionsBulletin(_ bulletin: MimiTestKit.MimiResultConditionsBulletin, requestLaunchTest type: MimiCoreKit.MimiTestType)
+}
+@_hasMissingDesignatedInitializers final public class MimiResultConditionsBulletin : MimiUXKit.MimiBulletinItem {
+  override final public var isFullWidth: Swift.Bool {
+    get
+  }
+  weak final public var delegate: MimiTestKit.MimiResultConditionsBulletinDelegate?
+  convenience public init(data: MimiTestKit.MimiResultConditionsData)
+  override final public func makeViews(maker: MimiUXKit.MimiBulletinViewMaker) -> [UIKit.UIView]
+  override final public func willAppear(animated: Swift.Bool)
+  override final public func willDisappear(animated: Swift.Bool)
+  @objc deinit
+}
+extension MimiTestKit.MimiResultCondition.ConditionType : Swift.Equatable {}
+extension MimiTestKit.MimiResultCondition.ConditionType : Swift.Hashable {}
+extension MimiTestKit.MimiResultCondition.ConditionType : Swift.RawRepresentable {}
+extension MimiTestKit.MimiResultCondition.Group : Swift.Equatable {}
+extension MimiTestKit.MimiResultCondition.Group : Swift.Hashable {}
+extension MimiTestKit.MimiResultCondition.Group : Swift.RawRepresentable {}
+extension MimiTestKit.MimiTestFlowError : Swift.Equatable {}
+extension MimiTestKit.MimiTestFlowError : Swift.Hashable {}
+extension MimiTestKit.MimiHearingGradeAvatarView.Avatar.Style : Swift.Equatable {}
+extension MimiTestKit.MimiHearingGradeAvatarView.Avatar.Style : Swift.Hashable {}

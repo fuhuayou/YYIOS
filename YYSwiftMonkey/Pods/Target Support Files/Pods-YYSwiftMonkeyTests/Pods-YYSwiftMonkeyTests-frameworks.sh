@@ -177,9 +177,21 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftMonkey/SwiftMonkey.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiSDK.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiTestKit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiHTEKit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiAuthKit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiUXKit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiCoreKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftMonkey/SwiftMonkey.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiSDK.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiTestKit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiHTEKit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiAuthKit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiUXKit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiCoreKit.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

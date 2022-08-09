@@ -6,14 +6,14 @@
 //
 
 import UIKit
-
+import SwiftUI
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
        
         
-        let view = YYGradientView(frame: CGRect(x: 0, y: 100, width: 300, height: 300))
+        let view = YYGradientView1(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         self.view.addSubview(view)
     }
 

@@ -14,6 +14,7 @@ class YYGradientView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = UIColor(hex: 0xD7D8D8)
     }
     
     required init?(coder: NSCoder) {
@@ -22,7 +23,7 @@ class YYGradientView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        self.drawPathGradient()
+        self.drawPathGradient1()
     }
     
     func drawPathGradient() {
@@ -41,8 +42,8 @@ class YYGradientView: UIView {
         let context = UIGraphicsGetCurrentContext()   // 上下文
         self.drawRadialGradient(context: context!,
                               path: path,
-                                startColor: UIColor(hex: 0xD9D9D9, alpha: 0.2).cgColor,
-                              endColor: UIColor(hex: 0xD9D9D9).cgColor)
+                                startColor: UIColor.red.cgColor,
+                              endColor: UIColor.yellow.cgColor)
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         let imgView = UIImageView(image: img)
@@ -75,26 +76,95 @@ class YYGradientView: UIView {
     {
         let colors = [startColor, endColor] // 渐变色数组
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let locations = [0.5, 1.0].map { val in
-            return UnsafePointer<Double>(val)
-        }
-        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)// 渐变颜色效果设置
+        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: nil)// 渐变颜色效果设置
         
         let pathRect = path.boundingBox
         let center = CGPoint(x: pathRect.midX, y: pathRect.midY)
         let radius = pathRect.size.height / 2.0
+        
+        let endCenter = CGPoint(x: pathRect.midX - 10, y: pathRect.midY + 20)
+
         context.saveGState()
         context.addPath(path); // 上下文添加路径
         context.clip(using: .evenOdd)
-        context.drawRadialGradient(gradient!, startCenter: center, startRadius: 0, endCenter: center, endRadius: radius, options: CGGradientDrawingOptions.drawsAfterEndLocation)
+        context.drawRadialGradient(gradient!, startCenter: center, startRadius: 50, endCenter: endCenter, endRadius: radius, options: CGGradientDrawingOptions.drawsAfterEndLocation)
+        
         context.restoreGState()
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
     }
     
+    func drawPathGradient1() {
+        
+//        let path = UIBezierPath(arcCenter: CGPoint(x: 200, y: 300),
+//                                radius: 180, startAngle: -.pi, endAngle: 0, clockwise: true)
+//        path.addArc(withCenter: CGPoint(x: 290, y: 300), radius: 90, startAngle: 0, endAngle: .pi/2.0, clockwise: true)
+//        path.addLine(to: CGPoint(x: 110, y: 290))
+//        path.addArc(withCenter: CGPoint(x: 110, y: 300), radius: 90, startAngle: .pi/2.0, endAngle:.pi, clockwise: true)
+//        path.close()
+//
+//        let layer = CAShapeLayer()
+//        layer.path = path.cgPath
+//        layer.strokeColor = UIColor.red.cgColor
+//        layer.fillColor = UIColor.clear.cgColor
+//        layer.lineWidth = 0.0
+//        self.layer.addSublayer(layer)
+//
+//        layer.masksToBounds = false
+         
+        let p0 = UIBezierPath(arcCenter: CGPoint(x: 200, y: 300),
+                              radius: 180, startAngle: -.pi , endAngle: -.pi/2.0, clockwise: true)
+        p0.lineCapStyle = .butt
+        
+        _ = drawGradientPath(center: CGPoint(x: 200, y: 300),
+                         radius: 180,
+                         path: p0.cgPath,
+                         startColor:  UIColor.red.alpha(0.0).cgColor, endColor: UIColor.red.alpha(0.2).cgColor)
+        
+        let p1 = UIBezierPath(arcCenter: CGPoint(x: 290, y: 300), radius: 90, startAngle:0, endAngle: .pi/2.0, clockwise: true)
+        p1.lineCapStyle = .square
+        _ = drawGradientPath(center: CGPoint(x: 290, y: 300),
+                         radius: 90,
+                         path: p1.cgPath,
+                         startColor: UIColor.red.alpha(0.0).cgColor, endColor: UIColor.red.alpha(0.2).cgColor,
+        endCenter: CGPoint(x: 290, y: 300))
+
+        let p2 = UIBezierPath(arcCenter: CGPoint(x: 110, y: 300), radius: 90, startAngle: .pi/2.0, endAngle:.pi, clockwise: true)
+        p2.lineCapStyle = .square
+        _ = drawGradientPath(center: CGPoint(x: 110, y: 300),
+                         radius: 90,
+                         path: p2.cgPath,
+                         startColor: UIColor.red.alpha(0.0).cgColor, endColor: UIColor.red.alpha(0.2).cgColor)
+    }
     
     
-    
+    func drawGradientPath(center:CGPoint, radius:CGFloat,  path:CGPath, startColor:CGColor, endColor:CGColor, endCenter:CGPoint? = nil) -> UIImageView {
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return UIImageView()}   // 上下文
+        // 渐变颜色效果设置
+        let colors = [startColor, endColor] // 渐变色数组
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let locations: [CGFloat] = [0.0,1.0]
+        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)
+        context.saveGState()
+        
+        var endC = center
+        if let endCenter = endCenter {
+            endC = endCenter
+        }
+                
+        // 上下文添加路径
+        context.addPath(path)
+        context.clip(using: .evenOdd)
+        context.drawRadialGradient(gradient!, startCenter: center, startRadius: radius - 55, endCenter: endC, endRadius: radius, options: CGGradientDrawingOptions.drawsAfterEndLocation)
+        context.restoreGState()
+
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let imgView = UIImageView(image: img)
+        addSubview(imgView)
+        return imgView
+    }
     
 }
 
@@ -126,4 +196,11 @@ extension UIColor {
         self.init(red: components.R, green: components.G, blue: components.B, alpha: alpha)
     }
 
+}
+
+
+public extension UIColor {
+    public func alpha(_ alpha: CGFloat) -> UIColor {
+        return withAlphaComponent(alpha)
+    }
 }

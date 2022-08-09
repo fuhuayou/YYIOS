@@ -1,0 +1,6 @@
+framework module Pods_YYSVGIconTests {
+  umbrella header "Pods-YYSVGIconTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

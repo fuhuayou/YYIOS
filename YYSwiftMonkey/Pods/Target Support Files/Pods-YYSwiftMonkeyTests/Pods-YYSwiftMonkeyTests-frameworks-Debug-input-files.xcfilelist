@@ -1,2 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-YYSwiftMonkeyTests/Pods-YYSwiftMonkeyTests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/SwiftMonkey/SwiftMonkey.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiSDK.framework/MimiSDK
+${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiTestKit.framework/MimiTestKit
+${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiHTEKit.framework/MimiHTEKit
+${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiAuthKit.framework/MimiAuthKit
+${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiUXKit.framework/MimiUXKit
+${PODS_XCFRAMEWORKS_BUILD_DIR}/MimiSDK/MimiCoreKit.framework/MimiCoreKit

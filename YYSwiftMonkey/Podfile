@@ -11,6 +11,7 @@ target 'YYSwiftMonkey' do
   target 'YYSwiftMonkeyTests' do
     inherit! :search_paths
     pod 'SwiftMonkey', '~> 2.2.0'
+    pod 'MimiSDK', podspec: 'https://api.integrate.mimi.io/files/sdk/ios/pods/latest.podspec'
   end
 
   target 'YYSwiftMonkeyUITests' do

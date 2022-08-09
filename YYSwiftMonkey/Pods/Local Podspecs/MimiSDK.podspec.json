@@ -1,0 +1,51 @@
+{
+  "name": "MimiSDK",
+  "version": "6.1.0",
+  "homepage": "https://mimi.io",
+  "documentation_url": "https://mimihearingtechnologies.github.io/SDKDocs-iOS/master/",
+  "license": {
+    "type": "Commercial",
+    "file": "MimiSDK.xcframework/LICENSE"
+  },
+  "authors": {
+    "Mimi Hearing Technologies GmbH": "sales@mimi.io"
+  },
+  "summary": "MimiSDK for iOS.",
+  "description": "A powerful and versatile development kit for integrating Mimi Sound Personalization into your app.",
+  "platforms": {
+    "ios": "13.0"
+  },
+  "source": {
+    "http": "https://api.integrate.mimi.io/files/sdk/ios/6.1.0/MimiSDK-6.1.0.zip"
+  },
+  "xcconfig": {
+    "FRAMEWORK_SEARCH_PATHS": "\"$(PODS_ROOT)/MimiSDK/**\""
+  },
+  "frameworks": [
+    "Foundation",
+    "UIKit",
+    "SafariServices",
+    "Security",
+    "AudioToolbox",
+    "QuartzCore"
+  ],
+  "requires_arc": true,
+  "swift_versions": "5.1",
+  "preserve_paths": [
+    "MimiSDK.xcframework",
+    "MimiTestKit.xcframework",
+    "MimiHTEKit.xcframework",
+    "MimiAuthKit.xcframework",
+    "MimiUXKit.xcframework",
+    "MimiCoreKit.xcframework"
+  ],
+  "vendored_frameworks": [
+    "MimiSDK.xcframework",
+    "MimiTestKit.xcframework",
+    "MimiHTEKit.xcframework",
+    "MimiAuthKit.xcframework",
+    "MimiUXKit.xcframework",
+    "MimiCoreKit.xcframework"
+  ],
+  "swift_version": "5.1"
+}
