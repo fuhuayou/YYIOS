@@ -45,11 +45,7 @@ class YYGradientView1: UIView {
         layer.shadowOpacity = 1.0
         layer.shadowRadius = 0
 //        layer.shadowOffset = CGSize(width: 0, height: 0)
-        
-        
-        
-        
-        
+    
         let path1 = UIBezierPath()
         path1.move(to: CGPoint(x: 200, y:500))
         path1.addLine(to: CGPoint(x: 300, y:700))
