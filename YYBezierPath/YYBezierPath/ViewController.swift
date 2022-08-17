@@ -168,6 +168,13 @@ class NTCircle : UIView {
                 shape.path = path.cgPath
                 shape.fillColor = UIColor.clear.cgColor
                 shape.strokeColor = UIColor.red.cgColor
+                
+                shape.shadowRadius = 15.0
+                shape.shadowOpacity = 0.90
+                shape.shadowOffset = CGSize.zero
+                shape.shadowColor = UIColor.red.cgColor //f1f1f1
+                shape.shadowPath = path.cgPath.copy(strokingWithWidth: 12.0, lineCap: .round, lineJoin: .round, miterLimit: 0)
+                
                 self.layer.addSublayer(shape)
             }
             
