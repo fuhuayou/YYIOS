@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 //        self.view.removeFromSuperview()
 //        superView?.addSubview(view)
 //
-        debugPrint("=========== \(self.isRTL)")
+//        debugPrint("=========== \(self.isRTL)")
        
         self.view.addSubview(titleLabel)
         
@@ -29,12 +29,16 @@ class ViewController: UIViewController {
         titleLabel.semanticContentAttribute = .forceRightToLeft
         self.view.addSubview(titleLabel)
         
-        debugPrint("======== \( "30".toArabic())")
+//        debugPrint("======== \( "30".toArabic())")
+        
+        
     }
 }
 
 
 public extension String {
+    
+    
     var localized: String {
         let unfoundStr = "XXXXXX=XXXXXX=&&&&&&"
         var str = NSLocalizedString(self, value: unfoundStr, comment: self)
