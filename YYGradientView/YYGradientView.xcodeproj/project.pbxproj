@@ -18,9 +18,11 @@
 		18BA5F7C286334600018ED65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BA5F7A286334600018ED65 /* LaunchScreen.storyboard */; };
 		18BA5F84286334740018ED65 /* YYGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA5F83286334740018ED65 /* YYGradientView.swift */; };
 		18C584E328ACA13A009F2159 /* YYGridentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C584E228ACA13A009F2159 /* YYGridentView2.swift */; };
+		FB4143D78CABECD5BD88FB4C /* Pods_YYGradientView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB26BFD6FCA5E52C6C416ED /* Pods_YYGradientView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		131785DDFE3ACCA988500380 /* Pods-YYGradientView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYGradientView.release.xcconfig"; path = "Target Support Files/Pods-YYGradientView/Pods-YYGradientView.release.xcconfig"; sourceTree = "<group>"; };
 		183BB2B028A2081700B896D7 /* YYGradientView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYGradientView-Bridging-Header.h"; sourceTree = "<group>"; };
 		183BB2B128A2081A00B896D7 /* UIView+InnerShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+InnerShadow.h"; sourceTree = "<group>"; };
 		183BB2B228A2081C00B896D7 /* UIView+InnerShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+InnerShadow.m"; sourceTree = "<group>"; };
@@ -36,6 +38,8 @@
 		18BA5F7D286334600018ED65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BA5F83286334740018ED65 /* YYGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYGradientView.swift; sourceTree = "<group>"; };
 		18C584E228ACA13A009F2159 /* YYGridentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYGridentView2.swift; sourceTree = "<group>"; };
+		8BB26BFD6FCA5E52C6C416ED /* Pods_YYGradientView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYGradientView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A586BDBA37C0BFC50DF282 /* Pods-YYGradientView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYGradientView.debug.xcconfig"; path = "Target Support Files/Pods-YYGradientView/Pods-YYGradientView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB4143D78CABECD5BD88FB4C /* Pods_YYGradientView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +59,8 @@
 			children = (
 				18BA5F6E2863345E0018ED65 /* YYGradientView */,
 				18BA5F6D2863345E0018ED65 /* Products */,
+				33C8C3576B71802995FEF790 /* Pods */,
+				D7EEFCAAF221494081E6040B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +93,24 @@
 			path = YYGradientView;
 			sourceTree = "<group>";
 		};
+		33C8C3576B71802995FEF790 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7A586BDBA37C0BFC50DF282 /* Pods-YYGradientView.debug.xcconfig */,
+				131785DDFE3ACCA988500380 /* Pods-YYGradientView.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D7EEFCAAF221494081E6040B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BB26BFD6FCA5E52C6C416ED /* Pods_YYGradientView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,6 +118,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18BA5F80286334600018ED65 /* Build configuration list for PBXNativeTarget "YYGradientView" */;
 			buildPhases = (
+				021BEF6FFE3DA61A005B8BB7 /* [CP] Check Pods Manifest.lock */,
 				18BA5F682863345E0018ED65 /* Sources */,
 				18BA5F692863345E0018ED65 /* Frameworks */,
 				18BA5F6A2863345E0018ED65 /* Resources */,
@@ -152,6 +178,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		021BEF6FFE3DA61A005B8BB7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YYGradientView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18BA5F682863345E0018ED65 /* Sources */ = {
@@ -307,6 +358,7 @@
 		};
 		18BA5F81286334600018ED65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7A586BDBA37C0BFC50DF282 /* Pods-YYGradientView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -338,6 +390,7 @@
 		};
 		18BA5F82286334600018ED65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 131785DDFE3ACCA988500380 /* Pods-YYGradientView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
