@@ -25,6 +25,12 @@ class ViewController: UIViewController {
         gcd.testing()
     }
     
-    
+    @IBAction func metal(_ sender: AnyObject) {
+        
+        let vc = YYMetalVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+
 }
 

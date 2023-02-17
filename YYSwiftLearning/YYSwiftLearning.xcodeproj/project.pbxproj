@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1843AF7229922A97009DC271 /* YYMetalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843AF7129922A97009DC271 /* YYMetalVC.swift */; };
+		1843AF7429924CC5009DC271 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1843AF7329924CC5009DC271 /* Shader.metal */; };
 		328A638926D77401002424B0 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A638826D77401002424B0 /* House.swift */; };
 		329D300A26D89976008277C3 /* SwiftPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329D300926D89976008277C3 /* SwiftPointer.swift */; };
 		32A1ABE726D621D30011B11D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1ABE626D621D30011B11D /* AppDelegate.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1843AF7129922A97009DC271 /* YYMetalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYMetalVC.swift; sourceTree = "<group>"; };
+		1843AF7329924CC5009DC271 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		328A638826D77401002424B0 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		329D300926D89976008277C3 /* SwiftPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPointer.swift; sourceTree = "<group>"; };
 		32A1ABE326D621D30011B11D /* YYSwiftLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YYSwiftLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1843AF7029922A2D009DC271 /* Metal图形渲染 */ = {
+			isa = PBXGroup;
+			children = (
+				1843AF7129922A97009DC271 /* YYMetalVC.swift */,
+				1843AF7329924CC5009DC271 /* Shader.metal */,
+			);
+			path = "Metal图形渲染";
+			sourceTree = "<group>";
+		};
 		329D300826D89947008277C3 /* Swift指针研究 */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +128,7 @@
 		32A1ABE526D621D30011B11D /* YYSwiftLearning */ = {
 			isa = PBXGroup;
 			children = (
+				1843AF7029922A2D009DC271 /* Metal图形渲染 */,
 				32AFF41926E88DEC009022CF /* SwiftGCD研究 */,
 				329D300826D89947008277C3 /* Swift指针研究 */,
 				32A1ABE626D621D30011B11D /* AppDelegate.swift */,
@@ -286,8 +300,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1843AF7229922A97009DC271 /* YYMetalVC.swift in Sources */,
 				32AFF41B26E88E0D009022CF /* GCD.swift in Sources */,
 				32A1ABEB26D621D30011B11D /* ViewController.swift in Sources */,
+				1843AF7429924CC5009DC271 /* Shader.metal in Sources */,
 				32A1ABE726D621D30011B11D /* AppDelegate.swift in Sources */,
 				32A1AC1726D623190011B11D /* Person.swift in Sources */,
 				329D300A26D89976008277C3 /* SwiftPointer.swift in Sources */,
@@ -469,7 +485,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3WWYF2H4Z6;
+				DEVELOPMENT_TEAM = 8TQG57X94B;
 				INFOPLIST_FILE = YYSwiftLearning/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

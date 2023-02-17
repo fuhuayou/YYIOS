@@ -1,0 +1,11 @@
+//
+//  AppConfig.xcconfig
+//  YYProjectConfig
+//
+//  Created by HarrisonFu on 2023/2/15.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_BASE_URL = "Debug.go.fuhuayou"

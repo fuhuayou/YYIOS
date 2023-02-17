@@ -167,15 +167,20 @@ class NTCircle : UIView {
                 shape.lineWidth = 3.0
                 shape.path = path.cgPath
                 shape.fillColor = UIColor.clear.cgColor
-                shape.strokeColor = UIColor.red.cgColor
+                //shape.strokeColor = UIColor.red.cgColor
                 
                 shape.shadowRadius = 15.0
                 shape.shadowOpacity = 0.90
                 shape.shadowOffset = CGSize.zero
                 shape.shadowColor = UIColor.red.cgColor //f1f1f1
                 shape.shadowPath = path.cgPath.copy(strokingWithWidth: 12.0, lineCap: .round, lineJoin: .round, miterLimit: 0)
-                
                 self.layer.addSublayer(shape)
+                
+                //如果想实现只有内部阴影，则可以通过 masker来截取。
+                let mask = CAShapeLayer()
+                mask.path = path.cgPath
+                shape.mask = mask
+                
             }
             
         }

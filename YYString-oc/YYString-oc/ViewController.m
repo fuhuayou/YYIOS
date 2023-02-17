@@ -21,6 +21,7 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.sH = [UIScreen mainScreen].bounds.size.height;
     self.sW = [UIScreen mainScreen].bounds.size.width;
