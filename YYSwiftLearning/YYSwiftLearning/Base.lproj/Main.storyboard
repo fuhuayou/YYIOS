@@ -53,11 +53,22 @@
                                     <action selector="metal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DdY-8a-Za7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAQ-kI-0IN">
+                                <rect key="frame" x="107" y="420" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="16M-H0-wjB"/>
+                                    <constraint firstAttribute="width" constant="200" id="C9c-dS-5YY"/>
+                                </constraints>
+                                <state key="normal" title="Long Press"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3Wb-pe-rZq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6dC-ln-cbA"/>
+                            <constraint firstItem="VAQ-kI-0IN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8gP-JS-1GV"/>
+                            <constraint firstItem="VAQ-kI-0IN" firstAttribute="top" secondItem="3Wb-pe-rZq" secondAttribute="bottom" constant="88" id="EW5-Zp-R9l"/>
                             <constraint firstItem="Uo0-3V-xjS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="66" id="FBs-nn-Q1C"/>
                             <constraint firstItem="IrI-Cv-ArE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xth-Sf-O7S"/>
                             <constraint firstItem="IrI-Cv-ArE" firstAttribute="top" secondItem="Uo0-3V-xjS" secondAttribute="bottom" constant="31" id="cVu-FU-4Q1"/>
@@ -66,6 +77,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dGr-fY-r4t"/>
+                    <connections>
+                        <outlet property="longpressBtn" destination="VAQ-kI-0IN" id="ChK-Sz-WsD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
