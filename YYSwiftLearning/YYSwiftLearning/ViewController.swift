@@ -6,21 +6,34 @@
 //
 
 import UIKit
-
 class ViewController: UIViewController {
     
     @IBOutlet var longpressBtn: UIButton?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
+        let data = Data([0x42,0x45,0x53,0x43,0x41,0x50])
+        let bytes = data.toArray(type: UInt8.self)
+        let str = String(bytes: Array(bytes), encoding: .ascii) ?? ""
+        print("===== \(str)")
         
-        let copyLabel = UICopyLabel()
-        copyLabel.frame = CGRect(x: 100, y: (self.longpressBtn?.frame.minY ?? 0) + 100, width: 200, height: 100)
-        copyLabel.backgroundColor = .red
-        self.view.addSubview(copyLabel)
-        copyLabel.text = "GOGOOGOG0"
-//        self.setupLongpress()
+//        let imgView = UIImageView(frame: CGRect(x: 100, y: 200, width: 200, height: 300))
+//        var img = UIImage(named: "app1")?.drawRadius(rect: imgView.bounds, corner: 20, backgroundColor: .clear)
+//        imgView.image = img
+//        self.view.addSubview(imgView)
+//        
+//
+//        let dataBytes = Array([0x28, 0x00, 0x00, 0x00].reversed())
+//        let dData = Data(bytes: dataBytes, count: dataBytes.count)
+//        let dData = Data([0,0,12,67]).reversed().reversed()
+        
+//        let dData = Data([0x28, 0x00, 0x00, 0x00])
+        let dData = Data([0xD8, 0xFF, 0xFF, 0xFF]) //FFFF FF
+        let vals = Data(dData).toArray(type: Int32.self)
+        print("===== \(vals)")
     }
+    
 
     //MARK: 指针的研究和学习
     @IBAction func onPointerTesting(_ sender: AnyObject) {
@@ -37,6 +50,32 @@ class ViewController: UIViewController {
         let vc = YYMetalVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func charts(_ sender: AnyObject) {
+        let vc = YYChartVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func collectViewCard(_ sender: AnyObject) {
+        let vc = CollectionCardVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func bezierPathAnimation(_ sender: AnyObject) {
+        let vc = YYBezierPathAnimationVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func gotoCSV(_ sender: AnyObject) {
+        let vc = YYCSVVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func gotoSandboxPath(_ sender: AnyObject) {
+        let vc = YYFilePathVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func setupLongpress() {
         guard let longpressBtn = longpressBtn else { return }
@@ -96,4 +135,49 @@ class UICopyLabel: UILabel {
         return false
     }
     
+}
+
+
+
+
+extension UIImage {
+    
+    public func drawRadius(rect: CGRect,
+              corner: CGFloat,
+              backgroundColor: UIColor,
+              padding: CGFloat = 0.0) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
+        let path = UIBezierPath(roundedRect: rect,
+                                cornerRadius: corner)
+        let context = UIGraphicsGetCurrentContext()
+        context?.saveGState()
+        context?.setFillColor(backgroundColor.cgColor)
+        path.addClip()
+        context?.addPath(path.cgPath)
+        context?.fillPath()
+        self.draw(in: CGRectInset(rect, padding, padding))
+        context?.restoreGState()
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+}
+
+
+extension Data {
+    func toArray<T>(type: T.Type) -> [T] {
+        //    return self.withUnsafeBytes {
+        //      [T](UnsafeBufferPointer(start: $0, count: self.count/MemoryLayout<T>.stride))
+        //    }
+        
+        let array = self.withUnsafeBytes { (pointer: UnsafeRawBufferPointer) -> [T] in
+            if let ptrAddress = pointer.baseAddress, pointer.count > 0 {
+                let pointer = ptrAddress.assumingMemoryBound(to: type) // here you got UnsafePointer<UInt8>
+                let buffer = UnsafeBufferPointer(start: pointer,count: self.count/MemoryLayout<T>.stride)
+                return Array<T>(buffer)
+            }
+            return Array<T>()
+        }
+        return array
+    }
 }

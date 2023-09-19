@@ -86,12 +86,6 @@ class ViewController: UIViewController {
     }
 }
 
-
-
-
-
-
-
 class NTCircle : UIView {
     var Circles: (L: CircleType, T: CircleType, R: CircleType)?
     var iCenter = CGPoint(x:0, y: 0)

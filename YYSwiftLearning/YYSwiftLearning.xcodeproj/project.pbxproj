@@ -3,12 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180917302AB8454400A761B4 /* YYFilePathVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1809172F2AB8454400A761B4 /* YYFilePathVC.swift */; };
+		181911FC2AB2A781003FDBFA /* YYCsvCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181911FB2AB2A781003FDBFA /* YYCsvCenter.swift */; };
+		181911FE2AB2A870003FDBFA /* YYCSVVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181911FD2AB2A870003FDBFA /* YYCSVVC.swift */; };
+		1828879D2A49423000E0AC9A /* CollectionCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828879C2A49423000E0AC9A /* CollectionCardVC.swift */; };
+		1828879F2A49702600E0AC9A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828879E2A49702600E0AC9A /* constants.swift */; };
+		18354E3029EFD062001E49C6 /* NTEQPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18354E2E29EFD062001E49C6 /* NTEQPath.swift */; };
+		18354E3129EFD063001E49C6 /* NTEQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18354E2F29EFD062001E49C6 /* NTEQ.swift */; };
+		18354E3329EFD082001E49C6 /* YYChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18354E3229EFD082001E49C6 /* YYChartVC.swift */; };
 		1843AF7229922A97009DC271 /* YYMetalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843AF7129922A97009DC271 /* YYMetalVC.swift */; };
 		1843AF7429924CC5009DC271 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1843AF7329924CC5009DC271 /* Shader.metal */; };
+		1854AB3F2A66481600C6767B /* YYBezierPathAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854AB3E2A66481600C6767B /* YYBezierPathAnimationVC.swift */; };
 		328A638926D77401002424B0 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A638826D77401002424B0 /* House.swift */; };
 		329D300A26D89976008277C3 /* SwiftPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329D300926D89976008277C3 /* SwiftPointer.swift */; };
 		32A1ABE726D621D30011B11D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1ABE626D621D30011B11D /* AppDelegate.swift */; };
@@ -21,6 +30,9 @@
 		32A1AC0926D621D40011B11D /* YYSwiftLearningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1AC0826D621D40011B11D /* YYSwiftLearningUITests.swift */; };
 		32A1AC1726D623190011B11D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1AC1626D623190011B11D /* Person.swift */; };
 		32AFF41B26E88E0D009022CF /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFF41A26E88E0D009022CF /* GCD.swift */; };
+		60A4031E0D483823163C1505 /* Pods_YYSwiftLearning_YYSwiftLearningUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387CE702E67B8855B19FEE3C /* Pods_YYSwiftLearning_YYSwiftLearningUITests.framework */; };
+		D391781AE29B45EE8D023946 /* Pods_YYSwiftLearning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721D93BB4330EEB54FD8253E /* Pods_YYSwiftLearning.framework */; };
+		F0A6E6ABA9547FA6B56D7CC6 /* Pods_YYSwiftLearningTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57EC629E8EFAEFE57FA68FCD /* Pods_YYSwiftLearningTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +53,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1809172F2AB8454400A761B4 /* YYFilePathVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYFilePathVC.swift; sourceTree = "<group>"; };
+		181911FB2AB2A781003FDBFA /* YYCsvCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYCsvCenter.swift; sourceTree = "<group>"; };
+		181911FD2AB2A870003FDBFA /* YYCSVVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYCSVVC.swift; sourceTree = "<group>"; };
+		1828879C2A49423000E0AC9A /* CollectionCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCardVC.swift; sourceTree = "<group>"; };
+		1828879E2A49702600E0AC9A /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		18354E2E29EFD062001E49C6 /* NTEQPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTEQPath.swift; sourceTree = "<group>"; };
+		18354E2F29EFD062001E49C6 /* NTEQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTEQ.swift; sourceTree = "<group>"; };
+		18354E3229EFD082001E49C6 /* YYChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYChartVC.swift; sourceTree = "<group>"; };
 		1843AF7129922A97009DC271 /* YYMetalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYMetalVC.swift; sourceTree = "<group>"; };
 		1843AF7329924CC5009DC271 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
+		1854AB3E2A66481600C6767B /* YYBezierPathAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYBezierPathAnimationVC.swift; sourceTree = "<group>"; };
 		328A638826D77401002424B0 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		329D300926D89976008277C3 /* SwiftPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPointer.swift; sourceTree = "<group>"; };
 		32A1ABE326D621D30011B11D /* YYSwiftLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YYSwiftLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +82,15 @@
 		32A1AC0A26D621D40011B11D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A1AC1626D623190011B11D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		32AFF41A26E88E0D009022CF /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
+		387CE702E67B8855B19FEE3C /* Pods_YYSwiftLearning_YYSwiftLearningUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYSwiftLearning_YYSwiftLearningUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57EC629E8EFAEFE57FA68FCD /* Pods_YYSwiftLearningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYSwiftLearningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E7EC29CD39F60C4D84AACC4 /* Pods-YYSwiftLearningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSwiftLearningTests.debug.xcconfig"; path = "Target Support Files/Pods-YYSwiftLearningTests/Pods-YYSwiftLearningTests.debug.xcconfig"; sourceTree = "<group>"; };
+		721D93BB4330EEB54FD8253E /* Pods_YYSwiftLearning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYSwiftLearning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE047A45CB748E1F14282AB /* Pods-YYSwiftLearningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSwiftLearningTests.release.xcconfig"; path = "Target Support Files/Pods-YYSwiftLearningTests/Pods-YYSwiftLearningTests.release.xcconfig"; sourceTree = "<group>"; };
+		8909DD8A03EF662E6B9B94E2 /* Pods-YYSwiftLearning-YYSwiftLearningUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSwiftLearning-YYSwiftLearningUITests.debug.xcconfig"; path = "Target Support Files/Pods-YYSwiftLearning-YYSwiftLearningUITests/Pods-YYSwiftLearning-YYSwiftLearningUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AAD58C22CF43CDA432441EEC /* Pods-YYSwiftLearning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSwiftLearning.debug.xcconfig"; path = "Target Support Files/Pods-YYSwiftLearning/Pods-YYSwiftLearning.debug.xcconfig"; sourceTree = "<group>"; };
+		FC2672018F41C853B1F8FFB4 /* Pods-YYSwiftLearning-YYSwiftLearningUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSwiftLearning-YYSwiftLearningUITests.release.xcconfig"; path = "Target Support Files/Pods-YYSwiftLearning-YYSwiftLearningUITests/Pods-YYSwiftLearning-YYSwiftLearningUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FFBB47CB9FF024FC6D92F8AE /* Pods-YYSwiftLearning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSwiftLearning.release.xcconfig"; path = "Target Support Files/Pods-YYSwiftLearning/Pods-YYSwiftLearning.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D391781AE29B45EE8D023946 /* Pods_YYSwiftLearning.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A6E6ABA9547FA6B56D7CC6 /* Pods_YYSwiftLearningTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +114,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60A4031E0D483823163C1505 /* Pods_YYSwiftLearning_YYSwiftLearningUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14A1448C90408E405FEA94B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				721D93BB4330EEB54FD8253E /* Pods_YYSwiftLearning.framework */,
+				387CE702E67B8855B19FEE3C /* Pods_YYSwiftLearning_YYSwiftLearningUITests.framework */,
+				57EC629E8EFAEFE57FA68FCD /* Pods_YYSwiftLearningTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1809172E2AB8452700A761B4 /* 沙盒文件 */ = {
+			isa = PBXGroup;
+			children = (
+				1809172F2AB8454400A761B4 /* YYFilePathVC.swift */,
+			);
+			path = "沙盒文件";
+			sourceTree = "<group>";
+		};
+		181911FA2AB2A760003FDBFA /* CSV文件 */ = {
+			isa = PBXGroup;
+			children = (
+				181911FB2AB2A781003FDBFA /* YYCsvCenter.swift */,
+				181911FD2AB2A870003FDBFA /* YYCSVVC.swift */,
+			);
+			path = "CSV文件";
+			sourceTree = "<group>";
+		};
+		1828879B2A493F7E00E0AC9A /* CollectionView切换卡片研究 */ = {
+			isa = PBXGroup;
+			children = (
+				1828879C2A49423000E0AC9A /* CollectionCardVC.swift */,
+			);
+			path = "CollectionView切换卡片研究";
+			sourceTree = "<group>";
+		};
+		18354E2D29EFD062001E49C6 /* Path曲线 */ = {
+			isa = PBXGroup;
+			children = (
+				18354E2E29EFD062001E49C6 /* NTEQPath.swift */,
+				18354E2F29EFD062001E49C6 /* NTEQ.swift */,
+				18354E3229EFD082001E49C6 /* YYChartVC.swift */,
+				1854AB3E2A66481600C6767B /* YYBezierPathAnimationVC.swift */,
+			);
+			path = "Path曲线";
+			sourceTree = "<group>";
+		};
 		1843AF7029922A2D009DC271 /* Metal图形渲染 */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +191,8 @@
 				32A1ABFC26D621D40011B11D /* YYSwiftLearningTests */,
 				32A1AC0726D621D40011B11D /* YYSwiftLearningUITests */,
 				32A1ABE426D621D30011B11D /* Products */,
+				F656E1540107F8A8E13C201D /* Pods */,
+				14A1448C90408E405FEA94B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +209,10 @@
 		32A1ABE526D621D30011B11D /* YYSwiftLearning */ = {
 			isa = PBXGroup;
 			children = (
+				1809172E2AB8452700A761B4 /* 沙盒文件 */,
+				181911FA2AB2A760003FDBFA /* CSV文件 */,
+				1828879B2A493F7E00E0AC9A /* CollectionView切换卡片研究 */,
+				18354E2D29EFD062001E49C6 /* Path曲线 */,
 				1843AF7029922A2D009DC271 /* Metal图形渲染 */,
 				32AFF41926E88DEC009022CF /* SwiftGCD研究 */,
 				329D300826D89947008277C3 /* Swift指针研究 */,
@@ -140,6 +225,7 @@
 				32A1ABF426D621D40011B11D /* Info.plist */,
 				32A1AC1626D623190011B11D /* Person.swift */,
 				328A638826D77401002424B0 /* House.swift */,
+				1828879E2A49702600E0AC9A /* constants.swift */,
 			);
 			path = YYSwiftLearning;
 			sourceTree = "<group>";
@@ -170,6 +256,19 @@
 			path = "SwiftGCD研究";
 			sourceTree = "<group>";
 		};
+		F656E1540107F8A8E13C201D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AAD58C22CF43CDA432441EEC /* Pods-YYSwiftLearning.debug.xcconfig */,
+				FFBB47CB9FF024FC6D92F8AE /* Pods-YYSwiftLearning.release.xcconfig */,
+				8909DD8A03EF662E6B9B94E2 /* Pods-YYSwiftLearning-YYSwiftLearningUITests.debug.xcconfig */,
+				FC2672018F41C853B1F8FFB4 /* Pods-YYSwiftLearning-YYSwiftLearningUITests.release.xcconfig */,
+				6E7EC29CD39F60C4D84AACC4 /* Pods-YYSwiftLearningTests.debug.xcconfig */,
+				7DE047A45CB748E1F14282AB /* Pods-YYSwiftLearningTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,9 +276,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32A1AC0D26D621D40011B11D /* Build configuration list for PBXNativeTarget "YYSwiftLearning" */;
 			buildPhases = (
+				F90A76968F6AD7577936DACB /* [CP] Check Pods Manifest.lock */,
 				32A1ABDF26D621D30011B11D /* Sources */,
 				32A1ABE026D621D30011B11D /* Frameworks */,
 				32A1ABE126D621D30011B11D /* Resources */,
+				2932517FC6D7C9671DC00408 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,6 +295,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32A1AC1026D621D40011B11D /* Build configuration list for PBXNativeTarget "YYSwiftLearningTests" */;
 			buildPhases = (
+				D1E3CA827444DA327F049C08 /* [CP] Check Pods Manifest.lock */,
 				32A1ABF526D621D40011B11D /* Sources */,
 				32A1ABF626D621D40011B11D /* Frameworks */,
 				32A1ABF726D621D40011B11D /* Resources */,
@@ -212,9 +314,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32A1AC1326D621D40011B11D /* Build configuration list for PBXNativeTarget "YYSwiftLearningUITests" */;
 			buildPhases = (
+				952D7895156FC792BBEB0E79 /* [CP] Check Pods Manifest.lock */,
 				32A1AC0026D621D40011B11D /* Sources */,
 				32A1AC0126D621D40011B11D /* Frameworks */,
 				32A1AC0226D621D40011B11D /* Resources */,
+				257803E62BC4A8429F396286 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -295,6 +399,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		257803E62BC4A8429F396286 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YYSwiftLearning-YYSwiftLearningUITests/Pods-YYSwiftLearning-YYSwiftLearningUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YYSwiftLearning-YYSwiftLearningUITests/Pods-YYSwiftLearning-YYSwiftLearningUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YYSwiftLearning-YYSwiftLearningUITests/Pods-YYSwiftLearning-YYSwiftLearningUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2932517FC6D7C9671DC00408 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YYSwiftLearning/Pods-YYSwiftLearning-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YYSwiftLearning/Pods-YYSwiftLearning-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YYSwiftLearning/Pods-YYSwiftLearning-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		952D7895156FC792BBEB0E79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YYSwiftLearning-YYSwiftLearningUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1E3CA827444DA327F049C08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YYSwiftLearningTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F90A76968F6AD7577936DACB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YYSwiftLearning-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		32A1ABDF26D621D30011B11D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -303,12 +510,21 @@
 				1843AF7229922A97009DC271 /* YYMetalVC.swift in Sources */,
 				32AFF41B26E88E0D009022CF /* GCD.swift in Sources */,
 				32A1ABEB26D621D30011B11D /* ViewController.swift in Sources */,
+				1828879F2A49702600E0AC9A /* constants.swift in Sources */,
+				18354E3129EFD063001E49C6 /* NTEQ.swift in Sources */,
 				1843AF7429924CC5009DC271 /* Shader.metal in Sources */,
 				32A1ABE726D621D30011B11D /* AppDelegate.swift in Sources */,
 				32A1AC1726D623190011B11D /* Person.swift in Sources */,
+				18354E3029EFD062001E49C6 /* NTEQPath.swift in Sources */,
+				180917302AB8454400A761B4 /* YYFilePathVC.swift in Sources */,
 				329D300A26D89976008277C3 /* SwiftPointer.swift in Sources */,
 				328A638926D77401002424B0 /* House.swift in Sources */,
+				181911FC2AB2A781003FDBFA /* YYCsvCenter.swift in Sources */,
 				32A1ABE926D621D30011B11D /* SceneDelegate.swift in Sources */,
+				1828879D2A49423000E0AC9A /* CollectionCardVC.swift in Sources */,
+				181911FE2AB2A870003FDBFA /* YYCSVVC.swift in Sources */,
+				18354E3329EFD082001E49C6 /* YYChartVC.swift in Sources */,
+				1854AB3F2A66481600C6767B /* YYBezierPathAnimationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +697,7 @@
 		};
 		32A1AC0E26D621D40011B11D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAD58C22CF43CDA432441EEC /* Pods-YYSwiftLearning.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -500,6 +717,7 @@
 		};
 		32A1AC0F26D621D40011B11D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFBB47CB9FF024FC6D92F8AE /* Pods-YYSwiftLearning.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -519,13 +737,14 @@
 		};
 		32A1AC1126D621D40011B11D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E7EC29CD39F60C4D84AACC4 /* Pods-YYSwiftLearningTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WWYF2H4Z6;
 				INFOPLIST_FILE = YYSwiftLearningTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -541,13 +760,14 @@
 		};
 		32A1AC1226D621D40011B11D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DE047A45CB748E1F14282AB /* Pods-YYSwiftLearningTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WWYF2H4Z6;
 				INFOPLIST_FILE = YYSwiftLearningTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,6 +783,7 @@
 		};
 		32A1AC1426D621D40011B11D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8909DD8A03EF662E6B9B94E2 /* Pods-YYSwiftLearning-YYSwiftLearningUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -583,6 +804,7 @@
 		};
 		32A1AC1526D621D40011B11D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC2672018F41C853B1F8FFB4 /* Pods-YYSwiftLearning-YYSwiftLearningUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
